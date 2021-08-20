@@ -1,5 +1,4 @@
 ---
-title: Livestock Breeding and Genomics - Fall Semester 2021
 output: github_document
 ---
 

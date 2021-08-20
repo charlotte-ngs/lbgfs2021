@@ -1,5 +1,3 @@
-Livestock Breeding and Genomics - Fall Semester 2021
-================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
