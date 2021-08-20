@@ -3,7 +3,7 @@
 
 Welcome to the website of
 
-  - [751-6305-00L Livestock Breeding and
+-   [751-6305-00L Livestock Breeding and
     Genomics](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2021W&ansicht=ALLE&lerneinheitId=147077&lang=en)
 
 The course website can be found at:
@@ -12,7 +12,8 @@ The course website can be found at:
 ## Topics for Master Theses
 
 Topics for Master Theses at Qualitas AG together with ETH are available
-from [here]().
+from
+[here](https://charlotte-ngs.github.io/lbgfs2021/misc/MasterThesisTopics_FallSemester2021.html).
 
 ## Description
 
@@ -24,13 +25,13 @@ material will be illustrated via exercises and assignments.
 
 ## Information
 
-  - Lecturer: Peter von Rohr
-  - Date: Friday 9-12
-  - Room: [LFW
-    C 11](http://www.mapsearch.ethz.ch/map/map.do?gebaeudeMap=LFW&lang=en)
-  - Exam:
-      - Time: 09:15 - 11:15
-      - Room: LFW C 11
+-   Lecturer: Peter von Rohr
+-   Date: Friday 9-12
+-   Room: [LFW C
+    11](http://www.mapsearch.ethz.ch/map/map.do?gebaeudeMap=LFW&lang=en)
+-   Exam:
+    -   Time: 09:15 - 11:15
+    -   Room: LFW C 11
 
 ### Exercise Platform
 
@@ -39,14 +40,14 @@ material will be illustrated via exercises and assignments.
 Questions can be asked during the lecture and during the exercise hour
 or via e-mail:
 
-  - Peter von Rohr (peter.vonrohr `at` usys.ethz.ch)
+-   Peter von Rohr (peter.vonrohr `at` usys.ethz.ch)
 
------
+------------------------------------------------------------------------
 
 ## Lecture Program
 
 | Week | Date  | Topic                                                        |
-| ---: | :---- | :----------------------------------------------------------- |
+|-----:|:------|:-------------------------------------------------------------|
 |    1 | 24.09 | Introduction to Livestock Breeding and Genomics              |
 |    2 | 01.10 | Review of Quantitative Genetics/Single Locus                 |
 |    3 | 08.10 | Genetic Evaluation with Different Sources of Information     |
