@@ -1,6 +1,6 @@
 Package: lbgfs2021
 Title: Livestock Breeding and Genomics (ETHZ) - Fall Semester 2021
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Peter",
            family = "von Rohr",
