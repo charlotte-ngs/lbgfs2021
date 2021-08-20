@@ -18,6 +18,7 @@ Welcome to the website of
 
 - [751-6305-00L Livestock Breeding and Genomics](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2021W&ansicht=ALLE&lerneinheitId=147077&lang=en)
 
+The course website can be found at: https://charlotte-ngs.github.io/lbgfs2021/
 
 ## Topics for Master Theses
 Topics for Master Theses at Qualitas AG together with ETH are available from [here]().
