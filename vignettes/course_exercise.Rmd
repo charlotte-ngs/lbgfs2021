@@ -2,7 +2,7 @@
 title: "Exercises"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Exercise}
+  %\VignetteIndexEntry{Exercises}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
