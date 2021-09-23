@@ -25,6 +25,10 @@ material will be illustrated via exercises and assignments.
 
 ## Information
 
+-   Form:
+    -   Hybrid, Covid-19 certificate required for physical meeting in
+        classroom.
+    -   Virtual participation via zoom possible.
 -   Lecturer: Peter von Rohr
 -   Date: Friday 9-12
 -   Room: [LFW C
