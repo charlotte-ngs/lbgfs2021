@@ -18,3 +18,32 @@ This page contains a list of chapters of the course notes for Livestock Breeding
 
 # Chapters
 
+```{r chapter-table, echo=FALSE}
+s_cn_url <- "https://charlotte-ngs.github.io/lbgfs2021/cn/"
+tbl_chpt <- tibble::tibble(Nr      = c(1),
+                           Date    = c("2021-09-24"),
+                           Topic   = c(
+                             paste0("[Introduction to Livestock Breeding and Genomics](", s_cn_url, "01_intro_lbg.pdf)", collapse = "")
+                           ))
+knitr::kable(tbl_chpt)
+```
+
+
+# Appendix
+
+```{r appendix-table, echo=FALSE}
+s_app_url <- "https://charlotte-ngs.github.io/lbgfs2021/cn/"
+tbl_appendix <- tibble::tibble(Nr  = c(1,2),
+                               Date = c("2021-09-24", "2021-09-24"),
+                               Topic = c(
+                                 paste0("[Introduction to Linear Algebra](", s_app_url, "A01_intro_linalg.pdf)", collapse = ""),
+                                 paste0("[Introduction to R](", s_app_url, "A02_intro_r.pdf)", collapse = "")
+                               ))
+knitr::kable(tbl_appendix)
+```
+
+
+```{r latest-changes, echo=FALSE}
+cat(rmdhelp::get_latest_change())
+```
+
