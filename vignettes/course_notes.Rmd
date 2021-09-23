@@ -18,7 +18,7 @@ This page contains a list of chapters of the course notes for Livestock Breeding
 
 # Chapters
 
-```{r chapter-table, echo=FALSE}
+```{r chapter-table, echo=FALSE, message=FALSE, warning=FALSE}
 s_cn_url <- "https://charlotte-ngs.github.io/lbgfs2021/cn/"
 tbl_chpt <- tibble::tibble(Nr      = c(1),
                            Date    = c("2021-09-24"),
@@ -31,7 +31,7 @@ knitr::kable(tbl_chpt)
 
 # Appendix
 
-```{r appendix-table, echo=FALSE}
+```{r appendix-table, echo=FALSE, message=FALSE, warning=FALSE}
 s_app_url <- "https://charlotte-ngs.github.io/lbgfs2021/cn/"
 tbl_appendix <- tibble::tibble(Nr  = c(1,2),
                                Date = c("2021-09-24", "2021-09-24"),
@@ -43,7 +43,7 @@ knitr::kable(tbl_appendix)
 ```
 
 
-```{r latest-changes, echo=FALSE}
+```{r latest-changes, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
 cat(rmdhelp::get_latest_change())
 ```
 
