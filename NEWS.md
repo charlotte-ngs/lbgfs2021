@@ -1,5 +1,10 @@
 # lbgfs2021 
 
+## 0.1.0
+
+* Release course notes for first lecture
+
+
 ## 0.0.1
 
 * Release of first version of website
