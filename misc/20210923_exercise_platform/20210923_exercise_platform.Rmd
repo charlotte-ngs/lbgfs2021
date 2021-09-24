@@ -42,8 +42,8 @@ The following command is used to test the command
 
 ```
 STUDENTHOME=/home/quagadmin/courses/lbgfs2021/home/pvr
-if [ ! -d "$STUDENTHOME" ];then mkdir -p ${STUDENTHOME};fi
-docker run -d -p 10087:8787 -e PASSWORD=pvrpass -v /home/quagadmin/courses/lbgfs2021/home/pvr:/home/rstudio --name pvr_rstudio lbgfs2021
+if [ ! -d "$STUDENTHOME" ];then mkdir -p ${STUDENTHOME};chmod 777 ${STUDENTHOME};fi
+docker run -d -p 10187:8787 -e PASSWORD=pvrpass -v /home/quagadmin/courses/lbgfs2021/home/pvr:/home/rstudio --name pvr_rstudio lbgfs2021
 # check
 docker ps -a
 ```
