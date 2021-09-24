@@ -36,8 +36,8 @@ tbl_video <- tibble::tibble(Nr = c(1, 2),
                             Date = c("2021-09-24",
                                      "2021-09-24"),
                             Topic = c(
-                              "[Introduction to Livestock Breeding and Genomics (Part 1)](https://youtu.be/9R2rW-lutfs)", 
-                              "[Introduction to Livestock Breeding and Genomics (Part 2)](https://youtu.be/7Hn6hlpXiDQ)", 
+                              "[Introduction to Livestock Breeding and Genomics, Part 1](https://youtu.be/9R2rW-lutfs)", 
+                              "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)" 
                             ))
 knitr::kable(tbl_video)
 ```
