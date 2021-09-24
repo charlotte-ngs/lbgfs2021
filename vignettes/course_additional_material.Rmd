@@ -19,7 +19,8 @@ This page contains links to additional material for Livestock Breeding and Genom
 # Slides
 
 ```{r slide-table, echo=FALSE, message=FALSE, warning=FALSE}
-sl_url <- "https://charlotte-ngs.github.io/lbgfs2021/sl/"
+root_url <- "https://charlotte-ngs.github.io/lbgfs2021" 
+sl_url <- paste0(root_url, "/sl/")
 tbl_sl <- tibble::tibble(Nr = c(1),
                          Date = c("2021-09-24"),
                          Topic = c(
@@ -42,4 +43,21 @@ tbl_video <- tibble::tibble(Nr = c(1, 2),
 knitr::kable(tbl_video)
 ```
 
+
+# Overhead Projector Pictures
+
+```{r ohp-table, echo=FALSE, message=FALSE, warning=FALSE}
+ohp_url <- paste0(root_url, "/ohp/")
+tbl_ohp <- tibble::tibble(Nr = c(1),
+                          Date = c("2021-09-24"),
+                          Topic = c(
+                            paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = "")
+                          ))
+knitr::kable(tbl_ohp)
+```
+
+
+```{r latest-change, echo=FALSE, results='asis'}
+cat(rmdhelp::get_latest_change())
+```
 
