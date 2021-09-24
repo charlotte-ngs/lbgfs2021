@@ -105,7 +105,7 @@ prerequisites. But we will come to that in a moment.
 
 ## Course program
 
-```{r SlidesTable, echo=FALSE}
+```{r SlidesTable, echo=FALSE, message=FALSE, warning=FALSE}
 vecTableHeaders <- c("Week", "Date", "Topic")
 # define course start date
 dCourseStart <- as.Date("2021/09/24")
