@@ -63,27 +63,10 @@ knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 \noindent\textbf{Notes}:
 \begin{itemize}
 \item Official goals can be taken from the course website
-\item I want to have a few additional goals listed here. 
+\item These goals are fine, but I want to have a few additional goals listed here. 
 \end{itemize}
 }
 
-
-## Comments from farmers
-
-- "Deep cow families" (Schweizer Bauer - https://www.schweizerbauer.ch/tiere/milchvieh/eine-komplette-kuh-zuechten-17854.html)
-- "I have not met anybody who can explain the concept of a breeding value. My cow has a breeding value of $-900$ and still gives milk." (Leserbrief im Schweizer Bauer)
-
-\note{
-\noindent\textbf{Notes}:
-
-\verb+TODO+: Work on this to better explain what this means
-
-\begin{itemize}
-\item Depending on where you will get a job later, you might get in contact with farmers and they sometimes have special opions about different concepts in animal breeding
-\item After this course you will be able to explain the relevant concepts related to selection and breeding.
-\item If this is not the case, please come to me and let me know.
-\end{itemize}
-}
 
 
 ## Information
@@ -250,6 +233,60 @@ knitr::kable(dfCnTable)
 \end{itemize}
 }
     
+
+## Comments from farmers
+
+- "Deep cow families" (Schweizer Bauer - https://www.schweizerbauer.ch/tiere/milchvieh/eine-komplette-kuh-zuechten-17854.html)
+- "I have not met anybody who can explain the concept of a breeding value. My cow has a breeding value of $-900$ and still gives milk." (Leserbrief im Schweizer Bauer)
+- "Cows must give a lot of milk, and have good conformation scores"
+
+\note{
+\noindent\textbf{Notes}:
+
+\verb+TODO+: Work on this to better explain what this means
+
+\begin{itemize}
+\item Depending on where you will get a job later, you might get in contact with farmers and they sometimes have special opions about different concepts in animal breeding
+\item After this course you will be able to explain the relevant concepts related to selection and breeding.
+\item If this is not the case, please come to me and let me know.
+\end{itemize}
+}
+
+
+## What happens if ...
+
+- ... selection is based on phenotypic observations of only a few traits
+- how is selection response affected by such a strategy
+
+
+## Distribution of Phenotypes
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+x_lim_low <- -3
+x_lim_up <- 3
+p2 <- ggplot(data.frame(x = c(x_lim_low, x_lim_up)), aes(x)) +
+  stat_function(
+    fun = dnorm,
+    geom = "line") +
+  xlab("") +
+  ylab("") +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(breaks = NULL)
+p2
+```
+
+
+## Selection Response 
+
+- Selection response $R$ is given by the breeders equation
+
+$$R = i * r * \sigma_g$$
+with $i = z/p$, in R: `dnorm(qnorm(1-p)) / p`
+
+- Selection response per year: $R / L$ where $L$ is the generation interval
+
+
 
 ## Fundamental Questions
 - What is the best animal?

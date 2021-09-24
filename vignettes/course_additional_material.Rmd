@@ -15,3 +15,16 @@ knitr::opts_chunk$set(
 ```
 
 This page contains links to additional material for Livestock Breeding and Genomics (FS 2021).
+
+# Slides
+
+```{r slide-table, echo=FALSE, message=FALSE, warning=FALSE}
+sl_url <- "https://charlotte-ngs.github.io/lbgfs2021/sl/"
+tbl_sl <- tibble::tibble(Nr = c(1),
+                         Date = c("2021-09-24"),
+                         Topic = c(
+                           paste0("[Introduction to Livestock Breeding and Genomics](", sl_url, "lbgfs2021_slides_l01_intro_lbg.pdf)", collapse = "")
+                         ))
+knitr::kable(tbl_sl)
+```
+
