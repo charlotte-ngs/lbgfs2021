@@ -110,12 +110,12 @@ docker_start () {
   local email=$(echo $l_user_info | cut -d ',' -f4)
   local name=$(echo $l_user_info | cut -d ',' -f2)
   local firstname=$(echo $l_user_info | cut -d ',' -f3)
-  if [ -f "$PASSDIR/.${user}.pwd" ]
+  if [ ! -f "$PASSDIR/.${user}.pwd" ]
   then
-    local pass=$(cat "$PASSDIR/.${user}.pwd")
-  else
-    local pass=`tr -dc A-Za-z0-9_ < /dev/urandom | head -c8`
+    tr -dc A-Za-z0-9_ < /dev/urandom | head -c8 > $PASSDIR/.${user}.pwd
   fi
+  # take password from file
+  local pass=$(cat "$PASSDIR/.${user}.pwd")
   # check whether docker container image is already running
   if [ $(docker ps -a | grep "${user}_rstudio" | wc -l) -eq 0 ]
   then
