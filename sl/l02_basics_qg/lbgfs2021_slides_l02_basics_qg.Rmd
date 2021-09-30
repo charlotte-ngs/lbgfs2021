@@ -295,29 +295,31 @@ where $\mu = (p - q)a + 2pqd$ the population mean.
              &=  \sigma_A^2 + \sigma_D^2  \notag
 \end{align}
 
+
 ## Two and more Loci
 
-Two loci $G$ and $H$ have an effect on the same quantitative trait.
+* Two loci $G$ and $H$ having an effect on the same quantitative trait.
+* Effect of one locus can have an influence on the effect of the other locus
 
-\small
+$\rightarrow$ __Interaction__ between loci. 
 
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Genotype       &  genotypic value     &  Breeding Value    &  Dominance   &  Epistasis \\
-$G_iG_jH_kH_l$ &  $V_{ijkl}$          &  $BV_{ijkl}$       &  $D_{ijkl}$  &  $I_{ijkl}$  \\
-\hline
-$G_1G_1H_1H_1$ &  $V_{1111}$          &  $BV_{1111}$       &  $D_{1111}$  &  $I_{1111}$      \\
-\hline
-$G_1G_2H_1H_1$ &           &       &      &        \\
-\hline
-$G_2G_2H_1H_1$ &           &       &      &      \\
-\hline
-...            &           &       &      &      \\
-\hline
-\end{tabular}
+* Interaction is quantified by 
 
-\normalsize
+$$I_{GH} = V - V_G - V_H$$
+where $V$ is the total genotypic value, $V_G$ and $V_H$ correspond to the genotypic values due to loci $G$ and $H$, respectively
 
-Because breeding values are additive 
 
-$$ BV_{ijkl} = BV_{ij} + BV_{kl}$$
+## Decomposition and Collecting Terms
+
+* Genotypic values can be decomposed as
+
+$$V_G = \mu_G + BV_G + D_G$$
+$$V_H = \mu_H + BV_H + D_H$$
+
+* Collecting terms leads to 
+
+$$V = V_G + V_H + I_{GH} = \mu + U + D + I$$
+
+with $\mu = \mu_G + \mu_H$, $U = BV_G + BV_H$, $D = D_G + D_H$ and $I = I_{GH}$
+
+* Can be generalized to more than two loci.

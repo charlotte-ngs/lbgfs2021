@@ -148,7 +148,7 @@ start_msg
 #' Notice there is no ":" after "h". The leading ":" suppresses error messages from
 #' getopts. This is required to get my unrecognized option code to work.
 #+ getopts-parsing, eval=FALSE
-PASSDIR=""
+PASSDIR="."
 USERNAME=""
 COURSEHOME=""
 RSTPORT=10087
