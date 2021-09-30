@@ -20,10 +20,12 @@ This page contains a list of chapters of the course notes for Livestock Breeding
 
 ```{r chapter-table, echo=FALSE, message=FALSE, warning=FALSE}
 s_cn_url <- "https://charlotte-ngs.github.io/lbgfs2021/cn/"
-tbl_chpt <- tibble::tibble(Nr      = c(1),
-                           Date    = c("2021-09-24"),
+tbl_chpt <- tibble::tibble(Nr      = c(1, 2),
+                           Date    = c("2021-09-24",
+                                       "2021-10-01"),
                            Topic   = c(
-                             paste0("[Introduction to Livestock Breeding and Genomics](", s_cn_url, "01_intro_lbg.pdf)", collapse = "")
+                             paste0("[Introduction to Livestock Breeding and Genomics](", s_cn_url, "01_intro_lbg.pdf)", collapse = ""),
+                             paste0("[Basics of Quantitative Genetics](", s_cn_url, "02_basic_qg.pdf)", collapse = "")
                            ))
 knitr::kable(tbl_chpt)
 ```
