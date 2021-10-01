@@ -1,0 +1,34 @@
+
+
+cd /home/quagadmin/courses/lbgfs2021/bash
+
+./docker_student_start.sh -c /home/quagadmin/courses/lbgfs2021/home -f /home/quagadmin/courses/lbgfs2021/students/test_student_usernames_lbgfs2021.txt -i lbgfs2021 -p 10187 -w /home/quagadmin/courses/lbgfs2021/created
+
+2038  ./docker_student_start.sh -c /home/quagadmin/courses/lbgfs2021/home -f /home/quagadmin/courses/lbgfs2021/students/student_usernames_lbgfs2021.txt -i lbgfs2021 -p 10088 -w /home/quagadmin/courses/lbgfs2021/created
+
+
+export GELSRC=/home/quagadmin/courses/lbgfs2021
+cd $GELSRC
+if [ ! -d "email_sent" ]; then mkdir -p email_sent;fi
+cat students/test_students_lbgfs2021.txt  | while read s
+do
+  user=$(echo "$s" | cut -d ',' -f1)
+  email=$(echo "$s" | cut -d ',' -f5)
+  echo " * Sending ${user}_mail.txt to $email ..."
+  cat bash/${user}_email.txt | ssmtp $email
+  sleep 2
+  mv bash/${user}_email.txt email_sent
+done
+
+export GELSRC=/home/quagadmin/courses/lbgfs2021
+cd $GELSRC
+if [ ! -d "email_sent" ]; then mkdir -p email_sent;fi
+cat students/students_lbgfs2021.txt  | while read s
+do
+  user=$(echo "$s" | cut -d ',' -f1)
+  email=$(echo "$s" | cut -d ',' -f5)
+  echo " * Sending ${user}_mail.txt to $email ..."
+  cat bash/${user}_email.txt | ssmtp $email
+  sleep 2
+  mv bash/${user}_email.txt email_sent
+done

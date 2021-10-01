@@ -1,0 +1,30 @@
+---
+title: "Vectors in R"
+output: html_notebook
+---
+
+This notebooks shows how to work with vectors in R
+
+Given are the following two vectors $v$ and $w$. Compute
+
+* the sum $v+w$, 
+* the difference $v-w$ and 
+* the dot product $v\cdot w$. 
+
+$$v = \left[\begin{array}{c}
+   3  \\ 
+  -5  \\ 
+   1  \\ 
+   9  \\
+  \end{array}\right]
+$$
+
+and 
+
+$$w = \left[\begin{array}{c}
+    1  \\ 
+    9  \\ 
+  -12  \\ 
+   27  \\
+  \end{array}\right]
+$$

@@ -38,12 +38,14 @@ knitr::kable(tbl_sl)
 # Videos
 
 ```{r video-table, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1, 2),
+tbl_video <- tibble::tibble(Nr = c(1, 2, 3),
                             Date = c("2021-09-24",
-                                     "2021-09-24"),
+                                     "2021-09-24",
+                                     "2021-10-01"),
                             Topic = c(
                               "[Introduction to Livestock Breeding and Genomics, Part 1](https://youtu.be/9R2rW-lutfs)", 
-                              "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)" 
+                              "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)",
+                              "[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](https://youtu.be/rq4Z__gtUcQ)"
                             ))
 knitr::kable(tbl_video)
 ```
@@ -53,10 +55,12 @@ knitr::kable(tbl_video)
 
 ```{r ohp-table, echo=FALSE, message=FALSE, warning=FALSE}
 ohp_url <- paste0(root_url, "/ohp/")
-tbl_ohp <- tibble::tibble(Nr = c(1),
-                          Date = c("2021-09-24"),
+tbl_ohp <- tibble::tibble(Nr = c(1, 2),
+                          Date = c("2021-09-24",
+                                   "2021-10-01"),
                           Topic = c(
-                            paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = "")
+                            paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = ""),
+                            paste0("[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](", ohp_url, "20211001_ohp_pictures.pdf)", collapse = "")
                           ))
 knitr::kable(tbl_ohp)
 ```
