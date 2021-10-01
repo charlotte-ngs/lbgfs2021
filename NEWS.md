@@ -1,5 +1,9 @@
 # lbgfs2021 
 
+## 0.2.2
+
+* Exercise platform
+
 ## 0.2.1
 
 * Introduction to RMarkdown 
