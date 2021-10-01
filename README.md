@@ -39,6 +39,12 @@ material will be illustrated via exercises and assignments.
 
 ### Exercise Platform
 
+-   The exercise platform can be found at:
+    `http://2-htz.quagzws.com:<PORT>`
+-   The number that you have to insert for `<PORT>` was sent by e-mail,
+    as well as the password
+-   The username is: rstudio
+
 ## Questions
 
 Questions can be asked during the lecture and during the exercise hour
