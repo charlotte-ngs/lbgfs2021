@@ -1,0 +1,71 @@
+---
+title: Introduction to RMarkdown
+author: Peter von Rohr
+date: "2021-10-01"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+## Resources
+
+- https://rmarkdown.rstudio.com/lesson-1.html
+- https://youtu.be/tKUufzpoHDE
+- https://bookdown.org/yihui/rmarkdown/
+
+
+## What is it
+
+- Mix of ordinary text and R-statements
+- Can be translated into different output formats
+    + html (websites including interactive elements)
+    + pdf
+    + word / powerpoint
+
+
+## Introduction¨
+
+- Installation (already available on exercise platform)
+- At R-Console run the following command
+
+```{r, eval=FALSE}
+install.packages("rmarkdown")
+```
+
+
+## How does it work
+
+RMarkdown files ... 
+
+- are text-files with the extension .Rmd
+- can be generated easily in RStudio: File > New File > RMarkdown ...
+- have the following structure
+
+
+## Structure of Rmd File
+
+```{r rmarkdown-screenshot, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/rmarkdown-screenshot.odg")
+knitr::include_graphics(path = "odg/rmarkdown-screenshot.png")
+```
+ 
+
+## Produce Output
+
+```{r render-output, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/render-output.odg")
+knitr::include_graphics(path = "odg/render-output.png")
+```
+ 
+ 
+ ## Notebook
+ 
+ - RMarkdown document with direct evaluation of R-code chunks
+ - Result is .nb.html file
+ - R-code can be re-generated from .nb.html file
+ 
+ 

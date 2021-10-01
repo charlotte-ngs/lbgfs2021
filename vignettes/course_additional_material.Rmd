@@ -21,12 +21,15 @@ This page contains links to additional material for Livestock Breeding and Genom
 ```{r slide-table, echo=FALSE, message=FALSE, warning=FALSE}
 root_url <- "https://charlotte-ngs.github.io/lbgfs2021" 
 sl_url <- paste0(root_url, "/sl/")
-tbl_sl <- tibble::tibble(Nr = c(1, 2),
+misc_url <- paste0(root_url, "/misc/")
+tbl_sl <- tibble::tibble(Nr = c(1, 2, 3),
                          Date = c("2021-09-24",
+                                  "2021-10-01",
                                   "2021-10-01"),
                          Topic = c(
                            paste0("[Introduction to Livestock Breeding and Genomics](", sl_url, "lbgfs2021_slides_l01_intro_lbg.pdf)", collapse = ""),
-                           paste0("[Basics of Quantitative Genetics](", sl_url, "lbgfs2021_slides_l02_basics_qg.pdf)", collapse = "")
+                           paste0("[Basics of Quantitative Genetics](", sl_url, "lbgfs2021_slides_l02_basics_qg.pdf)", collapse = ""),
+                           paste0("[Introduction to RMarkdown](", misc_url, "20211001_introduction_rmarkdown.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
