@@ -1,5 +1,9 @@
 # lbgfs2021 
 
+## 0.2.1
+
+* Introduction to RMarkdown 
+
 ## 0.2.0
 
 * Course notes and slides for lecture 02 
