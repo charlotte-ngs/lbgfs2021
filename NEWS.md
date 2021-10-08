@@ -1,3 +1,7 @@
+# lbgfs2021 0.3.2
+
+* Video of Part 2 and 3
+
 # lbgfs2021 0.3.1
 
 * OHP and Video
