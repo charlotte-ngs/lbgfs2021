@@ -1,4 +1,10 @@
+# lbgfs2021 0.3.1
+
+* OHP and Video
+
 # lbgfs2021 0.3.0
+
+* Release for week 3
 
 # lbgfs2021 0.2.4
 
