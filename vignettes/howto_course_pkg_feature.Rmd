@@ -28,8 +28,9 @@ Design ideas and potentially useful features for a course R-package are develope
 # General Design Idea
 The general idea of encapsulating course material in R-packages is to create a hierarchy of packages. On the top-level there is a generic R-package that is used to initialise a child package which is specific for a given course. The following diagram shows the package hierarchy. 
 
-```{r pkg-hierarchy}
-rmdhelp::use_odg_graphic(ps_path = "odg/pkg-hierarchy.odg")
+```{r pkg-hierarchy, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/pkg-hierarchy.odg")
+knitr::include_graphics(path = "odg/pkg-hierarchy.png")
 ```
 
 
@@ -37,4 +38,4 @@ rmdhelp::use_odg_graphic(ps_path = "odg/pkg-hierarchy.odg")
 # Features
 
 ## Templates
-
+ 
