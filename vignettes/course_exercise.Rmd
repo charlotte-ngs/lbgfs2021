@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 The following table contains links to the exercises for Livestock Breeding and Genomics (FS 2021).
 
-```{r table-exercise, echo=FALSE}
+```{r table-exercise, echo=FALSE, message=FALSE, warning=FALSE}
 ex_url <- "https://charlotte-ngs.github.io/lbgfs2021/ex/"
 tbl_ex <- tibble::tibble(Nr = c(1, 2),
                          Date = c("2021-10-01",
