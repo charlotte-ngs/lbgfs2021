@@ -1,16 +1,9 @@
 ---
-title: "Vectors and Matrices in R - Solution 1"
+title: "Vectors and Matrices in R - Exercise 01"
 author: "Peter von Rohr"
-date: '2021-10-08'
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "2021-10-08"
+output: html_notebook
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, results = 'markup')
-```
 
 ## Problem 1: Vectors in R
 
@@ -88,40 +81,8 @@ Compute
 * the dot product $v\cdot w$. 
 
 
-### Solution
+### Your Solution
 
-```{r}
-v <- c(3, -5, 1, 9)
-w <- c(1, 9, -12, 27)
-```
-
-Now we do the computations. 
-
-The sum $v+w$ is
-
-```{r}
-v+w
-```
-
-The difference $v-w$ is
-
-```{r}
-v-w
-```
-
-and the dot-product is 
-
-```{r}
-crossprod(v,w)
-```
-
-or 
-
-```{r}
-v %*% w
-```
-
-__Please note__: Although the R-function is called `crossprod()` what is computed is the dot product between the two vectors. The function name `crossprod()` is used because in Statistics the product ($X^TX$) of a transposed matrix ($X^T$) and itself ($X$) is called a matrix crossproduct. This has nothing to do with the crossproduct $v \times w$ between two vectors $v$ and $w$.
 
 
 ## Problem 2: Matrices in R
@@ -181,14 +142,5 @@ Compute
 - matrix-product $Y^T \cdot Y$
 
 
-### Solution
-
-```{r}
-X + Y
-Y - X
-X * Y
-crossprod(X, Y)
-crossprod(X)
-crossprod(Y)
-```
+### Your Solution
 

@@ -1,0 +1,83 @@
+---
+title: SESAM Project
+author: Peter von Rohr
+date: "`r Sys.Date()`"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+# rmdhelp::show_knit_hook_call()
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+## Project Goals
+
+* Open sensor system - as opposed to closed commercial systems
+* Decision support for farmers
+* Alerts to farmers in cases of emergencies
+
+
+## Farm Infrastructure 
+
+```{r farm-infrastrucutre, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/farm-infrastrucutre.odg")
+knitr::include_graphics(path = "odg/farm-infrastrucutre.png")
+```
+ 
+
+## Sensors
+
+```{r sesam-sensor, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/sesam-sensor.odg")
+knitr::include_graphics(path = "odg/sesam-sensor.png")
+```
+ 
+
+## Activity Data
+
+```{r activity-data, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/activity-data.odg")
+knitr::include_graphics(path = "odg/activity-data.png")
+```
+ 
+
+## Basic Behavior
+
+```{r basic-behavior, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/basic-behavior.odg")
+knitr::include_graphics(path = "odg/basic-behavior.png")
+```
+ 
+
+## Behavior Data
+
+```{r bahavior-data, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/bahavior-data.odg")
+knitr::include_graphics(path = "odg/bahavior-data.png")
+```
+ 
+
+## Second Level Algorithm
+
+```{r second-level-algo, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/second-level-algo.odg")
+knitr::include_graphics(path = "odg/second-level-algo.png")
+```
+ 
+
+## Statistical Learning
+
+```{r stat-learn, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/stat-learn.odg")
+knitr::include_graphics(path = "odg/stat-learn.png")
+```
+ 
+
+## Decision Support and Alert System
+
+```{r dec-supp-alert, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/dec-supp-alert.odg")
+knitr::include_graphics(path = "odg/dec-supp-alert.png")
+```
+ 
