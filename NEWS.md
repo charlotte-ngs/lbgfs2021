@@ -1,3 +1,7 @@
+# lbgfs2021 0.4.0
+
+* Course notes chapter 3
+
 # lbgfs2021 0.3.3
 
 * Slides for SESAM Project
