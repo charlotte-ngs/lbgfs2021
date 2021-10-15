@@ -217,7 +217,7 @@ done
 
 # students
 cd $GELSRC
-# test student
+# real student
 cat students/student_usernames_lbgfs2021.txt | while read s
 do
   cd $GELHOME/$s

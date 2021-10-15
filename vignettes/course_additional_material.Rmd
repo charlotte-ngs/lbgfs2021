@@ -78,6 +78,19 @@ knitr::kable(tbl_ohp)
 ```
 
 
+# Notebooks
+
+```{r nb-table, echo=FALSE, message=FALSE, warning=FALSE}
+nb_url <- paste0(root_url, "/nb/")
+tbl_nb <- tibble::tibble(Nr = c(1),
+                         Date = c("2021-10-15"),
+                         Topic = c(
+                           paste0("[Central Limit Theorem](", nb_url, "20211015_explain_clt.nb.html)", collapse = "")
+                         ))
+knitr::kable(tbl_nb)
+```
+
+
 ```{r latest-change, echo=FALSE, results='asis'}
 cat(rmdhelp::get_latest_change())
 ```
