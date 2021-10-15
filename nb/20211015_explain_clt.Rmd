@@ -1,0 +1,23 @@
+---
+title: "Explain Central Limit Theorem"
+output: html_notebook
+---
+
+# Disclaimer
+This notebook gives a graphical explaination of the central limit theorem and shows its consequences for quantitative genetics.
+
+
+# Sampling
+Take a number of random numbers from the uniform distribution and sum them up. Repeat that for a given number of times and look at the distribution of the sums.
+
+
+# Example
+
+```{r}
+n_nr_random_numbers <- 100
+n_nr_repeat <- 10
+vec_random_numbers <- runif(100)
+sum_random_numbers <- sum(vec_random_numbers)
+
+```
+
