@@ -323,3 +323,42 @@ $$V = V_G + V_H + I_{GH} = \mu + U + D + I$$
 with $\mu = \mu_G + \mu_H$, $U = BV_G + BV_H$, $D = D_G + D_H$ and $I = I_{GH}$
 
 * Can be generalized to more than two loci.
+
+
+## More Than Two Loci
+
+* Genotypic value $V$ influenced by an unknown number of loci: $A, B, C, \ldots$, 
+* Decomposition of $V$ 
+
+$$V = V_A + V_B + V_C + \ldots + I_{ABC...}$$
+
+where $I_{ABC...}$ is a generic Interaction term which we do not specify further here.
+
+
+## Decomposition
+
+* Genotypic value of single loci
+
+$$V_{A_iA_j} = \mu_A + BV_{A_iA_j} + D_{A_iA_j} $$
+$$V_{B_iB_j} = \mu_B + BV_{B_iB_j} + D_{B_iB_j} $$
+$$V_{C_iC_j} = \mu_C + BV_{C_iC_j} + D_{C_iC_j}$$
+
+
+## Collecting Terms
+
+* for a given animal $k$, $BV$ and $D$ terms are collected
+
+$$U_k = BV_k =  BV_{A_iA_j} + BV_{B_iB_j} + BV_{C_iC_j} + \ldots $$
+
+$$D_k = D_{A_iA_j} + D_{B_iB_j} + D_{C_iC_j} + \ldots$$
+
+## Phenotype
+
+* Including phenotypic observations $y$
+* Central Dogma of Molecular Biology
+* Decomposition 
+
+$$y = V + E$$
+where $V$ is the genotypic value and $E$ is the non-genetic or environmental rest
+
+* Insert decomposition of $V$ as shown above
