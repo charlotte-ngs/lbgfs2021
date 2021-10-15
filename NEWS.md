@@ -1,3 +1,7 @@
+# lbgfs2021 0.4.2
+
+* Added notebook on CLT
+
 # lbgfs2021 0.4.1
 
 * Slides and Exercise for lecture 04
