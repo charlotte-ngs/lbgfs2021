@@ -1,3 +1,7 @@
+# lbgfs2021 0.4.1
+
+* Slides and Exercise for lecture 04
+
 # lbgfs2021 0.4.0
 
 * Course notes chapter 3
