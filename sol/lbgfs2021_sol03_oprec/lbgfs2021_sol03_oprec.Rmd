@@ -1,0 +1,50 @@
+---
+title: "Livestock Breeding and Genomics - Solution 3"
+author: "Peter von Rohr"
+date: "10/15/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 1: Own Performance
+```{r prob1-setup, echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(4206)
+n_nr_animal <- 12
+n_weight_mean <- 283
+n_weight_sd <- 3
+vec_weight <- round(rnorm(n_nr_animal, mean = n_weight_mean, n_weight_sd), digits = 0)
+tbl_weight <- tibble::tibble(Animal = c(1:n_nr_animal),
+                             Weight = vec_weight)
+n_weight_h2 <- 0.2025
+```
+
+Given is the dataset with weight observations for `r n_nr_animal` animals. The heritability ($h^2$) for the trait is `r n_weight_h2`. The population mean $\mu$ can assumed to be the mean of the weights in the table below. 
+
+`
+```{r tbl-weight, echo=FALSE}
+knitr::kable(tbl_weight)
+```
+
+### Your Tasks
+
+* Compute the breeding values for all animals given in the table above
+* Compute the accuracies of the breeding values of all animals shown in the table above.
+
+
+### Solution
+The predicted breeding value $\widehat{u_i}$ of animal $i$ is computed as 
+
+$$\widehat{u_i} = h^2 (y_i - \mu)$$
+
+where $h^2$ is the heritability given in the problem, $y_i$ is observation of animal $i$ and $\mu$ is the poputlation mean. The population mean is to be computed from the mean of the observations. Hence
+
+```{r}
+n_mu_weight <- mean(tbl_weight$Weight)
+```
+
+
+
+

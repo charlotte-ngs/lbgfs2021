@@ -42,20 +42,22 @@ knitr::kable(tbl_sl)
 # Videos
 
 ```{r video-table, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6),
+tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7),
                             Date = c("2021-09-24",
                                      "2021-09-24",
                                      "2021-10-01",
                                      "2021-10-08",
                                      "2021-10-08",
-                                     "2021-10-08"),
+                                     "2021-10-08",
+                                     "2021-10-15"),
                             Topic = c(
                               "[Introduction to Livestock Breeding and Genomics, Part 1](https://youtu.be/9R2rW-lutfs)", 
                               "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)",
                               "[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](https://youtu.be/rq4Z__gtUcQ)",
                               "[SESAM Project](https://youtu.be/EASemfg4moc)",
                               "[Introduction to Quantitative Genetics (Part 2)](https://youtu.be/X-hjCf7CX7w)",
-                              "[Introduction to Quantitative Genetics (Part 3)](https://youtu.be/Asw7PMOwgJk)"
+                              "[Introduction to Quantitative Genetics (Part 3)](https://youtu.be/Asw7PMOwgJk)",
+                              "[Genetic Evaluation](https://youtu.be/X7Qq3E7dP8g)"
                             ))
 knitr::kable(tbl_video)
 ```
