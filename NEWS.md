@@ -1,3 +1,7 @@
+# lbgfs2021 0.5.0
+
+* Chapter 4 of course notes
+
 # lbgfs2021 0.4.2
 
 * Added notebook on CLT
