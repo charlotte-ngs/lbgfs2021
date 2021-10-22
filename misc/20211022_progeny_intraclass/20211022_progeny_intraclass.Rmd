@@ -9,7 +9,7 @@ output: beamer_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Generic Relations
+## Generic Relation for Single Observation
 
 * Data: parent $i$ with $k$ offspring performances
 * Variance according to genetic model
@@ -19,6 +19,31 @@ $$var(y) = var(u) + var(e) = \sigma_y^2 = \sigma_u^2 + \sigma_e^2$$
 
 $$y_k = \mu + u_k + e_k = \mu + {1\over 2}(u_i + u_d) + m_k + e_k$$
 where $i$ and $d$ are parents of offspring $k$
+
+
+## Variance for Single Observation
+
+The phenotypic variance $\sigma_y^2$ is computed by $var(y_k)$
+
+$$\sigma_y^2 = var(y_k) = var(\mu + {1\over 2}(u_i + u_d) + m_k + e_k)$$
+
+$$ = var(\mu) + var({1\over 2}u_i) + var({1\over 2}u_d) + var(m_k) + var(e_k)$$
+
+$$=  {1\over 4}var(u_i) + {1\over 4} var(u_d) + var(m_k) + var(e_k)$$
+
+
+## Permanent and Non-Permanent Variance Components
+
+* Permanent refers to what is constant across all offsprings ($1 \ldots k$) of parent $i$ which is only ${1\over 4}var(u_i)$
+* Define $t$ as the ratio between the parmanent and the total variance, hence
+
+$$t = \frac{{1\over 4}var(u_i)}{var(y_k)} = \frac{h^2}{4}$$
+
+* Consequently 
+
+$${1\over 4}var(u_i) = t * \sigma_y^2$$
+
+$$(1-t)\sigma_y^2 = {1\over 4} var(u_d) + var(m_k) + var(e_k) $$
 
 
 ## Parent $i$
