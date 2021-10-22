@@ -1,3 +1,7 @@
+# lbgfs2021 0.5.1
+
+* Link to video of lecture 5
+
 # lbgfs2021 0.5.0
 
 * Chapter 4 of course notes
