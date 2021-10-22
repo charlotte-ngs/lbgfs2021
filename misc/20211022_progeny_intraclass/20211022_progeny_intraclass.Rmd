@@ -30,5 +30,5 @@ $$\bar{y_i} = {1\over n}\sum_{k=1}^n y_k $$
 * Assume $n$ offspring are half-sibs
 
 $$\bar{y_i} = {1\over n}\sum_{k=1}^n y_k 
- = {1\over n}\sum_{k=1}^n \mu + {1\over 2}(u_i + u_{d,k}) + m_k + e_k
+ = {1\over n}\sum_{k=1}^n \left[ \mu + {1\over 2}(u_i + u_{d,k}) + m_k + e_k \right]
 $$
