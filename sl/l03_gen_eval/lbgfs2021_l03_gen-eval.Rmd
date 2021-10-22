@@ -195,6 +195,7 @@ r_{u,y} &= \frac{cov(u, y)}{\sigma_u \ \sigma_y} \notag \\
 * Why is the accuracy important? 
 * Response to selection depends on it
 * Example of single record
+* Breeders equation, quantifying the selection response per generation
 
 \begin{equation}
 R = i * r_{u,y}^2 * \sigma_y = i * h^2 * \sigma_y \notag
@@ -210,7 +211,7 @@ var(y) = var(u) + var(pe) + var(te) \notag
 \end{equation}
 
 \begin{equation}
-t = \frac{var(u) + var(pe)}{var(y)} \notag
+t = \frac{var(u) + var(pe)}{var(y)} = \frac{\sigma_u^2 + \sigma_{pe}^2}{\sigma_y^2}\notag
 \end{equation}
 
 * Predicted breeding value
@@ -227,7 +228,7 @@ b = \frac{cov(u,\tilde{y})}{var(\tilde{y})} \notag
 \end{equation}
 
 \begin{equation}
-cov(u,\tilde{y}) = cov(u, u + pe + {1\over n} \sum_{k=1}^n te_k) = \sigma_u^2 \notag
+cov(u,\tilde{y}) = cov(u, u + pe + {1\over n} \sum_{k=1}^n te_k) = var(u) = \sigma_u^2 \notag
 \end{equation}
 
 \begin{equation}
