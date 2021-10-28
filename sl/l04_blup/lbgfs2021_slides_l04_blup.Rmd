@@ -24,11 +24,39 @@ knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 $$\hat{u} = b (y - \mu)$$
 
 * Selection Index 
-    + will be presented later
-    + corresponds to multiple regression approach
-$$ \hat{u} = I = b^T y^*$$
+    + uses all available information combined into an index
+    
 
-where $b = P^{-1}Gw$ and $y^*$ corrected information sources.
+## Selection Index
+
+* will be presented later to estimate aggregate genotype
+* Idea: all available information about an animals breeding value is combined into an index of merit ($I$)
+* corresponds to multiple regression approach
+$$ \hat{u} = I = b_1*y_1^* + b_2*y_2^* + ... + b_k*y_k^* = b^T y^*$$
+
+where $b$ the regression coefficients are computed such that the variance ($var(u - \hat{u})$) of the error is minimal. 
+
+
+## Index Weights
+
+* Minimization of the variance of the errors means
+
+$$R = var(u - \hat{u}) = var(u - I) = var(u - b^Ty^*)$$
+
+$$= var(u) + var(b^Ty^*) - 2 cov(u, (y^*)^Tb) $$
+
+$$= \sigma_u^2 + b^T * var(y^*) * b - 2 * b^T * cov(u, (y^*)^T)$$
+
+$$= \sigma_u^2 + b^T * P * b - 2 * b^T * G $$
+
+
+## Solution
+
+* Compute $\frac{\partial R}{\partial b} = 0$
+
+$$ \frac{\partial R}{\partial b} = 2 * P * b - 2 * G = 0$$
+
+$$\rightarrow b = P^{-1} * G$$
 
 
 ## Problem with Correction
