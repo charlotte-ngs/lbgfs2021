@@ -101,6 +101,19 @@ knitr::kable(tbl_nb)
 ```
 
 
+# Data
+
+```{r data-table, echo=FALSE, message=FALSE, warning=FALSE}
+data_url <- paste0(root_url, "/data/")
+tbl_data <- tibble::tibble(Nr = c(1),
+                           Date = "2021-10-29",
+                           Topic = c(
+                             paste0("[Beef Data for BLUP](", data_url, "beef_data_blup.csv)", collapse = "")
+                           ))
+knitr::kable(tbl_data)
+```
+
+
 ```{r latest-change, echo=FALSE, results='asis'}
 cat(rmdhelp::get_latest_change())
 ```
