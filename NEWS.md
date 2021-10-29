@@ -1,4 +1,10 @@
+# lbgfs2021 0.6.1
+
+* Link to video and ohp pictures for lecture 6
+
 # lbgfs2021 0.6.0
+
+* Slides and exercise for lecture 6
 
 # lbgfs2021 0.5.1
 
