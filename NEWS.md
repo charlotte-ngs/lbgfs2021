@@ -1,3 +1,5 @@
+# lbgfs2021 0.6.0
+
 # lbgfs2021 0.5.1
 
 * Link to video of lecture 5
