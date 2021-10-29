@@ -18,16 +18,18 @@ The following table contains links to the exercises for Livestock Breeding and G
 
 ```{r table-exercise, echo=FALSE, message=FALSE, warning=FALSE}
 ex_url <- "https://charlotte-ngs.github.io/lbgfs2021/ex/"
-tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 3),
+tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5),
                          Date = c("2021-10-01",
                                   "2021-10.08",
                                   "2021-10-15",
-                                  "2021-10-22"),
+                                  "2021-10-22",
+                                  "2021-10-29"),
                          Topic = c(
                            paste0("[Vectors in R](", ex_url, "20211001_vectors_in_r.nb.nb.nb.html)", collapse = ""),
                            paste0("[Vectors and Matrices in R](", ex_url, "lbgfs2021_ex01_linalg.nb.html)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", ex_url, "lbgfs2021_ex02_qgen.nb.html)", collapse = ""),
-                           paste0("[Genetic Evaluation](", ex_url, "lbgfs2021_ex03_oprec.nb.html)", collapse = "")
+                           paste0("[Genetic Evaluation](", ex_url, "lbgfs2021_ex03_oprec.nb.html)", collapse = ""),
+                           paste0("[BLUP](", ex_url, "lbgfs2021_ex_04_blup.nb.html", collapse = "")
                          ))
 knitr::kable(tbl_ex)
 ```
