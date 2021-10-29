@@ -29,7 +29,7 @@ tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5),
                            paste0("[Vectors and Matrices in R](", ex_url, "lbgfs2021_ex01_linalg.nb.html)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", ex_url, "lbgfs2021_ex02_qgen.nb.html)", collapse = ""),
                            paste0("[Genetic Evaluation](", ex_url, "lbgfs2021_ex03_oprec.nb.html)", collapse = ""),
-                           paste0("[BLUP](", ex_url, "lbgfs2021_ex_04_blup.nb.html", collapse = "")
+                           paste0("[BLUP](", ex_url, "lbgfs2021_ex_04_blup.nb.html)", collapse = "")
                          ))
 knitr::kable(tbl_ex)
 ```
