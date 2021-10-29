@@ -1,0 +1,161 @@
+---
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+```{bash, echo=FALSE, eval=FALSE}
+# bash - export as jpeg
+ls -1 /Users/pvr/Google\ Drive/Vorlesungen/LBG/FS2021/OHP-L06/* | while read p
+do
+  CURPICFN=$(basename "$p")
+  echo " * Copy $p ..."
+  cp "$p" ~/Desktop
+  echo " * Convert ~/Desktop/$CURPICFN ..."
+  mogrify -resize 50% -format jpg ~/Desktop/$CURPICFN
+  echo " * Remove ~/Desktop/$CURPICFN ..."
+  rm ~/Desktop/$CURPICFN
+  sleep 2
+done
+
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+this_rmd_file <- ifelse(rstudioapi::isAvailable(),
+                        rstudioapi::getActiveDocumentContext()$path,
+                        whereami::thisfile())
+
+
+vec_pics <- list.files(path = "~/Desktop", pattern = ".jpg$")
+for (pidx in seq_along(vec_pics)){
+   cur_pic <- vec_pics[pidx]
+   cur_pic_nr <- as.integer(unlist(strsplit(fs::path_ext_remove(cur_pic), "_"))[2])
+  cat("\n## OHP Picture ", pidx, "\n\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("```{r ohp-picture", cur_pic_nr, "}\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page", cur_pic_nr, ".odg')\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("# fs::file_delete(path = '~/Desktop/", cur_pic, "')\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("```\n\n", file = this_rmd_file, append = TRUE)
+}
+```
+
+
+## OHP Picture 1
+
+```{r ohp-page3314, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="75%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3314.odg')
+knitr::include_graphics(path = "odg/ohp-page3314.png")
+# fs::file_delete(path = '~/Desktop/IMG_3314.jpg')
+```
+
+
+## OHP Picture 2
+
+```{r ohp-page3315, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="75%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3315.odg')
+knitr::include_graphics(path = "odg/ohp-page3315.png")
+# fs::file_delete(path = '~/Desktop/IMG_3315.jpg')
+```
+
+
+## OHP Picture 3
+
+```{r ohp-page3316, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3316.odg')
+knitr::include_graphics(path = "odg/ohp-page3316.png")
+# fs::file_delete(path = '~/Desktop/IMG_3316.jpg')
+```
+
+
+## OHP Picture 4
+
+```{r ohp-page3317, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="75%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3317.odg')
+knitr::include_graphics(path = "odg/ohp-page3317.png")
+# fs::file_delete(path = '~/Desktop/IMG_3317.jpg')
+```
+
+
+## OHP Picture 5
+
+```{r ohp-page3318, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="75%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3318.odg')
+knitr::include_graphics(path = "odg/ohp-page3318.png")
+# fs::file_delete(path = '~/Desktop/IMG_3318.jpg')
+```
+
+
+## OHP Picture 6
+
+```{r ohp-page3319, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="60%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3319.odg')
+knitr::include_graphics(path = "odg/ohp-page3319.png")
+# fs::file_delete(path = '~/Desktop/IMG_3319.jpg')
+```
+
+
+## OHP Picture 7
+
+```{r ohp-page3320, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3320.odg')
+knitr::include_graphics(path = "odg/ohp-page3320.png")
+# fs::file_delete(path = '~/Desktop/IMG_3320.jpg')
+```
+
+
+## OHP Picture 8
+
+```{r ohp-page3321, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3321.odg')
+knitr::include_graphics(path = "odg/ohp-page3321.png")
+# fs::file_delete(path = '~/Desktop/IMG_3321.jpg')
+```
+
+
+## OHP Picture 9
+
+```{r ohp-page3322, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3322.odg')
+knitr::include_graphics(path = "odg/ohp-page3322.png")
+# fs::file_delete(path = '~/Desktop/IMG_3322.jpg')
+```
+
+
+## OHP Picture 10
+
+```{r ohp-page3324, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="60%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3324.odg')
+knitr::include_graphics(path = "odg/ohp-page3324.png")
+# fs::file_delete(path = '~/Desktop/IMG_3324.jpg')
+```
+
+
+## OHP Picture 11
+
+```{r ohp-page3325, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3325.odg')
+knitr::include_graphics(path = "odg/ohp-page3325.png")
+# fs::file_delete(path = '~/Desktop/IMG_3325.jpg')
+```
+
+
+## OHP Picture 12
+
+```{r ohp-page3326, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="60%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3326.odg')
+knitr::include_graphics(path = "odg/ohp-page3326.png")
+# fs::file_delete(path = '~/Desktop/IMG_3326.jpg')
+```
+
+
+## OHP Picture 13
+
+```{r ohp-page3327, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="75%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3327.odg')
+knitr::include_graphics(path = "odg/ohp-page3327.png")
+# fs::file_delete(path = '~/Desktop/IMG_3327.jpg')
+```
+             
