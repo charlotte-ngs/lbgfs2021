@@ -135,6 +135,10 @@ n_var_p <- round(var(tbl_beef_data$`Weaning Weight`), digits = 4)
 n_var_g <- round(h2 * n_var_p, digits = 4)
 n_pop_mean <- round(mean(tbl_beef_data$`Weaning Weight`), digits = 2)
 
+# save data to file, if needed
+#s_data_path <- file.path(here::here(), "docs", "data", "beef_data_blup.csv")
+#readr::write_csv(tbl_beef_data, path = s_data_path)
+
 ### # show the data frame
 knitr::kable( tbl_beef_data, 
               booktabs = TRUE )

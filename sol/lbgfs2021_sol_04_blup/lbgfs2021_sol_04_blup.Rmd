@@ -1,0 +1,25 @@
+---
+title: Livestock Breeding and Genomics - Solution 4
+author: Peter von Rohr
+date: "2021-10-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r prob1-init, echo=FALSE, message=FALSE, warning=FALSE}
+s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_blup.csv"
+```
+
+## Problem 1: Linear Models
+Read the dataset given in `r s_data_url` using the function `readr::read_csv()`. 
+
+
+### Tasks
+
+* Do a descriptive statistics on the given data
+* Fit fixed linear models for `herd`, `sex` and both factors as fixed effects.
+
