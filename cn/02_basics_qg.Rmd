@@ -125,9 +125,10 @@ The population mean depends on the values $a$ and $d$ and on the allele frequenc
 ### Breeding Values {#breed-value}
 The term __breeding value__ is defined as shown in Definition \@ref(def:defbreedingvalue).
 
-```{definition, name = "Breeding Value", label="defbreedingvalue"}
-The breeding value of an animal $i$ is defined as two times the difference between the mean value of offsprings of animal $i$ and the population mean.
-```
+
+<!-- ```{definition, name = "Breeding Value", label="defbreedingvalue"} -->
+<!-- The breeding value of an animal $i$ is defined as two times the difference between the mean value of offsprings of animal $i$ and the population mean. -->
+<!-- ``` -->
 
 Applying this definition and using the parameters that we have computed so far leads to the following formulas for the breeding value of an animal with a certain genotype. 
 

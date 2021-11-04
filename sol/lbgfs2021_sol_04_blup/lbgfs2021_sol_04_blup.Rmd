@@ -23,3 +23,13 @@ Read the dataset given in `r s_data_url` using the function `readr::read_csv()`.
 * Do a descriptive statistics on the given data
 * Fit fixed linear models for `herd`, `sex` and both factors as fixed effects.
 
+
+### Solution
+
+The data is read and stored in memory as a datastructure called `tibble`.
+
+```{r}
+tbl_data_blup <- readr::read_csv(file = s_data_url)
+```
+
+
