@@ -1,3 +1,7 @@
+# lbgfs2021 0.7.0
+
+* Chapter 5 of course notes
+
 # lbgfs2021 0.6.1
 
 * Link to video and ohp pictures for lecture 6
