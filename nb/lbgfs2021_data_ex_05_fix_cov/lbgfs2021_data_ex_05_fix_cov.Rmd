@@ -83,3 +83,12 @@ tbl_beef_data_bc <- dplyr::bind_cols(tbl_beef_data,
 tbl_beef_data_bc
 ```
 
+
+# Write Data To File
+The data are written to a file
+
+```{r}
+s_data_beef_bc <- file.path(here::here(), "docs", "data", "beef_data_bc.csv")
+readr::write_csv(tbl_beef_data_bc, file = s_data_beef_bc)
+```
+
