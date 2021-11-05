@@ -1,0 +1,85 @@
+---
+title: Data for Exercise 5
+author: Peter von Rohr
+date: "`r Sys.Date()`"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Disclaimer
+Based on beef dataset, an extended dataset is created to show the difference between fixed effects and covariates. 
+
+
+# Read Existing Data
+We start by reading the existing beef dataset
+
+```{r}
+s_data_path <- file.path(here::here(), "docs", "data", "beef_data_blup.csv")
+tbl_beef_data <- readr::read_csv(file = s_data_path)
+tbl_beef_data
+```
+
+
+# Additional Variable Breast Circumference
+Breast Circumference of animals are added as an additional data column. It is computed from a previous regression. 
+
+```{r}
+set.seed(731)
+# constants
+n_inv_reg_coeff <- 1.7
+n_bc_low_limit <- 1.32
+n_bc_up_limit <- 1.78
+n_nr_animal <- nrow(tbl_beef_data)
+# compute bc based on inv reg
+vec_bc_comp <- tbl_beef_data$`Weaning Weight` / n_inv_reg_coeff
+```
+
+Check summary
+
+```{r}
+summary(vec_bc_comp)
+```
+
+Histogram
+
+```{r}
+hist(vec_bc_comp)
+```
+
+
+# Adjustments
+Do adjustments with lower and upper bound
+
+```{r}
+vec_bc_sim <- vec_bc_comp + rnorm(n_nr_animal, mean = 0, sd = 0.1)
+vec_bc_too_small <- which(vec_bc_sim < n_bc_low_limit)
+vec_bc_too_high <- which(vec_bc_sim > n_bc_up_limit)
+vec_bc_sim[vec_bc_too_small] <- n_bc_low_limit + 
+  abs(rnorm(length(vec_bc_too_small), mean = 0, sd = 0.2))
+vec_bc_sim[vec_bc_too_high] <- n_bc_up_limit - 
+  abs(rnorm(length(vec_bc_too_high), mean = 0, sd = 0.2))
+```
+
+Check
+
+```{r}
+summary(vec_bc_sim)
+```
+
+Histogram
+
+```{r}
+hist(vec_bc_sim)
+```
+
+# Adding Data
+
+```{r}
+tbl_beef_data_bc <- dplyr::bind_cols(tbl_beef_data, 
+                                     tibble::tibble(`Breast Circumference` = round(vec_bc_sim, digits = 2)))
+tbl_beef_data_bc
+```
+

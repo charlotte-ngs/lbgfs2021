@@ -1,0 +1,17 @@
+---
+title: Livestock Breeding and Genomics - Solution 5
+author: Peter von Rohr
+date: "2021-11-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r prob1-init, echo=FALSE, message=FALSE, warning=FALSE}
+s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_blup.csv"
+```
+
+# Disclaimer
