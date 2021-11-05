@@ -1,0 +1,20 @@
+---
+title: Livestock Breeding and Genomics - Exercise 5
+author: Peter von Rohr
+date: "2021-11-05"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r prob1-init, echo=FALSE, message=FALSE, warning=FALSE}
+s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_bc.csv"
+```
+
+## Problem 1: Fixed Effects and Covariates
+Use the data set given in `r s_data_url` to show the difference between fixed effects and covariates. 
+
+
