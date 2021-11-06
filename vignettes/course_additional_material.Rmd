@@ -46,7 +46,7 @@ knitr::kable(tbl_sl)
 # Videos
 
 ```{r video-table, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                             Date = c("2021-09-24",
                                      "2021-09-24",
                                      "2021-10-01",
@@ -55,7 +55,8 @@ tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                                      "2021-10-08",
                                      "2021-10-15",
                                      "2021-10-22",
-                                     "2021-10-29"),
+                                     "2021-10-29",
+                                     "2021-11-05"),
                             Topic = c(
                               "[Introduction to Livestock Breeding and Genomics, Part 1](https://youtu.be/9R2rW-lutfs)", 
                               "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)",
@@ -65,7 +66,8 @@ tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                               "[Introduction to Quantitative Genetics (Part 3)](https://youtu.be/Asw7PMOwgJk)",
                               "[Genetic Evaluation](https://youtu.be/X7Qq3E7dP8g)",
                               "[Prediction of Breeding Values](https://youtu.be/K3nYZIv_CB0)",
-                              "[Selection Index, BLUP and Mixed Linear Effect Models](https://youtu.be/TaKxOeVKLqs)"
+                              "[Selection Index, BLUP and Mixed Linear Effect Models](https://youtu.be/TaKxOeVKLqs)",
+                              "[BLUP Sire Model](https://youtu.be/AOvMFpBo_PE)"
                             ))
 knitr::kable(tbl_video)
 ```

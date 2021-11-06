@@ -18,3 +18,4 @@ s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_bc.csv"
 Use the data set given in `r s_data_url` to show the difference between fixed effects and covariates. 
 
 
+\
