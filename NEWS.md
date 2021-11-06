@@ -1,3 +1,7 @@
+# lbgfs2021 0.7.3
+
+* Added solution to exercise 4
+
 # lbgfs2021 0.7.2
 
 * Link to video
