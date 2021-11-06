@@ -18,14 +18,17 @@ The following table contains links to the solutions of the exercises for Livesto
 
 ```{r table-solution, echo=FALSE, message=FALSE, warning=FALSE}
 sol_url <- "https://charlotte-ngs.github.io/lbgfs2021/sol/"
-tbl_sol <- tibble::tibble(Nr = c(1, 2, 3),
+tbl_sol <- tibble::tibble(Nr = c(1, 2, 3, 4),
                           Date = c("2021-10-08",
                                    "2021-10-15",
-                                   "2021-10-22"),
+                                   "2021-10-22",
+                                   "2021-10-29"),
                           Topic = c(
                            paste0("[Vectors and Matrices in R](", sol_url, "lbgfs2021_sol01_linalg.pdf)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", sol_url, "lbgfs2021_sol02_qgen.pdf)", collapse = ""),
-                           paste0("[Genetic Evaluation](", sol_url, "lbgfs2021_sol03_oprec.pdf)", collapse = "")))
+                           paste0("[Genetic Evaluation](", sol_url, "lbgfs2021_sol03_oprec.pdf)", collapse = ""),
+                           paste0("[Linear Models and BLUP Sire Model](", sol_url, "lbgfs2021_sol_04_blup.pdf)", collapse = "")
+                           ))
 knitr::kable(tbl_sol)
 ```
 
