@@ -24,12 +24,198 @@ Read the dataset given in `r s_data_url` using the function `readr::read_csv()`.
 * Fit fixed linear models for `herd`, `sex` and both factors as fixed effects.
 
 
+
 ### Solution
 
-The data is read and stored in memory as a datastructure called `tibble`.
+Read the data into R
 
 ```{r}
-tbl_data_blup <- readr::read_csv(file = s_data_url)
+tbl_data_beef <- readr::read_csv(file = s_data_url)
+tbl_data_beef
+```
+
+### Descriptive Statistics for Weaning Weight
+
+```{r}
+summary(tbl_data_beef$`Weaning Weight`)
+```
+
+Summary is meaningful for continuous variables such as Weaning Weight. For discrete factor variables, the function table can be used
+
+```{r}
+table(tbl_data_beef$Herd)
+```
+
+The variable `sex` was not added to the dataset. If we had a variable that contains the sex of an animal, we could do the same summary with the table function as was done for herd.
+
+### Fixed Linear Effect Model
+
+```{r}
+lm_ww_h <- lm(`Weaning Weight` ~ Herd, data = tbl_data_beef)
+summary(lm_ww_h)
+```
+
+The above fits the herd as a regression coefficient, but what we want is a fixed effect model. We have to change the numbers in the herd column from numbers to factors. 
+
+```{r}
+tbl_data_beef$Herd <- as.factor(tbl_data_beef$Herd)
+tbl_data_beef
+```
+
+The function class tells us the datatype of a column
+
+```{r}
+class(tbl_data_beef$Herd)
+```
+
+```{r}
+lm_ww_h_fix <- lm(`Weaning Weight` ~ 0+ Herd, data = tbl_data_beef)
+summary(lm_ww_h_fix)
 ```
 
 
+## Additional Problem: Mixed Linear Effect Model
+Start with the Sire model
+
+$$y = X\beta + Zu + e$$
+
+### Observations
+
+```{r}
+vec_y <- tbl_data_beef$`Weaning Weight`
+vec_y
+```
+
+
+### Design Matrices
+
+
+```{r}
+mat_X <- matrix(data = c(1, 0,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         0, 1), ncol = 2, byrow = TRUE)
+mat_X
+```
+
+
+```{r}
+tbl_data_beef$Herd
+```
+
+```{r}
+mat_Z <- matrix(data = c(1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         1, 0, 0,
+                         0, 1, 0,
+                         0, 1, 0,
+                         0, 1, 0,
+                         0, 1, 0,
+                         0, 1, 0,
+                         0, 1, 0,
+                         0, 0, 1,
+                         0, 0, 1), ncol=3, byrow = TRUE)
+mat_Z
+```
+
+
+```{r}
+tbl_data_beef$Sire
+```
+
+
+## Solving MME
+
+```{r}
+lambda <- 1
+mat_xtx <- t(mat_X) %*% mat_X
+mat_xtx
+```
+
+```{r}
+mat_xtx <- crossprod(mat_X)
+mat_xtx
+```
+
+```{r}
+mat_xtz <- crossprod(mat_X,mat_Z)
+mat_xtz
+```
+
+```{r}
+mat_ztx <- crossprod(mat_Z,mat_X)
+mat_ztx <- t(mat_xtz)
+mat_ztx
+```
+
+```{r}
+mat_ztz <- crossprod(mat_Z)
+mat_ztz
+```
+
+Adding $I * \lambda$ 
+
+```{r}
+mat_ilambda <- diag(1, nrow = nrow(mat_ztz), ncol = ncol(mat_ztz)) * lambda
+mat_ilambda
+
+```
+
+```{r}
+mat_ztzilambda <- mat_ztz + mat_ilambda
+mat_ztzilambda
+```
+
+
+### Coefficient Matrix
+
+```{r}
+mat_coef <- rbind(cbind(mat_xtx, mat_xtz),
+                  cbind(mat_ztx, mat_ztzilambda))
+mat_coef
+```
+
+
+### Right Hand Side
+
+```{r}
+mat_xty <- crossprod(mat_X, vec_y)
+mat_xty
+```
+
+```{r}
+mat_zty <- crossprod(mat_Z, vec_y)
+mat_zty
+```
+
+```{r}
+mat_rhs <- rbind(mat_xty, mat_zty)
+mat_rhs
+```
+
+
+### The Solution
+
+```{r}
+vec_unknown <- solve(mat_coef, mat_rhs)
+vec_unknown
+```
+
+The first two components of the solution vector `vec_unknown` corresponds to estimates of the effects of the two herds. The remaining three components of vector ` vec_unknown` correspond to the three sire breeding values.
