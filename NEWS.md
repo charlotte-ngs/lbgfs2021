@@ -1,3 +1,7 @@
+# lbgfs2021 0.7.2
+
+* Link to video
+
 # lbgfs2021 0.7.1
 
 * Added sl l05
