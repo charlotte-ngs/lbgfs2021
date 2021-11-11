@@ -9,7 +9,7 @@ knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 
 ```{bash, echo=FALSE, eval=FALSE}
 # bash - export as jpeg
-ls -1 /Users/pvr/Google\ Drive/Vorlesungen/LBG/FS2021/OHP-L07/* | while read p
+ls -1 /Users/peter/Google\ Drive/Vorlesungen/LBG/FS2021/OHP-L07/* | while read p
 do
   CURPICFN=$(basename "$p")
   echo " * Copy $p ..."
