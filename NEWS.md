@@ -1,3 +1,15 @@
+# lbgfs2021 0.8.1
+
+* Slides for lecture 8
+
+# lbgfs2021 0.8.0
+
+* Course notes for lecture 8
+
+# lbgfs2021 0.7.4
+
+* Overhead pictures of lecture 7
+
 # lbgfs2021 0.7.3
 
 * Added solution to exercise 4

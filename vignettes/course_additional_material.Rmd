@@ -22,14 +22,16 @@ This page contains links to additional material for Livestock Breeding and Genom
 root_url <- "https://charlotte-ngs.github.io/lbgfs2021" 
 sl_url <- paste0(root_url, "/sl/")
 misc_url <- paste0(root_url, "/misc/")
-tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7),
+tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                          Date = c("2021-09-24",
                                   "2021-10-01",
                                   "2021-10-01",
                                   "2021-10-08",
                                   "2021-10-15",
                                   "2021-10-29",
-                                  "2021-11-05"),
+                                  "2021-11-05",
+                                  "2021-11-12",
+                                  "2021-11-12"),
                          Topic = c(
                            paste0("[Introduction to Livestock Breeding and Genomics](", sl_url, "lbgfs2021_slides_l01_intro_lbg.pdf)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", sl_url, "lbgfs2021_slides_l02_basics_qg.pdf)", collapse = ""),
@@ -37,7 +39,9 @@ tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7),
                            paste0("[SESAM Project](", sl_url, "20211008_sesam_project.pdf)", collapse = ""),
                            paste0("[Genetic Evaluation](", sl_url, "lbgfs2021_slides_l03_gen-eval.pdf)", collapse = ""),
                            paste0("[BLUP](", sl_url, "lbgfs2021_slides_l04_blup.pdf)", collapse = ""),
-                           paste0("[Genetic Covariances](", sl_url, "lbgfs2021_slides_l05_gencov.pdf)", collapse = "")
+                           paste0("[Genetic Covariances](", sl_url, "lbgfs2021_slides_l05_gencov.pdf)", collapse = ""),
+                           paste0("[Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_numrelmat.pdf)", collapse = ""),
+                           paste0("[Inverse Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_invnumrelmat.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
@@ -77,20 +81,22 @@ knitr::kable(tbl_video)
 
 ```{r ohp-table, echo=FALSE, message=FALSE, warning=FALSE}
 ohp_url <- paste0(root_url, "/ohp/")
-tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6),
+tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7),
                           Date = c("2021-09-24",
                                    "2021-10-01",
                                    "2021-10-08",
                                    "2021-10-15",
                                    "2021-10-22",
-                                   "2021-10-29"),
+                                   "2021-10-29",
+                                   "2021-11-05"),
                           Topic = c(
                             paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](", ohp_url, "20211001_ohp_pictures.pdf)", collapse = ""),
                             paste0("[SESAM Project and Quantitative Genetics (Part2)](", ohp_url, "20211008_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Genetic Evaluation](", ohp_url, "20211015_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Prediction of Breeding Values](", ohp_url, "20211022_ohp_pictures.pdf)", collapse = ""),
-                            paste0("[Selection Index and BLUP](", ohp_url, "20211029_ohp_pictures.pdf)", collapse = "")
+                            paste0("[Selection Index and BLUP](", ohp_url, "20211029_ohp_pictures.pdf)", collapse = ""),
+                            paste0("[Sire Model](", ohp_url, "20211105_ohp_pictures.pdf)", collapse = "")
                           ))
 knitr::kable(tbl_ohp)
 ```
