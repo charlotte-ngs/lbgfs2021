@@ -1,0 +1,61 @@
+---
+title: Document Title
+author: pvr
+date: "`r Sys.Date()`"
+output: output_format
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data
+The same dataset is used as for the explanation of the Mixed Model Equation for the sire model. The data can be read from
+
+```{r}
+s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_bc.csv"
+tbl_beef_bc <- readr::read_csv(file = s_data_url)
+tbl_beef_bc$Herd <- as.factor(tbl_beef_bc$Herd)
+tbl_beef_bc$Sire <- as.factor(tbl_beef_bc$Sire)
+head(tbl_beef_bc)
+```
+
+
+# Model
+
+```{r}
+library(lme4)
+fit_beef_bc_all <- lmer(formula = `Weaning Weight` ~ Herd + `Breast Circumference` + (1|Sire), data = tbl_beef_bc)
+isSingular(fit_beef_bc_all)
+```
+
+Reducing model complexity
+
+```{r}
+fit_beef_sire_no_inter <- lmer(formula = `Weaning Weight` ~  0 + (1|Sire), data = tbl_beef_bc)
+isSingular(fit_beef_sire_no_inter)
+```
+
+Model summary
+
+```{r}
+summary(fit_beef_sire_no_inter)
+```
+
+
+# Data from lme4 Vignette
+The package functionality is tested with a dataset that is documented to be working. 
+
+```{r}
+library(lme4)
+str(sleepstudy)
+```
+
+
+Descriptive statistics reveals a linear dependence of `Reaction` on `Days` but each subject seams to have a different slope in the relationship. This is modelled with the following statement.
+
+```{r}
+fm1 <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
+summary(fm1)
+```
+
