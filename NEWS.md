@@ -1,3 +1,8 @@
+# lbgfs2021 0.8.2
+
+* Link to video of lecture 8
+* ohp pictures of lecture 8
+
 # lbgfs2021 0.8.1
 
 * Slides for lecture 8
