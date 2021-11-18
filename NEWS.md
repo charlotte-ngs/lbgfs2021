@@ -1,3 +1,7 @@
+# lbgfs2021 0.9.1
+
+* Slides for lecture 9
+
 # lbgfs2021 0.9.0
 
 * Chapter 7 of course notes
