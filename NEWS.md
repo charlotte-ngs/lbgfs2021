@@ -1,3 +1,7 @@
+# lbgfs2021 0.9.0
+
+* Chapter 7 of course notes
+
 # lbgfs2021 0.8.2
 
 * Link to video of lecture 8
