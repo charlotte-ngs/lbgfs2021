@@ -89,7 +89,7 @@ knitr::kable(tbl_video)
 
 ```{r ohp-table, echo=FALSE, message=FALSE, warning=FALSE}
 ohp_url <- paste0(root_url, "/ohp/")
-tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8),
+tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                           Date = c("2021-09-24",
                                    "2021-10-01",
                                    "2021-10-08",
@@ -97,7 +97,8 @@ tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8),
                                    "2021-10-22",
                                    "2021-10-29",
                                    "2021-11-05",
-                                   "2021-11-12"),
+                                   "2021-11-12",
+                                   "2021-11-19"),
                           Topic = c(
                             paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](", ohp_url, "20211001_ohp_pictures.pdf)", collapse = ""),
@@ -106,7 +107,8 @@ tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8),
                             paste0("[Prediction of Breeding Values](", ohp_url, "20211022_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Selection Index and BLUP](", ohp_url, "20211029_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Sire Model](", ohp_url, "20211105_ohp_pictures.pdf)", collapse = ""),
-                            paste0("[Animal Model](", ohp_url, "20211112_ohp_pictures.pdf)", collapse = "")
+                            paste0("[Animal Model](", ohp_url, "20211112_ohp_pictures.pdf)", collapse = ""),
+                            paste0("[Inverse Numerator Relationship Matrix](", ohp_url, "20211119_ohp_pictures.pdf", collapse = "")
                           ))
 knitr::kable(tbl_ohp)
 ```
