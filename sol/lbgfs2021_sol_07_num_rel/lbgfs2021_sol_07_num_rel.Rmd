@@ -1,0 +1,136 @@
+---
+title: Livestock Breeding and Genomics - Solution 7
+author: Peter von Rohr
+date: "2021-11-19"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pedigree
+
+```{r}
+nr_animal <- 6
+tbl_pedigree <- tibble::tibble(Calf = c(1:nr_animal),
+                               Sire = c(NA, NA, NA, 1 ,3, 4),
+                               Dam = c(NA, NA, NA, 2, 2, 5))
+tbl_pedigree
+```
+
+
+# Numerator Relationship Matrix
+We call the numerator relationship matrix $A$. The computation of the elements of $A$ are done separately for 
+
+1. the diagnoal elements $(A)_{ii}$ and
+2. the off-diagonal elements $(A)_{ij}$ for $i \ne j$
+
+
+First all elements of the matrix $A$ are initialized to $0$
+
+```{r}
+A = matrix(0, nrow = nr_animal, ncol = nr_animal)
+A
+```
+
+
+## Diagonal Elements
+
+Computation: $(A)_{ii} = (1 + F_i)$ and $F_i = 1/2 (A)_{sd}$ 
+
+```{r}
+i <- 1
+s <- tbl_pedigree$Sire[i]
+d <- tbl_pedigree$Dam[i]
+
+Fi <- ifelse((is.na(s) | is.na(d)), 0, 0.5 * A[s,d])
+A[i,i] <- 1+Fi
+A
+
+```
+
+
+## Off-diagonal Elements
+
+Off-diagonal $(A)_{ij} = 1/2 (A)_{io} + 1/2 (A)_{iq}$ where $o$ and $q$ are parents of $j$
+
+
+```{r}
+for (j in (i+1):6){
+  o <- tbl_pedigree$Sire[j]
+  q <- tbl_pedigree$Dam[j]
+  Aio <- ifelse(is.na(o), 0, A[i,o])
+  Aiq <- ifelse(is.na(q), 0, A[i,q])
+  A[i,j] <- 0.5 * Aio + 0.5 * Aiq
+}
+A[(i+1):6,i] <- A[i,(i+1):6]
+A
+```
+
+
+# Problem 1: Numerator Relationship Matrix
+Use the above steps of computation for the complete matrix. 
+
+
+## Hint
+
+* Construct a loop with loop-variable $i$ that runs over all the rows of the matrix $A$.
+
+
+## Solution
+Combining both steps for all elements
+
+```{r}
+nr_animal <- nrow(tbl_pedigree)
+
+# Init matrix
+A <- matrix(0, nrow = nr_animal, ncol = nr_animal)
+
+# loop over all rows
+for (i in 1:nr_animal){
+  # diagnoal element
+  s <- tbl_pedigree$Sire[i]
+  d <- tbl_pedigree$Dam[i]
+  Fi <- ifelse((is.na(s) | is.na(d)), 0, 0.5 * A[s,d])
+  A[i,i] <- 1+Fi
+  
+  # off-diagonal element
+  if (i < nr_animal){
+    for (j in (i+1):nr_animal){
+      o <- tbl_pedigree$Sire[j]
+      q <- tbl_pedigree$Dam[j]
+      Aio <- ifelse(is.na(o), 0, A[i,o])
+      Aiq <- ifelse(is.na(q), 0, A[i,q])
+      A[i,j] <- 0.5 * Aio + 0.5 * Aiq
+    }
+    A[(i+1):nr_animal,i] <- A[i,(i+1):nr_animal]
+  }
+}
+A
+```
+
+
+## Check Result
+The function `getA()` of the pedigreemm package can be used to check the result
+
+```{r}
+ped <- pedigreemm::pedigree(sire = tbl_pedigree$Sire, 
+                            dam = tbl_pedigree$Dam, 
+                            label = as.character(1:nr_animal))
+pedigreemm::getA(ped = ped)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
