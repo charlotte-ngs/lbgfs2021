@@ -1,3 +1,7 @@
+# lbgfs2021 0.10.0
+
+* Exercises 7 and 8
+
 # lbgfs2021 0.9.3
 
 * OHP pictures for lecture 9
