@@ -95,3 +95,51 @@ The following diagram helps to illustrate the rules for constructing $A^{-1}$
 knitr::include_graphics(path = "odg/inv-num-mat.png")
 ```
  
+
+## Tasks
+
+* Go through the list of animals in the pedigree and write down the contributions that are made to the different elements of matrix $A^{-1}$ 
+* Based on the different contributions, try to come up with some general rules
+
+
+## Solution
+In what follows, we use the following convention $\delta_i = (D^{-1})_{ii}$. 
+
+
+### Animal 1
+We start with animal $1$. 
+
+```{r inm-animal1, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/inm-animal1.odg")
+knitr::include_graphics(path = "odg/inm-animal1.png")
+```
+
+Animal $1$ has no parents and therefore the diagonal element $\delta_1 = (D^{-1})_{11}$ of matrix $D^{-1}$ is $\delta_{1} = 1$. By looking at the red boxes, we can see that $\delta_1$ is added as a contribution to $(A^{-1})_{11}$. So far we are still missing a contribution of $0.5$ to the element $(A^{-1})_{11}$. Again by inspecting the red boxes in the above diagram, we can see that this contribution corresponds to $\delta_4 /4$ which comes from offspring $4$ of parent $1$. Hence diagonal elements of $(A^{-1})_{ss}$ corresponding to parents $s$ of offsprint $i$ receive $\delta_i/4$ as contribution. More details on that is obtained when inspecting the contributions of animal $4$. Animals $2$ and $3$ do not have parents and are therefore analogous to animal $1$.
+ 
+
+### Animal 4
+Animal $4$ has parents $1$ and $2$. 
+
+```{r inm-animal4, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/inm-animal4.odg")
+knitr::include_graphics(path = "odg/inm-animal4.png")
+```
+ 
+The red boxes in the above diagram show that for animal $4$ there is a contribution of $\delta_4$ to the diagonal. Then there are contributions of $\delta_4/4$ for the elements $(A^{-1})_{11}$, $(A^{-1})_{22}$, $(A^{-1})_{12}$ and $(A^{-1})_{21}$. Furthermore there are negative contributions of $\delta_4/2$ to $(A^{-1})_{41}$, $(A^{-1})_{14}$, $(A^{-1})_{24}$ and $(A^{-1})_{42}$. 
+
+
+### General Rules
+From this the general rules which were first published by Henderson can be deduced as
+
+* Both Parents Known
+    + add $\delta_i$ to the diagonal-element $(i,i)$
+    + add $-\delta_i/2$ to off-diagonal elements $(s,i)$, $(i,s)$, $(d,i)$ and $(i,d)$
+    + add $\delta_i/4$ to elements $(s,s)$, $(d,d)$, $(s,d)$, $(d,s)$
+
+* Only One Parent Known
+    + add $\delta_i$ to diagonal-element $(i,i)$
+    + add $-\delta_i/2$ to off-diagonal elements $(s,i)$, $(i,s)$
+    + add $\delta_i/4$ to element $(s,s)$
+
+* Both Parents Unknown
+    + add $\delta_i$ to diagonal-element $(i,i)$
