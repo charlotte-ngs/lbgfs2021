@@ -1,3 +1,7 @@
+# lbgfs2021 0.10.2
+
+* Link to video of lecture 10
+
 # lbgfs2021 0.10.1
 
 * Notebook on BLUP animal model

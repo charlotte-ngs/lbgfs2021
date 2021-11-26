@@ -54,7 +54,7 @@ knitr::kable(tbl_sl)
 # Videos
 
 ```{r video-table, echo=FALSE, message=FALSE, warning=FALSE}
-tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
+tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14),
                             Date = c("2021-09-24",
                                      "2021-09-24",
                                      "2021-10-01",
@@ -67,7 +67,8 @@ tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
                                      "2021-11-05",
                                      "2021-11-12",
                                      "2021-11-12",
-                                     "2021-11-19"),
+                                     "2021-11-19",
+                                     "2021-11-26"),
                             Topic = c(
                               "[Introduction to Livestock Breeding and Genomics, Part 1](https://youtu.be/9R2rW-lutfs)", 
                               "[Introduction to Livestock Breeding and Genomics, Part 2](https://youtu.be/7Hn6hlpXiDQ)",
@@ -81,7 +82,8 @@ tbl_video <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13),
                               "[BLUP Sire Model](https://youtu.be/AOvMFpBo_PE)",
                               "[BLUP Animal Model](https://youtu.be/csjJKd14bF4)",
                               "[Numerator Relationship Matrix and its Inverse](https://youtu.be/T9q88r0DUSA)",
-                              "[Inverse Numerator Relationship Matrix](https://youtu.be/NQwmXiFK8do)"
+                              "[Inverse Numerator Relationship Matrix](https://youtu.be/NQwmXiFK8do)",
+                              "[Variance and Inbreeding](https://youtu.be/GDwOQiptG-A)"
                             ))
 knitr::kable(tbl_video)
 ```
