@@ -124,7 +124,7 @@ tbl_nb <- tibble::tibble(Nr = c(1, 2),
                                   "2021-11-26"),
                          Topic = c(
                            paste0("[Central Limit Theorem](", nb_url, "20211015_explain_clt.nb.html)", collapse = ""),
-                           paste0("[BLUP Animal Model](", nb_url, "lbgfs2021_blup_am.Rmd)", collapse = "")
+                           paste0("[BLUP Animal Model](", nb_url, "lbgfs2021_blup_am.nb.html)", collapse = "")
                          ))
 knitr::kable(tbl_nb)
 ```
