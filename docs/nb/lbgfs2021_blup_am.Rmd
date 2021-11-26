@@ -1,0 +1,104 @@
+---
+title: "BLUP Animal Model"
+output: html_notebook
+---
+
+```{r prob1-init, echo=FALSE, message=FALSE, warning=FALSE}
+s_data_url <- "https://charlotte-ngs.github.io/lbgfs2021/data/beef_data_blup.csv"
+```
+
+Read the data into R
+
+```{r}
+tbl_data_beef <- readr::read_csv(file = s_data_url)
+tbl_data_beef
+```
+
+## Mixed Linear Effect Model
+Animal model
+
+$$y = X\beta + Zu + e$$
+### Observations
+
+```{r}
+vec_y <- tbl_data_beef$`Weaning Weight`
+vec_y
+```
+
+
+### Design Matrices
+
+
+```{r}
+mat_X <- matrix(data = c(1, 0,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         1, 0,
+                         0, 1,
+                         0, 1,
+                         0, 1,
+                         0, 1), ncol = 2, byrow = TRUE)
+mat_X
+```
+
+
+```{r}
+tbl_data_beef$Herd
+```
+
+
+```{r}
+mat_Z <- matrix(data = c(), ncol=27, byrow = TRUE)
+mat_Z
+```
+
+
+## Inverse Numerator Relationship Matrix
+
+```{r}
+ped <- pedigreemm::pedigree(sire = c(),
+                            dam = c(),
+                            label = as.character(1:27))
+Ainv <- as.matrix(pedigreemm::getAInv(ped = ped))
+```
+
+## Solving MME
+
+```{r}
+lambda <- 1
+mat_xtx <- t(mat_X) %*% mat_X
+mat_xtx
+```
+
+```{r}
+mat_xtx <- crossprod(mat_X)
+mat_xtx
+```
+
+```{r}
+mat_xtz <- crossprod(mat_X,mat_Z)
+mat_xtz
+```
+
+```{r}
+mat_ztx <- crossprod(mat_Z,mat_X)
+mat_ztx <- t(mat_xtz)
+mat_ztx
+```
+
+```{r}
+mat_ztz <- crossprod(mat_Z)
+mat_ztz
+```
+
+
+## Solutions for Fixed Effecs and Breeding Values
+

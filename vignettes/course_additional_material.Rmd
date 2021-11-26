@@ -22,7 +22,7 @@ This page contains links to additional material for Livestock Breeding and Genom
 root_url <- "https://charlotte-ngs.github.io/lbgfs2021" 
 sl_url <- paste0(root_url, "/sl/")
 misc_url <- paste0(root_url, "/misc/")
-tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                          Date = c("2021-09-24",
                                   "2021-10-01",
                                   "2021-10-01",
@@ -43,7 +43,8 @@ tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                            paste0("[Genetic Covariances](", sl_url, "lbgfs2021_slides_l05_gencov.pdf)", collapse = ""),
                            paste0("[Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_numrelmat.pdf)", collapse = ""),
                            paste0("[Inverse Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_invnumrelmat.pdf)", collapse = ""),
-                           paste0("[Variance and Inbreeding](", sl_url, "lbgfs2021_l07_slides_var_inb.pdf)", collapse = "")
+                           paste0("[Variance and Inbreeding](", sl_url, "lbgfs2021_l07_slides_var_inb.pdf)", collapse = ""),
+                           paste0("[Additional Aspect of BLUP](", sl_url, "l08_add_asp_blup.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
