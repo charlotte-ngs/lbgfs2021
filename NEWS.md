@@ -1,3 +1,7 @@
+# lbgfs2021 0.10.1
+
+* Notebook on BLUP animal model
+
 # lbgfs2021 0.10.0
 
 * Exercises 7 and 8
