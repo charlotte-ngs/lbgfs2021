@@ -1,3 +1,7 @@
+# lbgfs2021 0.11.1
+
+* Added sol07 and sol 08
+
 # lbgfs2021 0.11.0
 
 * Course notes, exercises, test exam and slides for lecture 11
