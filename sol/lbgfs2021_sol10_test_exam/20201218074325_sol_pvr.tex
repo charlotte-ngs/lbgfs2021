@@ -1,0 +1,1031 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% preamble used for exam
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\newcommand{\points}[1]
+{\begin{flushright}\textbf{#1}\end{flushright}}
+\newcommand{\solstart}
+{\vspace{3ex}\textbf{Solution}:}
+\newcommand{\solend}
+{\vspace{2ex}$\blacksquare$}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{tabular}{l}
+ETH Zurich \\
+D-USYS\\
+Institute of Agricultural Sciences\\
+\end{tabular}
+
+\vspace{15ex}
+\begin{center}
+\huge
+Solutions To Exam\\ \vspace{1ex}
+Livestock Breeding and Genomics \\  \vspace{1ex}
+FS 2020 \\
+
+\normalsize
+\vspace{7ex}
+Peter von Rohr 
+\end{center}
+
+\vspace{7ex}
+\begin{tabular}{p{5cm}lr}
+  & \textsc{Date}  & \textsc{\emph{18. December 2020}} \\
+  & \textsc{Begin} & \textsc{\emph{09:15 }}\\
+  & \textsc{End}   & \textsc{\emph{11:15 }}\\ 
+\end{tabular}
+
+\vspace{5ex}
+
+\large
+\begin{tabular}{p{2.5cm}p{3cm}p{6cm}}
+  &  Name:     &  \\
+  &            &  \\
+  &  Legi-Nr:  & \\
+\end{tabular}
+\normalsize
+
+\vspace{9ex}
+\begin{center}
+\begin{tabular}{|p{3cm}|c|c|}
+\hline
+Problem  &  Maximum Number of Points  &  Number of Points Reached \\
+\hline
+1        &  45         & \\
+\hline
+2        &  40         & \\
+\hline
+3        &  18         & \\
+\hline
+4        &  16          & \\
+\hline
+5        &  10          & \\
+\hline
+Total    &  129    & \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-1-numerator-relationship-matrix-and-inbreeding}{%
+\subsection{Problem 1 Numerator Relationship Matrix and
+Inbreeding}\label{problem-1-numerator-relationship-matrix-and-inbreeding}}
+
+We are given the following pedigree.
+
+\textit{Das folgende Pedigree ist gegeben.}
+
+\begin{center}
+
+\begin{tabular}{rlrr}
+\toprule
+ID & Sex & Sire & Dam\\
+\midrule
+5 & M & 3 & 2\\
+6 & F & 1 & 4\\
+7 & M & 5 & 6\\
+8 & F & 5 & 6\\
+9 & M & 7 & 8\\
+\addlinespace
+10 & M & 9 & 8\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item[a)] Compute the additive genetic relationship matrix $A$ for the above pedigree.
+
+\textit{Berechnen Sie die additiv-genetische Verwandtschaftsmatrix $A$ für das oben angegebene Pedigree}
+\points{20}
+\end{enumerate}
+
+\solstart
+
+The numerator relationship matrix is computed using
+\texttt{pedigreemm::getA()}. In a first step, we have to extend the
+pedigree to contain the founder animals in the ID-column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_founder_sire <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(tbl_ped_nrm}\OperatorTok{$}\NormalTok{Sire, tbl_ped_nrm}\OperatorTok{$}\NormalTok{ID)}
+\NormalTok{n_nr_founder_sire <-}\StringTok{ }\KeywordTok{length}\NormalTok{(vec_founder_sire)}
+\NormalTok{vec_founder_dam <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(tbl_ped_nrm}\OperatorTok{$}\NormalTok{Dam, tbl_ped_nrm}\OperatorTok{$}\NormalTok{ID)}
+\NormalTok{n_nr_founder_dam <-}\StringTok{ }\KeywordTok{length}\NormalTok{(vec_founder_dam)}
+
+\CommentTok{# check that founder_sire and founder_dam are not the same}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{length}\NormalTok{(}\KeywordTok{intersect}\NormalTok{(vec_founder_sire, vec_founder_dam)) }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) }
+  \KeywordTok{stop}\NormalTok{(}\StringTok{" * ERROR: Founder sires and founder dams are not exclusive"}\NormalTok{)}
+\NormalTok{tbl_ped_nrm_ext <-}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{bind_rows}\NormalTok{(}
+\NormalTok{  tibble}\OperatorTok{::}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{ID =}\NormalTok{ vec_founder_sire[}\KeywordTok{order}\NormalTok{(vec_founder_sire)],}
+                 \DataTypeTok{Sex =} \KeywordTok{rep}\NormalTok{(}\StringTok{'M'}\NormalTok{, n_nr_founder_sire),}
+                 \DataTypeTok{Sire =} \KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, n_nr_founder_sire),}
+                 \DataTypeTok{Dam  =} \KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, n_nr_founder_sire)),}
+\NormalTok{  tibble}\OperatorTok{::}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{ID =}\NormalTok{ vec_founder_dam[}\KeywordTok{order}\NormalTok{(vec_founder_dam)],}
+                 \DataTypeTok{Sex =} \KeywordTok{rep}\NormalTok{(}\StringTok{'F'}\NormalTok{, n_nr_founder_dam),}
+                 \DataTypeTok{Sire =} \KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, n_nr_founder_dam),}
+                 \DataTypeTok{Dam  =} \KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, n_nr_founder_dam)),}
+\NormalTok{  tbl_ped_nrm)}
+
+\NormalTok{ped_nrm <-}\StringTok{ }\NormalTok{pedigreemm}\OperatorTok{::}\KeywordTok{pedigree}\NormalTok{(}\DataTypeTok{sire =}\NormalTok{ tbl_ped_nrm_ext}\OperatorTok{$}\NormalTok{Sire, }
+                                \DataTypeTok{dam =}\NormalTok{ tbl_ped_nrm_ext}\OperatorTok{$}\NormalTok{Dam, }
+                                \DataTypeTok{label =} \KeywordTok{as.character}\NormalTok{(tbl_ped_nrm_ext}\OperatorTok{$}\NormalTok{ID))}
+\NormalTok{(matA_nrm <-}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(pedigreemm}\OperatorTok{::}\KeywordTok{getA}\NormalTok{(}\DataTypeTok{ped =}\NormalTok{ ped_nrm)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       1    3    2    4   5   6     7     8    9    10
+## 1  1.00 0.00 0.00 0.00 0.0 0.5 0.250 0.250 0.25 0.250
+## 3  0.00 1.00 0.00 0.00 0.5 0.0 0.250 0.250 0.25 0.250
+## 2  0.00 0.00 1.00 0.00 0.5 0.0 0.250 0.250 0.25 0.250
+## 4  0.00 0.00 0.00 1.00 0.0 0.5 0.250 0.250 0.25 0.250
+## 5  0.00 0.50 0.50 0.00 1.0 0.0 0.500 0.500 0.50 0.500
+## 6  0.50 0.00 0.00 0.50 0.0 1.0 0.500 0.500 0.50 0.500
+## 7  0.25 0.25 0.25 0.25 0.5 0.5 1.000 0.500 0.75 0.625
+## 8  0.25 0.25 0.25 0.25 0.5 0.5 0.500 1.000 0.75 0.875
+## 9  0.25 0.25 0.25 0.25 0.5 0.5 0.750 0.750 1.25 1.000
+## 10 0.25 0.25 0.25 0.25 0.5 0.5 0.625 0.875 1.00 1.375
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the inbreeding coefficients of all animals in the given pedigree. Complete the following table and indicate which of the animals are inbred.
+
+\textit{Berechnen Sie die Inzuchtkoeffizienten aller Tiere im gegebenen Pedigree. Vervollständigen Sie die folgende Tabelle und geben an, welche Tiere ingezüchtet sind.}
+\points{20}
+\end{enumerate}
+
+\vspace{3ex}
+
+\begin{tabular}{rll}
+\toprule
+ID & Inbreeding Coefficient & Animal Inbred (TRUE/FALSE)\\
+\midrule
+1 &  & \\
+2 &  & \\
+3 &  & \\
+4 &  & \\
+5 &  & \\
+\addlinespace
+6 &  & \\
+7 &  & \\
+8 &  & \\
+9 &  & \\
+10 &  & \\
+\bottomrule
+\end{tabular}
+
+\solstart
+
+\vspace{5ex}
+
+The numeric solution is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_inbr_yn <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(}\KeywordTok{diag}\NormalTok{(matA_nrm) }\OperatorTok{>}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"TRUE"}\NormalTok{, }\StringTok{"FALSE"}\NormalTok{)}
+\NormalTok{vec_inbr_coef <-}\StringTok{ }\KeywordTok{diag}\NormalTok{(matA_nrm) }\OperatorTok{-}\StringTok{ }\DecValTok{1}
+\CommentTok{# tibble for table}
+\NormalTok{(tbl_inb_sol <-}\StringTok{ }\NormalTok{tibble}\OperatorTok{::}\KeywordTok{tibble}\NormalTok{(}\DataTypeTok{ID =}\NormalTok{ tbl_ped_nrm_ext}\OperatorTok{$}\NormalTok{ID, }
+                          \StringTok{`}\DataTypeTok{Inbreeding Coefficient}\StringTok{`}\NormalTok{ =}\StringTok{ }\KeywordTok{round}\NormalTok{(vec_inbr_coef, }\DataTypeTok{digits =} \DecValTok{3}\NormalTok{),}
+                          \StringTok{`}\DataTypeTok{Animal Inbred (TRUE/FALSE)}\StringTok{`}\NormalTok{ =}\StringTok{ }\NormalTok{vec_inbr_yn))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##       ID `Inbreeding Coefficient` `Animal Inbred (TRUE/FALSE)`
+##    <dbl>                    <dbl> <chr>                       
+##  1     1                    0     FALSE                       
+##  2     3                    0     FALSE                       
+##  3     2                    0     FALSE                       
+##  4     4                    0     FALSE                       
+##  5     5                    0     FALSE                       
+##  6     6                    0     FALSE                       
+##  7     7                    0     FALSE                       
+##  8     8                    0     FALSE                       
+##  9     9                    0.25  TRUE                        
+## 10    10                    0.375 TRUE
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] Assume that dam 8 and sire 9 are mated. What is the inbreeding coefficient of their offspring?   
+
+\textit{Wir nehmen an, dass die Mutter 8 mit dem Vater 9 angepaart wird. Wie gross ist der Inzuchtkoeffizient des Nachkommens aus dieser Paarung?}
+\points{5}
+\end{enumerate}
+
+\solstart
+
+The inbreeding coefficient of the offspring of dam 8 and sire 9 is half
+of the relationship between the parents.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{0.5} \OperatorTok{*}\StringTok{ }\NormalTok{matA_nrm[sire_id, dam_id]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.375
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-2-prediction-of-breeding-values}{%
+\subsection{Problem 2 Prediction of Breeding
+Values}\label{problem-2-prediction-of-breeding-values}}
+
+The following dataset is used to predict breeding values.
+
+\textit{Der folgende Datensatz soll für die Schätzung von Zuchtwerten verwendet werden.}
+
+\begin{tabular}{rrrlr}
+\toprule
+ID & Sire & Dam & Herd & Phenotypic Observation\\
+\midrule
+4 & 1 & 2 & Planta & 7.53\\
+5 & 3 & 2 & Moos & 8.48\\
+6 & 4 & 5 & Moos & 0.26\\
+7 & 4 & 5 & Moos & 6.60\\
+8 & 6 & 7 & Moos & 2.44\\
+\bottomrule
+\end{tabular}
+
+\hypertarget{assumptions}{%
+\subsection{Assumptions}\label{assumptions}}
+
+\begin{itemize}
+\tightlist
+\item
+  the error variance is: \(\sigma_e^2 = 28.8\)
+\item
+  the heritability is: \(h^2 = 0.2\)
+\item
+  the genetic additive variance is: \(\sigma_u^2 = 7.2\)
+\item
+  the population mean \(\mu\) can be taken as the mean of the given
+  phenotypic observations
+\end{itemize}
+
+\hypertarget{section}{%
+\subsection{\texorpdfstring{\textit{Annahmen}}{}}\label{section}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textit{die Restvarianz beträgt:} \(\sigma_e^2 = 28.8\)
+\item
+  \textit{die Heritabilität beträgt:} \(h^2 = 0.2\)
+\item
+  \textit{die genetisch-additive Varianz beträgt:} \(\sigma_u^2 = 7.2\)
+\item
+  \textit{das Populationsmittel $\mu$ kann als Mittelwert der phänotypischen Beobachtungen angenommen werden.}
+\end{itemize}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Use the regression method to predict breeding values based on own-performance records for the animals in the table given above.
+
+\textit{Verwenden Sie die Regressionsmethode zur Schätzung der Zuchtwerte basierend auf der Eigenleistung der Tiere in der obigen Tabelle.}
+\points{10}
+\end{enumerate}
+
+\clearpage
+\pagebreak
+
+\solstart
+
+According to the regression method, the predicted breeding value
+(\(\hat{u}_i\)) for animal \(i\) is
+
+\[\hat{u}_i = h^2(y_i - \mu)\] where \(y_i\) is the phenotypic
+observation of animal \(i\), \(h^2\) is the heritability and \(\mu\) is
+the population mean.
+
+\vspace{3ex}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_y <-}\StringTok{ }\NormalTok{tbl_data_pbv}\OperatorTok{$}\StringTok{`}\DataTypeTok{Phenotypic Observation}\StringTok{`}
+\NormalTok{n_mu <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(vec_y)}
+\NormalTok{vec_uhat <-}\StringTok{ }\NormalTok{n_h2 }\OperatorTok{*}\StringTok{ }\NormalTok{(vec_y }\OperatorTok{-}\StringTok{ }\NormalTok{n_mu)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{rr}
+\toprule
+ID & PBV\\
+\midrule
+4 & 0.4936\\
+5 & 0.6836\\
+6 & -0.9604\\
+7 & 0.3076\\
+8 & -0.5244\\
+\bottomrule
+\end{tabular}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Use a BLUP animal model to predict the breeding values for all animals in the pedigree based on the data given in the table above. Specify the model to predict breeding values, name all model components, compute the expected values and the variance-covariance matrices for all random model components. Insert the information from the above table into the model components where possible. Set up the mixed model equations and compute the solutions for the estimates of fixed effects and for the predicted breeding values. 
+
+\textit{Verwenden Sie ein BLUP Tiermodell zur Schätzung der Zuchtwerte aller Tiere im Pedigree basierend auf den Daten in der obigen Tabelle. Spezifizieren Sie das Modell für die Schätzung der Zuchtwerte, benennen Sie alle Modellkomponenten, berechnen Sie die Erwartungswerte und die Varianz-Kovarianz Matrizen aller zufälligen Effekte im Modell. Setzen Sie die verfügbaren Information aus dem Datensatz in die Modellkomponenten ein. Stellen Sie die Mischmodellgleichungen auf und berechnen Sie die Schätzungen der fixen Effekte und der Zuchtwerte.}
+\points{30}
+\end{enumerate}
+
+\solstart
+
+\hypertarget{model}{%
+\subsection{Model}\label{model}}
+
+The BLUP animal model corresponds to the following mixed-effects model
+
+\[y = Xb + Zu + e\] where \(y\) is the vector of observations, \(b\) is
+the vector of fixed effects for the two herds, \(u\) is the vector of
+breeding values for all animals in the pedigree and \(e\) is the vector
+of random residuals. The design matrices \(X\) and \(Z\) link the fixed
+effects and the breeding values to the observations, respectively.
+
+\hypertarget{expected-values-and-variance-covariance-matrices}{%
+\subsection{Expected Values and Variance-Covariance
+Matrices}\label{expected-values-and-variance-covariance-matrices}}
+
+Expected values and variance-covariance matrices of the random
+components \(y\), \(u\) and \(e\)
+
+\[
+E \left[\begin{array}{c} y \\ u\\ e\end{array}\right]  = \left[\begin{array}{c} Xb \\ 0 \\ 0\end{array}\right] \text{, }
+var \left[\begin{array}{c} y \\ u \\ e\end{array}\right]  =  \left[\begin{array}{ccc} ZGZ^T+R & ZG  &  0 \\ GZ^T & G & 0 \\ 0  &  0 & R \end{array}\right]
+\]
+
+\hypertarget{informations-in-model-components}{%
+\subsection{Informations in Model
+Components}\label{informations-in-model-components}}
+
+The model vectors are \[
+y = \begin{bmatrix} 7.53 \\8.48 \\0.26 \\6.6 \\2.44\end{bmatrix}\text{, }b = \begin{bmatrix} b_{1} \\b_{2}\end{bmatrix}\text{, }u = \begin{bmatrix} u_{1} \\u_{2} \\u_{3} \\u_{4} \\u_{5} \\u_{6} \\u_{7} \\u_{8}\end{bmatrix}\text{, }e = \begin{bmatrix} e_{1} \\e_{2} \\e_{3} \\e_{4} \\e_{5}\end{bmatrix} 
+\]
+
+The model matrices
+
+\[
+X = \begin{bmatrix} 0 & 1 \\1 & 0 \\1 & 0 \\1 & 0 \\1 & 0\end{bmatrix} 
+\text{, }Z = \begin{bmatrix} 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\end{bmatrix} 
+\]
+
+\hypertarget{mixed-model-equations}{%
+\subsection{Mixed Model Equations}\label{mixed-model-equations}}
+
+\begin{equation}
+\left[
+  \begin{array}{lr}
+  X^TX  &  X^TZ \\
+  Z^TX  &  Z^TZ + A^{-1}* \lambda
+  \end{array}
+\right]
+\left[
+  \begin{array}{c}
+  \hat{b} \\
+  \hat{u}
+  \end{array}
+\right]
+=
+\left[
+  \begin{array}{c}
+  X^Ty \\
+  Z^Ty
+  \end{array}
+\right]
+\notag
+\end{equation}
+
+\hypertarget{solution}{%
+\subsection{Solution}\label{solution}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# nrm A}
+\NormalTok{tbl_ped_pbv_ext <-}\StringTok{ }\NormalTok{rmdexam}\OperatorTok{::}\KeywordTok{extend_pedigree}\NormalTok{(}\DataTypeTok{ptbl_ped =}\NormalTok{ tbl_data_pbv[,}\KeywordTok{c}\NormalTok{(}\StringTok{'ID'}\NormalTok{, }\StringTok{'Sire'}\NormalTok{, }\StringTok{'Dam'}\NormalTok{)])}
+\NormalTok{ped_pbv <-}\StringTok{ }\NormalTok{pedigreemm}\OperatorTok{::}\KeywordTok{pedigree}\NormalTok{(}\DataTypeTok{sire  =}\NormalTok{ tbl_ped_pbv_ext}\OperatorTok{$}\NormalTok{Sire, }
+                                \DataTypeTok{dam   =}\NormalTok{ tbl_ped_pbv_ext}\OperatorTok{$}\NormalTok{Dam,}
+                                \DataTypeTok{label =} \KeywordTok{as.character}\NormalTok{(tbl_ped_pbv_ext}\OperatorTok{$}\NormalTok{ID))}
+\NormalTok{mat_Ainv_pbv <-}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(pedigreemm}\OperatorTok{::}\KeywordTok{getAInv}\NormalTok{(}\DataTypeTok{ped =}\NormalTok{ ped_pbv))}
+\NormalTok{lambda <-}\StringTok{ }\NormalTok{n_var_e }\OperatorTok{/}\StringTok{ }\NormalTok{n_var_u}
+
+\CommentTok{# coefficient matrix}
+\NormalTok{mat_xtx <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_X)}
+\NormalTok{mat_xtz <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_X, mat_Z)}
+\NormalTok{mat_ztx <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_Z, mat_X)}
+\NormalTok{mat_ztz_ainv_lambda <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_Z) }\OperatorTok{+}\StringTok{ }\NormalTok{lambda }\OperatorTok{*}\StringTok{ }\NormalTok{mat_Ainv_pbv}
+\NormalTok{mat_coef <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(mat_xtx,mat_xtz), }\KeywordTok{cbind}\NormalTok{(mat_ztx,mat_ztz_ainv_lambda))}
+
+\CommentTok{# rhs}
+\NormalTok{mat_xty <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_X, vec_y)}
+\NormalTok{mat_zty <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(mat_Z, vec_y)}
+\NormalTok{mat_rhs <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(mat_xty, mat_zty)}
+
+\CommentTok{# solutions}
+\NormalTok{(mat_sol <-}\StringTok{ }\KeywordTok{solve}\NormalTok{(mat_coef, mat_rhs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]
+##    4.575806e+00
+##    7.864645e+00
+## 2 -2.567391e-16
+## 1 -2.230968e-01
+## 3  2.230968e-01
+## 4 -3.346452e-01
+## 5  3.346452e-01
+## 6 -5.753190e-01
+## 7  1.291254e-01
+## 8 -4.116737e-01
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-3-genomics}{%
+\subsection{Problem 3 Genomics}\label{problem-3-genomics}}
+
+Given is the following data set of SNP-Genotyping results.
+
+\textit{Gegeben sind die Genotypisierungsresultate in der nachfolgenden Tabelle.}
+
+\begin{tabular}{rrrr}
+\toprule
+Animal & SNPLGH & SNPFS2 & Observation\\
+\midrule
+1 & -1 & 0 & 12.7\\
+2 & 1 & 1 & 46.0\\
+3 & 1 & 1 & 32.7\\
+4 & 0 & 0 & 19.3\\
+5 & -1 & 0 & 14.8\\
+\addlinespace
+6 & 0 & -1 & 6.7\\
+7 & -1 & -1 & 2.4\\
+8 & 1 & 0 & 33.0\\
+9 & 1 & 0 & 29.4\\
+10 & 0 & -1 & 4.9\\
+\addlinespace
+11 & 1 & -1 & 14.4\\
+12 & 0 & 0 & 19.5\\
+13 & 1 & 0 & 25.6\\
+14 & -1 & 1 & 19.1\\
+15 & 1 & 0 & 25.6\\
+\bottomrule
+\end{tabular}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Use a marker effect model to estimate the fixed effects of both markers on the observation. Please specify the fixed-effect model that you use, name all the model components and insert the information from the data into the components where possible. 
+
+\textit{Verwenden Sie eine Marker-Effekt Modell zur Schätzung der fixen Effekte der beiden Marker auf die Beobachtung. Bitte spezifizieren Sie das fixe Modell, benennen Sie alle Modellkomponenten und fügen Sie die Daten aus der obigen Tabelle in die Modellkomponenten ein, wo das möglich ist.}
+\points{12}
+\end{enumerate}
+
+\solstart
+
+\hypertarget{model-1}{%
+\subsection{Model}\label{model-1}}
+
+The fixed effect model to estimate the marker effects is given by
+
+\[y = Xb + e\]
+
+where \(y\) is the vector of observations, \(b\) is the vector of fixed
+effects containing intercept and effect of both markers, \(e\) is the
+vector of random error terms.
+
+\hypertarget{information-in-model}{%
+\subsection{Information in Model}\label{information-in-model}}
+
+The model vectors are
+
+\[
+y = \begin{bmatrix} 12.7 \\46 \\32.7 \\19.3 \\14.8 \\6.7 \\2.4 \\33 \\29.4 \\4.9 \\14.4 \\19.5 \\25.6 \\19.1 \\25.6\end{bmatrix} 
+\text{, }b = \begin{bmatrix} b_{1} \\b_{2}\end{bmatrix} 
+\text{, }e = \begin{bmatrix} e_{1} \\e_{2} \\e_{3} \\e_{4} \\e_{5} \\e_{6} \\e_{7} \\e_{8} \\e_{9} \\e_{10} \\e_{11} \\e_{12} \\e_{13} \\e_{14} \\e_{15}\end{bmatrix} 
+\]
+
+\hypertarget{marker-effects}{%
+\subsection{Marker Effects}\label{marker-effects}}
+
+The marker effects are estimated using \texttt{lm()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_mrk_names <-}\StringTok{ }\KeywordTok{grep}\NormalTok{(}\StringTok{'SNP'}\NormalTok{, }\KeywordTok{colnames}\NormalTok{(tbl_data_gnm), }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{) }
+\NormalTok{lm_mrk_eff <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{'Observation ~ '}\NormalTok{, }\KeywordTok{paste0}\NormalTok{(vec_mrk_names, }\DataTypeTok{collapse =} \StringTok{' + '}\NormalTok{), }\DataTypeTok{collapse =} \StringTok{''}\NormalTok{)), }\DataTypeTok{data =}\NormalTok{ tbl_data_gnm)}
+\KeywordTok{summary}\NormalTok{(lm_mrk_eff)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = as.formula(paste0("Observation ~ ", paste0(vec_mrk_names, 
+##     collapse = " + "), collapse = "")), data = tbl_data_gnm)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.4098 -1.9313 -0.2904  2.0989  6.8902 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   19.590      1.028  19.060 2.45e-10 ***
+## SNPLGH         7.941      1.202   6.604 2.52e-05 ***
+## SNPFS2        11.578      1.473   7.863 4.49e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.839 on 12 degrees of freedom
+## Multiple R-squared:  0.9108, Adjusted R-squared:  0.896 
+## F-statistic: 61.28 on 2 and 12 DF,  p-value: 5.03e-07
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Predict the direct genomic breeding values for all animals of the dataset using the marker effects estimated in Task a). 
+
+\textit{ Schätzen Sie die direkt-genomischen Zuchtwerte für alle Tiere im Datensatz unter Verwendung der aus Aufgabe a) geschätzten Markereffekte.}
+\points{6}
+\end{enumerate}
+
+\solstart
+
+Direct genomic breeding values \(\hat{g}_i\) for animal \(i\)
+corresponds to the sums of the marker effects, hence
+
+\[\hat{g}_i = x_i^T \cdot \hat{b}\] where \(\hat{b}\) is the vector of
+estimated marker effects and \(x_i^T\) is the row \(i\) of the design
+matrix \(X\) corresponding to animal \(i\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_mrk_eff <-}\StringTok{ }\KeywordTok{coefficients}\NormalTok{(lm_mrk_eff)}
+\NormalTok{n_intercept_pos <-}\StringTok{ }\KeywordTok{which}\NormalTok{(}\KeywordTok{names}\NormalTok{(vec_mrk_eff) }\OperatorTok{==}\StringTok{ '(Intercept)'}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{length}\NormalTok{(n_intercept_pos) }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{) vec_mrk_eff <-}\StringTok{ }\NormalTok{vec_mrk_eff[}\OperatorTok{-}\NormalTok{n_intercept_pos]}
+\NormalTok{vec_snp_names <-}\StringTok{ }\KeywordTok{names}\NormalTok{(vec_mrk_eff)}
+\NormalTok{mat_geno_gnm <-}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(tbl_data_gnm[, vec_snp_names])}
+\NormalTok{(vec_hat_g <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(}\KeywordTok{t}\NormalTok{(mat_geno_gnm), vec_mrk_eff))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             [,1]
+##  [1,]  -7.940943
+##  [2,]  19.519434
+##  [3,]  19.519434
+##  [4,]   0.000000
+##  [5,]  -7.940943
+##  [6,] -11.578491
+##  [7,] -19.519434
+##  [8,]   7.940943
+##  [9,]   7.940943
+## [10,] -11.578491
+## [11,]  -3.637547
+## [12,]   0.000000
+## [13,]   7.940943
+## [14,]   3.637547
+## [15,]   7.940943
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-4-variance-and-inbreeding}{%
+\subsection{Problem 4 Variance and
+Inbreeding}\label{problem-4-variance-and-inbreeding}}
+
+In dairy cattle semen and embryos of the breeds Brown Swiss and Holstein
+are often imported from North America. For the Brown Swiss breed, the
+North American population is based on 280 female animals. The following
+assumptions can be made.
+
+\begin{itemize}
+\tightlist
+\item
+  Although, cattle does not follow the same mode of inheritance as the
+  organism shown in the lecture, the computations as shown in the
+  lecture can be used as an approximation.
+\item
+  In contrast to the size \(N\) of the subpopulations that was assumed
+  to be the number of individuals, here \(N\) is the number of female
+  animals in a given subpopulation.
+\end{itemize}
+
+\textit{Samen und Embryos der Rassen Brown Swiss und Holstein werden oft aus Nordamerika importiert. Für die Rasse Brown Swiss basiert die Nordamerikanische Population auf 280 weiblichen Tieren. Die folgenden Annahmen können getroffen werden.}
+
+\begin{itemize}
+\tightlist
+\item
+  \textit{Obwohl das Rind nicht den gleichen Vererbungsmodus zeigt, wie die Organismen, welche in den Vorlesungsunterlagen verwendet wurden, können die dort eingeführten Berechnungen der Inzucht als Annäherungen verwendet werden.}
+\item
+  \textit{Die Populationsgrösse $N$ hier entspricht der Anzahl weiblichen Tiere.}
+\end{itemize}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] What is the expected level of inbreeding ($F$) of imported semen in the Brown Swiss breed after 16 generations?
+
+\textit{Welches ist der erwartet Wert der Inzucht ($F$) von importiertem Samen in der Rasse Brown Swiss nach 16 Generationen?}
+\points{4}
+\end{enumerate}
+
+\solstart
+
+The level of inbreeding \(F_t\) after \(t\) generations is computed as
+
+\[F_t = 1 - (1 - \Delta F)^t\] with \(\Delta F = 1/(2N)\) and \(N\)
+being the number of female animals in the base population.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(inb_level_ft <-}\StringTok{ }\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{n_nr_base_animals))}\OperatorTok{^}\NormalTok{n_nr_gen)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02819195
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the between-line, the within-line and the total genetic variance for a single additive Locus where the difference between the homozygous genotypes is 50, the allele frequency $p = 0.2$ and the level of inbreeding is 0.01. 
+
+\textit{Berechnen Sie die Innerhalb-Linie, Zwischen-Linie und die totale genetische Varianz für einen additiven Lokus, wobei die Differenz der homozygoten Genotypen 50 entspricht, die Allelefrequenz $p = 0.2$ ist und der Inzuchtwert 0.01 ist.}
+\points{10}
+\end{enumerate}
+
+\solstart
+
+The variance according to the sources are computed as
+
+\begin{tabular}{ll}
+\toprule
+Source & Variance\\
+\midrule
+Between lines & $2FV_G$\\
+Within lines & $(1-F)V_G$\\
+Total & $(1+F)V_G$\\
+\bottomrule
+\end{tabular}
+
+with \[V_G = 2pqa^2 = 2 * 0.2 * 0.8 * 625 = 200\] Inserting the values,
+we get
+
+\begin{tabular}{llr}
+\toprule
+Source & Variance & Results\\
+\midrule
+Between lines & $2FV_G$ & 4\\
+Within lines & $(1-F)V_G$ & 198\\
+Total & $(1+F)V_G$ & 202\\
+\bottomrule
+\end{tabular}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] After how many generations is the expected inbreeding depression bigger than 0.2 in a population with $N = 280$ animals. The following assumptions can be made
+
+\textit{Nach wie vielen Generationen ist die erwartete Inzuchtdepression grösser als 0.2 in einer Population von $N = 280$ Tieren. Die folgenden Annahmen können getroffen werden.}
+\points{2}
+\end{enumerate}
+
+\begin{itemize}
+\item
+  single bi-allelic locus
+\item
+  minor allele frequency \(p = 0.2\)
+\item
+  dominance deviation \(d = 30\)
+\item
+  \textit{einzelner Locus mit zwei Allelen}
+\item
+  \textit{Frequenz des seltenen Alleles $p = 0.2$}
+\item
+  \textit{Dominanzabweichung $d = 30$}
+\end{itemize}
+
+\solstart
+
+Inbreeding depression is computed as
+
+\[M_0 - M_F = 2dp(1-p)F = 0.2\] hence
+
+\[F = \frac{M_0 - M_F}{2dp(1-p)} = \frac{0.2}{2 * 30 * 0.2 * (1- 0.2)} = 0.0208333\]
+
+From
+
+\[F_t = 1 - (1 - \Delta F)^t\]
+
+we get
+
+\[(1 - \Delta F)^t = 1-F_t\]
+
+and
+
+\[t = \frac{log(1-F_t)}{log(1 - \Delta F)} = 11.7793793\]
+
+Hence after 12 generations the inbreeding depression is bigger than 0.2
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-5-variance-components}{%
+\subsection{Problem 5 Variance
+Components}\label{problem-5-variance-components}}
+
+We are given the following dataset for the trait live weight
+(\texttt{LiveWeight}) for cattle.
+
+\textit{Der folgende Datensatz umfasst das Merkmal Lebendgewicht (`LiveWeight`) von Rindern.}
+
+\begin{tabular}{rrr}
+\toprule
+Animal & Farm & LiveWeight\\
+\midrule
+1 & 3 & 613\\
+2 & 1 & 621\\
+3 & 2 & 630\\
+4 & 3 & 614\\
+5 & 1 & 629\\
+\addlinespace
+6 & 2 & 611\\
+7 & 3 & 612\\
+8 & 1 & 614\\
+9 & 2 & 606\\
+10 & 1 & 621\\
+\addlinespace
+11 & 2 & 621\\
+12 & 1 & 623\\
+13 & 2 & 608\\
+14 & 2 & 603\\
+15 & 1 & 589\\
+\addlinespace
+16 & 1 & 599\\
+17 & 1 & 610\\
+18 & 2 & 595\\
+19 & 3 & 612\\
+20 & 3 & 616\\
+\bottomrule
+\end{tabular}
+
+\begin{enumerate}
+\item[a)] Compute the estimate of the error variance $\sigma_e^2$ from the residuals of the fixed linear model specified below.
+
+\textit{Schätzen Sie die Fehlervarianz $\sigma_e^2$ basierend auf den Residuen des folgenden fixen Modells.}
+\points{5}
+\end{enumerate}
+
+The fixed linear model that is used is
+
+\[y = Xb + e\] where \(y\) is the vector of all live weight values,
+\(b\) is the vector of the effects caused by the different farms. The
+fixed linear model is specified in R by
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl_data_anova}\OperatorTok{$}\NormalTok{Farm <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(tbl_data_anova}\OperatorTok{$}\NormalTok{Farm)}
+\NormalTok{lm_lweight <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(LiveWeight }\OperatorTok{~}\StringTok{ }\DecValTok{0} \OperatorTok{+}\StringTok{ }\NormalTok{Farm, }\DataTypeTok{data =}\NormalTok{ tbl_data_anova)}
+\end{Highlighting}
+\end{Shaded}
+
+The resulting effects of the farms are
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(vec_coef_lweight <-}\StringTok{ }\KeywordTok{coefficients}\NormalTok{(lm_lweight))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Farm1    Farm2    Farm3 
+## 613.2500 610.5714 613.4000
+\end{verbatim}
+
+\solstart
+
+The esimate of the error variance is computed based on the resiudals.
+The residuals can be obtained by the function \texttt{residuals()} in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec_res <-}\StringTok{ }\KeywordTok{residuals}\NormalTok{(lm_lweight)}
+\NormalTok{ssq_res <-}\StringTok{ }\KeywordTok{crossprod}\NormalTok{(vec_res)}
+\NormalTok{(n_est_res_var <-}\StringTok{ }\NormalTok{ssq_res }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{nrow}\NormalTok{(tbl_data_anova)}\OperatorTok{-}\KeywordTok{length}\NormalTok{(vec_coef_lweight)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          [,1]
+## [1,] 122.9655
+\end{verbatim}
+
+The error standard deviation is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(n_est_res_sd <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(n_est_res_var))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          [,1]
+## [1,] 11.08898
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Verify your result from task a) with the output of the `summary()`-function applied to the result of the `lm()`-function
+
+\textit{Verifizieren Sie das Resultat aus Aufgabe a) anhand des Outputs der `summary`-Funktion angewendet auf das Resultat der `lm()`-Funktion}
+\points{5}
+\end{enumerate}
+
+\solstart
+
+From the task, we have the result object of the \texttt{lm()}-function
+which is called \texttt{lm\_lweight}. Applying the
+\texttt{summary()}-method leads to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(lm_lweight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = LiveWeight ~ 0 + Farm, data = tbl_data_anova)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -24.2500  -3.5804   0.0143   7.7500  19.4286 
+## 
+## Coefficients:
+##       Estimate Std. Error t value Pr(>|t|)    
+## Farm1  613.250      3.921   156.4   <2e-16 ***
+## Farm2  610.571      4.191   145.7   <2e-16 ***
+## Farm3  613.400      4.959   123.7   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 11.09 on 17 degrees of freedom
+## Multiple R-squared:  0.9997, Adjusted R-squared:  0.9997 
+## F-statistic: 2.033e+04 on 3 and 17 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+The number next to \texttt{Residual\ standard\ error:} corresponds to
+the estimated value of the error standard deviation.
+
+\solend
+
+\end{document}
