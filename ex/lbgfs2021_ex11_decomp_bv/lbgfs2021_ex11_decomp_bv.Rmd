@@ -1,0 +1,121 @@
+---
+title: Livestock Breeding and Genomics - Exercise 11
+author: Peter von Rohr
+date: "2021-12-03"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data
+
+```{r}
+nr_animal <- 5
+tbl_decomp <- tibble::tibble(Animal = c(1:nr_animal),
+                             Sire = c(NA, NA, NA, 1, 4),
+                             Dam = c(NA, NA, NA, 2, 3),
+                             Trait = c(4.5, 2.9, 3.9, 3.5, 5.0))
+tbl_decomp
+```
+
+
+# Model
+
+$$y = X\mu + Zu + e$$
+
+
+# Components
+
+```{r}
+X = matrix(1, nrow = nr_animal, ncol = 1)
+X
+```
+
+```{r}
+Z = diag(1, nrow = nr_animal)
+Z
+```
+
+
+# Pedigree
+
+```{r}
+ped = pedigreemm::pedigree(sire = tbl_decomp$Sire, 
+                           dam = tbl_decomp$Dam,
+                           label = as.character(1:nr_animal))
+Ainv <- as.matrix(pedigreemm::getAInv(ped = ped))
+Ainv
+                  
+```
+
+
+# MME
+
+```{r}
+xtx <- crossprod(X)
+xtx
+```
+
+```{r}
+xtz <- crossprod(X, Z)
+xtz
+```
+
+```{r}
+ztx <- crossprod(Z, X)
+ztx
+```
+
+```{r}
+ztz <- crossprod(Z)
+ztz
+```
+
+```{r}
+sigmae2 <- 40
+sigmau2 <- 20
+lambda <- sigmae2/sigmau2
+lambda
+```
+
+```{r}
+ztzainvlambda <- ztz + Ainv * lambda
+ztzainvlambda
+```
+
+```{r}
+coef_mat <- rbind(cbind(xtx, xtz), cbind(ztx, ztzainvlambda))
+coef_mat
+```
+
+```{r}
+y <- tbl_decomp$Trait
+xty <- crossprod(X,y)
+zty <- crossprod(Z,y)
+rhs <- rbind(xty, zty)
+rhs 
+
+```
+
+# Solitions
+
+```{r}
+sol <- solve(coef_mat, rhs)
+sol
+```
+
+
+# Problem 1: Decomposition
+From the lecture, we know how the predicted breeding value of animal $4 can be decomposed into different components. Verify this decomposition based on the solutions obtained above.
+
+
+## Solution
+
+
+# Problem 2: Reliabilities
+Compute the reliabilities of all the predicted breeding values. 
+
+
+## Solution

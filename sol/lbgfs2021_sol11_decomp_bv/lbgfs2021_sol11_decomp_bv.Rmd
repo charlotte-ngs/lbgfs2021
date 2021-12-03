@@ -1,0 +1,164 @@
+---
+title: Livestock Breeding and Genomics - Solution 11
+author: Peter von Rohr
+date: "2021-12-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data
+
+```{r}
+nr_animal <- 5
+tbl_decomp <- tibble::tibble(Animal = c(1:nr_animal),
+                             Sire = c(NA, NA, NA, 1, 4),
+                             Dam = c(NA, NA, NA, 2, 3),
+                             Trait = c(4.5, 2.9, 3.9, 3.5, 5.0))
+tbl_decomp
+```
+
+
+# Model
+
+$$y = X\mu + Zu + e$$
+
+
+# Components
+
+```{r}
+X = matrix(1, nrow = nr_animal, ncol = 1)
+X
+```
+
+```{r}
+Z = diag(1, nrow = nr_animal)
+Z
+```
+
+
+# Pedigree
+
+```{r}
+ped = pedigreemm::pedigree(sire = tbl_decomp$Sire, 
+                           dam = tbl_decomp$Dam,
+                           label = as.character(1:nr_animal))
+Ainv <- as.matrix(pedigreemm::getAInv(ped = ped))
+Ainv
+                  
+```
+
+
+# MME
+
+```{r}
+xtx <- crossprod(X)
+xtx
+```
+
+```{r}
+xtz <- crossprod(X, Z)
+xtz
+```
+
+```{r}
+ztx <- crossprod(Z, X)
+ztx
+```
+
+```{r}
+ztz <- crossprod(Z)
+ztz
+```
+
+```{r}
+sigmae2 <- 40
+sigmau2 <- 20
+lambda <- sigmae2/sigmau2
+lambda
+```
+
+```{r}
+ztzainvlambda <- ztz + Ainv * lambda
+ztzainvlambda
+```
+
+```{r}
+coef_mat <- rbind(cbind(xtx, xtz), cbind(ztx, ztzainvlambda))
+coef_mat
+```
+
+```{r}
+y <- tbl_decomp$Trait
+xty <- crossprod(X,y)
+zty <- crossprod(Z,y)
+rhs <- rbind(xty, zty)
+rhs 
+
+```
+
+# Solitions
+
+```{r}
+sol <- solve(coef_mat, rhs)
+sol
+```
+
+
+# Problem 1: Decomposition
+From the lecture, we know how the predicted breeding value of animal $4 can be decomposed into different components. Verify this decomposition based on the solutions obtained above.
+
+
+## Solution
+The decomposition is given as follows:
+
+$$\hat{u}_4 = {1\over 6}\left[ y_4 - \hat{\mu} + 2 * (\hat{u}_1 + \hat{u}_2) - \hat{u}_3 + 2 \hat{u}_5\right] $$
+
+This can be verified as follows
+
+```{r}
+(tbl_decomp$Trait[4] - sol[1] + 2 * (sol[2]+sol[3]) - sol[4] + 2*sol[6])/6
+```
+
+The breeding value of animal 4 is
+
+```{r}
+sol[5]
+```
+
+
+# Problem 2: Reliabilities
+Compute the reliabilities of all the predicted breeding values. The reliability $B_i$ of the predicted breeding value for animal $i$ is computed as
+
+$$B_i = 1 - \frac{(C^{22})_{ii}}{var(u_i)} $$
+
+```{r}
+C <- solve(coef_mat) * sigmae2
+C
+```
+
+The lower right corner $C^{22}$ is 
+
+```{r}
+nr_fixed_effect <- ncol(X)
+nr_sol <- nrow(sol)
+C22 <- C[(nr_fixed_effect+1):nr_sol, (nr_fixed_effect+1):nr_sol]
+C22
+```
+
+The diagonal elements of $C^{22}$
+
+```{r}
+C22ii <- diag(C22)
+C22ii
+```
+
+The reliabilities are 
+
+```{r}
+B <- 1 - C22ii / sigmau2
+B
+```
+
