@@ -99,7 +99,7 @@ rhs
 
 ```
 
-# Solitions
+# Solutions
 
 ```{r}
 sol <- solve(coef_mat, rhs)
