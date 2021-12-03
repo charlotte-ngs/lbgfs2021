@@ -1,3 +1,7 @@
+# lbgfs2021 0.11.0
+
+* Course notes, exercises, test exam and slides for lecture 11
+
 # lbgfs2021 0.10.3
 
 * OHP pictures of lecture 10
