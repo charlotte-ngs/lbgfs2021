@@ -126,12 +126,14 @@ knitr::kable(tbl_ohp)
 
 ```{r nb-table, echo=FALSE, message=FALSE, warning=FALSE}
 nb_url <- paste0(root_url, "/nb/")
-tbl_nb <- tibble::tibble(Nr = c(1, 2),
+tbl_nb <- tibble::tibble(Nr = c(1, 2, 3),
                          Date = c("2021-10-15",
-                                  "2021-11-26"),
+                                  "2021-11-26",
+                                  "2021-12-03"),
                          Topic = c(
                            paste0("[Central Limit Theorem](", nb_url, "20211015_explain_clt.nb.html)", collapse = ""),
-                           paste0("[BLUP Animal Model](", nb_url, "lbgfs2021_blup_am.nb.html)", collapse = "")
+                           paste0("[BLUP Animal Model](", nb_url, "lbgfs2021_blup_am.nb.html)", collapse = ""),
+                           paste0("[Decomposition of BLUP Breeding Values](", nb_url, "20211203_decomposition_blup_bv.nb.html)", collapse = "")
                          ))
 knitr::kable(tbl_nb)
 ```
