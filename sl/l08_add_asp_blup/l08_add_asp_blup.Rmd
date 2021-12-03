@@ -99,7 +99,7 @@ $$B_i = r_{u_i, \hat{u}_i}^2 = \frac{var(u_i) - (C)_{ii}^{22}}{var(u_i)} = 1 - \
 
 ## Distribution
 
-```{r confintfig, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r confintfig, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmddochelper::use_odg_graphic(ps_path = "odg/confintfig.odg")
 knitr::include_graphics(path = "odg/confintfig.png")
 ```
