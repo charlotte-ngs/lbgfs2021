@@ -1,7 +1,7 @@
 ---
 title: "Genomic Selection"
 author: "Peter von Rohr"
-date: "20 November 2020"
+date: "2021-12-10"
 output:
   beamer_presentation:
 header-includes:
@@ -32,7 +32,7 @@ knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 
 ## Benefits in Cattle
 
-```{r fig-benefit-geno-sel-cattle, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r fig-benefit-geno-sel-cattle, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmdhelp::use_odg_graphic(ps_path = "odg/fig-benefit-geno-sel-cattle.odg")
 knitr::include_graphics(path = "odg/fig-benefit-geno-sel-cattle.png")
 ```
@@ -40,7 +40,7 @@ knitr::include_graphics(path = "odg/fig-benefit-geno-sel-cattle.png")
 
 ## Benefits in Pigs
 
-```{r fig-benefit-geno-sel-pig, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r fig-benefit-geno-sel-pig, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmdhelp::use_odg_graphic(ps_path = "odg/fig-benefit-geno-sel-pig.odg")
 knitr::include_graphics(path = "odg/fig-benefit-geno-sel-pig.png")
 ```
@@ -56,7 +56,7 @@ knitr::include_graphics(path = "odg/fig-benefit-geno-sel-pig.png")
 
 ## Polygenic Model
 
-```{r fig-polygenic-model, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r fig-polygenic-model, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmdhelp::use_odg_graphic(ps_path = "odg/fig-polygenic-model.odg")
 knitr::include_graphics(path = "odg/fig-polygenic-model.png")
 ```
@@ -89,7 +89,7 @@ Two types of models are used
 
 ## MEM versus BVM
 
-```{r mem-vs-bvm, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r mem-vs-bvm, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmdhelp::use_odg_graphic(ps_path = "odg/mem-vs-bvm.odg")
 knitr::include_graphics(path = "odg/mem-vs-bvm.png")
 ```
@@ -108,7 +108,7 @@ knitr::include_graphics(path = "odg/mem-vs-bvm.png")
     
 ## Two Step Procedure
 
-```{r two-step-gs, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+```{r two-step-gs, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="100%"}
 #rmdhelp::use_odg_graphic(ps_path = "odg/two-step-gs.odg")
 knitr::include_graphics(path = "odg/two-step-gs.png")
 ```

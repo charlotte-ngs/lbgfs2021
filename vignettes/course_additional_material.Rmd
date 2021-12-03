@@ -22,7 +22,7 @@ This page contains links to additional material for Livestock Breeding and Genom
 root_url <- "https://charlotte-ngs.github.io/lbgfs2021" 
 sl_url <- paste0(root_url, "/sl/")
 misc_url <- paste0(root_url, "/misc/")
-tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
+tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
                          Date = c("2021-09-24",
                                   "2021-10-01",
                                   "2021-10-01",
@@ -33,7 +33,8 @@ tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                                   "2021-11-12",
                                   "2021-11-12",
                                   "2021-11-19",
-                                  "2021-11-26"),
+                                  "2021-11-26",
+                                  "2021-12-03"),
                          Topic = c(
                            paste0("[Introduction to Livestock Breeding and Genomics](", sl_url, "lbgfs2021_slides_l01_intro_lbg.pdf)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", sl_url, "lbgfs2021_slides_l02_basics_qg.pdf)", collapse = ""),
@@ -45,7 +46,8 @@ tbl_sl <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                            paste0("[Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_numrelmat.pdf)", collapse = ""),
                            paste0("[Inverse Numerator Relationship Matrix](", sl_url, "lbgfs2021_l06_slides_invnumrelmat.pdf)", collapse = ""),
                            paste0("[Variance and Inbreeding](", sl_url, "lbgfs2021_l07_slides_var_inb.pdf)", collapse = ""),
-                           paste0("[Additional Aspect of BLUP](", sl_url, "l08_add_asp_blup.pdf)", collapse = "")
+                           paste0("[Additional Aspect of BLUP](", sl_url, "l08_add_asp_blup.pdf)", collapse = ""),
+                           paste0("[Genomic Selection](", sl_url, "l09_geno_sel.pdf)", collapse = "")
                          ))
 knitr::kable(tbl_sl)
 ```
