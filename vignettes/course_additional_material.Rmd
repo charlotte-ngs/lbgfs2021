@@ -97,7 +97,7 @@ knitr::kable(tbl_video)
 
 ```{r ohp-table, echo=FALSE, message=FALSE, warning=FALSE}
 ohp_url <- paste0(root_url, "/ohp/")
-tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                           Date = c("2021-09-24",
                                    "2021-10-01",
                                    "2021-10-08",
@@ -107,7 +107,8 @@ tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                                    "2021-11-05",
                                    "2021-11-12",
                                    "2021-11-19",
-                                   "2021-11-26"),
+                                   "2021-11-26",
+                                   "2021-12-03"),
                           Topic = c(
                             paste0("[Introduction to Livestock Breeding and Genomics](", ohp_url, "20210924_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Introduction to RMarkdown and Basics of Quantitative Genetics (Part 1)](", ohp_url, "20211001_ohp_pictures.pdf)", collapse = ""),
@@ -118,7 +119,8 @@ tbl_ohp <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
                             paste0("[Sire Model](", ohp_url, "20211105_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Animal Model](", ohp_url, "20211112_ohp_pictures.pdf)", collapse = ""),
                             paste0("[Inverse Numerator Relationship Matrix](", ohp_url, "20211119_ohp_pictures.pdf)", collapse = ""),
-                            paste0("[Variance and Inbreeding](", ohp_url, "20211126_ohp_pictures.pdf)", collapse = "")
+                            paste0("[Variance and Inbreeding](", ohp_url, "20211126_ohp_pictures.pdf)", collapse = ""),
+                            paste0("[Additional Aspects of BLUP](", ohp_url, "20211203_ohp_pictures.pdf)", collapse = "")
                           ))
 knitr::kable(tbl_ohp)
 ```
