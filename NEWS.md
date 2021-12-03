@@ -1,3 +1,7 @@
+# lbgfs2021 0.11.2
+
+* Video and OHP pictures for lecture 11
+
 # lbgfs2021 0.11.1
 
 * Added sol07 and sol 08
