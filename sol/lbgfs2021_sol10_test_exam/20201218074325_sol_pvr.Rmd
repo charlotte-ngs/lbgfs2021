@@ -246,7 +246,11 @@ The inbreeding coefficient of the offspring of dam `r dam_id` and sire `r sire_i
 \pagebreak
 
 ```{r pbv-problem-setup, echo=FALSE, results='hide'}
-tbl_data_pbv <- tibble::tibble(ID = c(4,5,6,7,8), Sire = c(1,3,4,4,6), Dam = c(2,2,5,5,7), Herd = c('Planta','Moos','Moos','Moos','Moos'), `Phenotypic Observation` = c(7.53,8.48,0.26,6.6,2.44))
+tbl_data_pbv <- tibble::tibble(ID = c(4,5,6,7,8), 
+                               Sire = c(1,3,4,4,6), 
+                               Dam = c(2,2,5,5,7), 
+                               Herd = c('Planta','Moos','Moos','Moos','Moos'), 
+                               `Phenotypic Observation` = c(7.53,8.48,0.26,6.6,2.44))
 n_var_u <- 7.2
 n_var_e <- 28.8
 n_h2 <- 0.2
@@ -414,7 +418,8 @@ cat('$$\n')
 
 ```{r}
 # nrm A
-tbl_ped_pbv_ext <- rmdexam::extend_pedigree(ptbl_ped = tbl_data_pbv[,c('ID', 'Sire', 'Dam')])
+tbl_ped_pbv_ext <- rmdexam::extend_pedigree(ptbl_ped = 
+                      tbl_data_pbv[,c('ID', 'Sire', 'Dam')])
 ped_pbv <- pedigreemm::pedigree(sire  = tbl_ped_pbv_ext$Sire, 
                                 dam   = tbl_ped_pbv_ext$Dam,
                                 label = as.character(tbl_ped_pbv_ext$ID))
@@ -507,7 +512,9 @@ The marker effects are estimated using `lm()`
 
 ```{r mrk-eff-gnm-a}
 vec_mrk_names <- grep('SNP', colnames(tbl_data_gnm), value = TRUE) 
-lm_mrk_eff <- lm(as.formula(paste0('Observation ~ ', paste0(vec_mrk_names, collapse = ' + '), collapse = '')), data = tbl_data_gnm)
+lm_mrk_eff <- lm(as.formula(paste0('Observation ~ ', 
+                paste0(vec_mrk_names, collapse = ' + '), collapse = '')), 
+                data = tbl_data_gnm)
 summary(lm_mrk_eff)
 ```
 

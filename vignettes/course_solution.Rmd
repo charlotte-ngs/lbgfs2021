@@ -18,20 +18,24 @@ The following table contains links to the solutions of the exercises for Livesto
 
 ```{r table-solution, echo=FALSE, message=FALSE, warning=FALSE}
 sol_url <- "https://charlotte-ngs.github.io/lbgfs2021/sol/"
-tbl_sol <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6),
+tbl_sol <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8),
                           Date = c("2021-10-08",
                                    "2021-10-15",
                                    "2021-10-22",
                                    "2021-10-29",
                                    "2021-12-03",
-                                   "2021-12-03"),
+                                   "2021-12-03",
+                                   "2021-12-10",
+                                   "2021-12-10"),
                           Topic = c(
                            paste0("[Vectors and Matrices in R](", sol_url, "lbgfs2021_sol01_linalg.pdf)", collapse = ""),
                            paste0("[Basics of Quantitative Genetics](", sol_url, "lbgfs2021_sol02_qgen.pdf)", collapse = ""),
                            paste0("[Genetic Evaluation](", sol_url, "lbgfs2021_sol03_oprec.pdf)", collapse = ""),
                            paste0("[Linear Models and BLUP Sire Model](", sol_url, "lbgfs2021_sol_04_blup.pdf)", collapse = ""),
                            paste0("[Numerator Relationship Matrix](", sol_url, "lbgfs2021_sol07_num_rel.pdf)", collapse = ""),
-                           paste0("[Inverse Numerator Relationship Matrix](", sol_url, "lbgfs2021_sol08_inv_num.pdf)", collapse = "")
+                           paste0("[Inverse Numerator Relationship Matrix](", sol_url, "lbgfs2021_sol08_inv_num.pdf)", collapse = ""),
+                           paste0("[Test Exam](", sol_url, "20201218074325_sol_pvr.pdf)", collapse = ""),
+                           paste0("[Decomposition of Breeding Values](", sol_url, "lbgfs2021_sol11_decomp_bv.pdf)", collapse = "")
                            ))
 knitr::kable(tbl_sol)
 ```
