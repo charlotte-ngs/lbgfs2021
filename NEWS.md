@@ -1,3 +1,7 @@
+# lbgfs2021 0.12.0
+
+* Solutions to all exercises
+
 # lbgfs2021 0.11.2
 
 * Video and OHP pictures for lecture 11
