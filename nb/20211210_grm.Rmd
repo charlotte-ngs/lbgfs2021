@@ -3,4 +3,97 @@ title: "Genomic Relationship Matrix"
 output: html_notebook
 ---
 
-In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations.
+In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations. In this notebook, we use the data set from exercise 12 to show how the genomic relationship matrix is computed.
+
+```{r}
+s_data_path <- "https://charlotte-ngs.github.io/lbgfs2021/data/geno_data.csv"
+tbl_geno_data <- readr::read_csv(file = s_data_path)
+tbl_geno_data
+```
+
+
+The genomic relationship matrix can be computed as shown on the slides
+
+# How To Compute $G$
+* Read matrix $W$ 
+* For each column $j$ of $W$ compute frequency $p_j$
+* Compute matrix $S$ and $\sum_{j=1}^k(1-2p_j(1-p_j))$ from $p_j$
+* Compute $U$ from $W$ and $S$
+* Compute $G$
+
+
+## Step 1: Matrix $W$
+Here we obtain matrix $W$ from the data
+
+```{r}
+W <- as.matrix(tbl_geno_data[,c(2,3)])
+W
+```
+
+
+## Step 2: Frequency
+To compute te frequency of the positive allele it is better to change the genotype encoding from $-1$, $0$, $1$ to $0$, $1$ , $2$. This is done by adding $1$ to all entries of $W$. 
+
+```{r}
+W <- W + 1
+W
+```
+
+The frequency of the positive alleles can be computed as the column mean divided by $2$. Hence
+
+```{r}
+freq <- apply(W, 2, mean) / 2
+freq
+```
+
+The matrix $S$ is computed as
+
+```{r}
+S <- matrix(2*freq - 1, nrow = nrow(W), ncol = ncol(W), byrow = TRUE)
+S
+```
+
+The sum over the crossproducts is computed as
+
+```{r}
+sumpq <- 2 * sum(freq * (1-freq))
+sumpq
+```
+
+
+The genomic relationsip matrix is the
+
+```{r}
+U = W - S - 1
+G <- tcrossprod(U) / sumpq
+G
+```
+
+The same computation can also be done using the following function
+
+```{r}
+computeMatGrm <- function(pmatData) {
+  matData <- pmatData
+  # check the coding, if matData is -1, 0, 1 coded, then add 1 to get to 0, 1, 2 coding
+  if (min(matData) < 0) matData <- matData + 1
+  # Allele frequencies, column vector of P and sum of frequency products
+  freq <- apply(matData, 2, mean) / 2
+  P <- 2 * (freq - 0.5)
+  sumpq <- sum(freq*(1-freq))
+  # Changing the coding from (0,1,2) to (-1,0,1) and subtract matrix P
+  Z <- matData - 1 - matrix(P, nrow = nrow(matData), 
+                             ncol = ncol(matData), 
+                             byrow = TRUE)
+  # Z%*%Zt is replaced by tcrossprod(Z)
+  return(tcrossprod(Z)/(2*sumpq))
+}
+```
+
+Once the function is defined, the matrix $G$ can be computed as
+
+```{r}
+G <- computeMatGrm(pmatData = as.matrix(tbl_geno_data[,c(2,3)]))
+G
+```
+
+

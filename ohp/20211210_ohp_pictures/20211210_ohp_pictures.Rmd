@@ -1,0 +1,184 @@
+---
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+```{bash, echo=FALSE, eval=FALSE}
+# bash - export as jpeg
+ls -1 /Users/${USER}/Google\ Drive/Vorlesungen/LBG/FS2021/OHP-L12/* | while read p
+do
+  CURPICFN=$(basename "$p")
+  echo " * Copy $p ..."
+  cp "$p" ~/Desktop
+  echo " * Convert ~/Desktop/$CURPICFN ..."
+  mogrify -resize 50% -format jpg ~/Desktop/$CURPICFN
+  echo " * Remove ~/Desktop/$CURPICFN ..."
+  rm ~/Desktop/$CURPICFN
+  sleep 2
+done
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+# include jpg into this rmd
+this_rmd_file <- ifelse(rstudioapi::isAvailable(),
+                        rstudioapi::getActiveDocumentContext()$path,
+                        whereami::thisfile())
+
+
+vec_pics <- list.files(path = "~/Desktop", pattern = ".jpg$")
+for (pidx in seq_along(vec_pics)){
+   cur_pic <- vec_pics[pidx]
+   cur_pic_nr <- as.integer(unlist(strsplit(fs::path_ext_remove(cur_pic), "_"))[2])
+  cat("\n## OHP Picture ", pidx, "\n\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("```{r ohp-picture", cur_pic_nr, "}\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page", cur_pic_nr, ".odg')\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("fs::file_delete(path = '~/Desktop/", cur_pic, "')\n", sep = "", file = this_rmd_file, append = TRUE)
+  cat("```\n\n", file = this_rmd_file, append = TRUE)
+}
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+# add out.width parameter
+this_rmd_file <- ifelse(rstudioapi::isAvailable(),
+                        rstudioapi::getActiveDocumentContext()$path,
+                        whereami::thisfile())
+con_rmd <- file(description = this_rmd_file)
+vec_rmd <- readLines(con = con_rmd)
+close(con = con_rmd)
+vec_rmd2 <- vec_rmd[60:length(vec_rmd)]
+vec_rpl <- gsub(pattern = 'fig_path="odg", out.width="100%"}', replacement = 'fig_path="odg", out.width="70%"}', vec_rmd2)
+cat(paste0(c(vec_rmd[1:59],vec_rpl), collapse = "\n"), "\n", file = this_rmd_file, append = FALSE)
+```
+
+
+## OHP Picture 1
+
+```{r ohp-page3416, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="60%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3416.odg')
+knitr::include_graphics(path = "odg/ohp-page3416.png")
+# fs::file_delete(path = '~/Desktop/IMG_3416.jpg')
+```
+
+
+## OHP Picture 2
+
+```{r ohp-page3417, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3417.odg')
+knitr::include_graphics(path = "odg/ohp-page3417.png")
+# fs::file_delete(path = '~/Desktop/IMG_3417.jpg')
+```
+
+
+## OHP Picture 3
+
+```{r ohp-page3418, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3418.odg')
+knitr::include_graphics(path = "odg/ohp-page3418.png")
+# fs::file_delete(path = '~/Desktop/IMG_3418.jpg')
+```
+
+
+## OHP Picture 4
+
+```{r ohp-page3419, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3419.odg')
+knitr::include_graphics(path = "odg/ohp-page3419.png")
+# fs::file_delete(path = '~/Desktop/IMG_3419.jpg')
+```
+
+
+## OHP Picture 5
+
+```{r ohp-page3420, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3420.odg')
+knitr::include_graphics(path = "odg/ohp-page3420.png")
+# fs::file_delete(path = '~/Desktop/IMG_3420.jpg')
+```
+
+
+## OHP Picture 6
+
+```{r ohp-page3421, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+##rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3421.odg')
+knitr::include_graphics(path = "odg/ohp-page3421.png")
+# fs::file_delete(path = '~/Desktop/IMG_3421.jpg')
+```
+
+
+## OHP Picture 7
+
+```{r ohp-page3422, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3422.odg')
+knitr::include_graphics(path = "odg/ohp-page3422.png")
+# fs::file_delete(path = '~/Desktop/IMG_3422.jpg')
+```
+
+
+## OHP Picture 8
+
+```{r ohp-page3423, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3423.odg')
+knitr::include_graphics(path = "odg/ohp-page3423.png")
+# fs::file_delete(path = '~/Desktop/IMG_3423.jpg')
+```
+
+
+## OHP Picture 9
+
+```{r ohp-page3424, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3424.odg')
+knitr::include_graphics(path = "odg/ohp-page3424.png")
+# fs::file_delete(path = '~/Desktop/IMG_3424.jpg')
+```
+
+
+## OHP Picture 10
+
+```{r ohp-page3425, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+##rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3425.odg')
+knitr::include_graphics(path = "odg/ohp-page3425.png")
+# fs::file_delete(path = '~/Desktop/IMG_3425.jpg')
+```
+
+
+## OHP Picture 11
+
+```{r ohp-page3426, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+##rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3426.odg')
+knitr::include_graphics(path = "odg/ohp-page3426.png")
+# fs::file_delete(path = '~/Desktop/IMG_3426.jpg')
+```
+
+
+## OHP Picture 12
+
+```{r ohp-page3427, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3427.odg')
+knitr::include_graphics(path = "odg/ohp-page3427.png")
+# fs::file_delete(path = '~/Desktop/IMG_3427.jpg')
+```
+
+
+## OHP Picture 13
+
+```{r ohp-page3428, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="60%"}
+##rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3428.odg')
+knitr::include_graphics(path = "odg/ohp-page3428.png")
+# fs::file_delete(path = '~/Desktop/IMG_3428.jpg')
+```
+
+
+## OHP Picture 14
+
+```{r ohp-page3429, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="70%"}
+#rmdhelp::use_odg_graphic(ps_path = 'odg/ohp-page3429.odg')
+knitr::include_graphics(path = "odg/ohp-page3429.png")
+# fs::file_delete(path = '~/Desktop/IMG_3429.jpg')
+```
+                   

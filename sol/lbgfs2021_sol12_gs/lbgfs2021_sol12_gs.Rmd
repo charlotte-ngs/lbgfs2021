@@ -65,6 +65,9 @@ tbl_obs <- tibble::tibble(Observation = mat_obs_y_rounded[,1])
 geno_code %>% bind_cols(tbl_obs) -> tbl_all_data
 ### # add animal ids
 tbl_all_data <- bind_cols(Animal = c(1:n_nr_animal),tbl_all_data)
+### # write data to file
+# s_data_path <- file.path(here::here(), "docs", "data", "geno_data.csv")
+# readr::write_csv(tbl_all_data, file = s_data_path)
 ```
 
 We are given the dataset that is shown in the table below. This dataset contains gentyping results of `r n_nr_animal` for `r n_nr_snp` SNP loci.

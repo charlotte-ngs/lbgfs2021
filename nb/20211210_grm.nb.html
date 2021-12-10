@@ -215,10 +215,90 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<p>In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations.</p>
+<p>In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations. In this notebook, we use the data set from exercise 12 to show how the genomic relationship matrix is computed.</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxMCwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxMCDDlyA0Il19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTNWU1RVK0RRQkFkS0tqRnREYlJnd2NQeEhpRmcxNjhTWTN4cU1hUHBEZGRZS3RFdWpSQTFhUC96TC9TbitESlkzR0FHVk0zWVpQSm0zazc4M1ptNFBaaWN1Sk1IQURvZ1dVWTBMUFJCZnZoL3RJN0JiQk1EQXl3b0YvakJ5YnRvbU9oRGRHY3MyOW9UZ0NFVzRRandqM0NmY0lEUXBmd2tQQUkrRFM2SExDK0huOXBxTi9yZGJwdWwzN1hPMTE1ckJ0RW4wMFF5SllNWXBlUStDZmlId25Gc3NWcFFIbHRRaEF1U2ZiZjRtMGxackpBWjFUZkVMa3hWc2xNcEp4eWQzWGpqdGVEY3dxMnI4TkM1bStpVERLbDZmYno3TjFuN1FHYVdiZGJWZFdQM2tDVWlvSWJZTktKUlNuOGFZNzFHSzIwa3Mxc1hyK0lSV2I5eTloYXNaRnJ4TTVDMVozRVh2U3lVSy9lTWJTZnk2QjlETWgzMW55cmZkS3NTTXJtelVqMW5Dakp2YWNpbEx5bUlVN2NET3pQODBTVlBBbXloVjltNWQ4Nm5TaExtV2xtZzlVdkpLbk85eWtEQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Animal"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["SNP A"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["SNP B"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Observation"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"0","3":"0","4":"156"},{"1":"2","2":"1","3":"0","4":"168"},{"1":"3","2":"0","3":"1","4":"161"},{"1":"4","2":"1","3":"0","4":"164"},{"1":"5","2":"-1","3":"0","4":"128"},{"1":"6","2":"-1","3":"1","4":"124"},{"1":"7","2":"0","3":"-1","4":"143"},{"1":"8","2":"1","3":"1","4":"178"},{"1":"9","2":"1","3":"0","4":"163"},{"1":"10","2":"0","3":"0","4":"151"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The genomic relationship matrix can be computed as shown on the slides</p>
+<div id="how-to-compute-g" class="section level1">
+<h1>How To Compute <span class="math inline">\(G\)</span></h1>
+<ul>
+<li>Read matrix <span class="math inline">\(W\)</span></li>
+<li>For each column <span class="math inline">\(j\)</span> of <span class="math inline">\(W\)</span> compute frequency <span class="math inline">\(p_j\)</span></li>
+<li>Compute matrix <span class="math inline">\(S\)</span> and <span class="math inline">\(\sum_{j=1}^k(1-2p_j(1-p_j))\)</span> from <span class="math inline">\(p_j\)</span></li>
+<li>Compute <span class="math inline">\(U\)</span> from <span class="math inline">\(W\)</span> and <span class="math inline">\(S\)</span></li>
+<li>Compute <span class="math inline">\(G\)</span></li>
+</ul>
+<div id="step-1-matrix-w" class="section level2">
+<h2>Step 1: Matrix <span class="math inline">\(W\)</span></h2>
+<p>Here we obtain matrix <span class="math inline">\(W\)</span> from the data</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<pre><code>  SNP A SNP B</code></pre>
+<p>[1,] 0 0 [2,] 1 0 [3,] 0 1 [4,] 1 0 [5,] -1 0 [6,] -1 1 [7,] 0 -1 [8,] 1 1 [9,] 1 0 [10,] 0 0</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="step-2-frequency" class="section level2">
+<h2>Step 2: Frequency</h2>
+<p>To compute te frequency of the positive allele it is better to change the genotype encoding from <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> to <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> , <span class="math inline">\(2\)</span>. This is done by adding <span class="math inline">\(1\)</span> to all entries of <span class="math inline">\(W\)</span>.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<pre><code>  SNP A SNP B</code></pre>
+<p>[1,] 1 1 [2,] 2 1 [3,] 1 2 [4,] 2 1 [5,] 0 1 [6,] 0 2 [7,] 1 0 [8,] 2 2 [9,] 2 1 [10,] 1 1</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The frequency of the positive alleles can be computed as the column mean divided by <span class="math inline">\(2\)</span>. Hence</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<p>SNP A SNP B 0.6 0.6</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The matrix <span class="math inline">\(S\)</span> is computed as</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<pre><code>  [,1] [,2]</code></pre>
+<p>[1,] 0.2 0.2 [2,] 0.2 0.2 [3,] 0.2 0.2 [4,] 0.2 0.2 [5,] 0.2 0.2 [6,] 0.2 0.2 [7,] 0.2 0.2 [8,] 0.2 0.2 [9,] 0.2 0.2 [10,] 0.2 0.2</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The sum over the crossproducts is computed as</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<p>[1] 0.48</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The genomic relationsip matrix is the</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<pre><code>        [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]       [,8]       [,9]      [,10]</code></pre>
+<p>[1,] 0.1666667 -0.2500000 -0.2500000 -0.2500000 0.5833333 0.1666667 0.5833333 -0.6666667 -0.2500000 0.1666667 [2,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [3,] -0.2500000 -0.6666667 1.4166667 -0.6666667 0.1666667 1.8333333 -1.9166667 1.0000000 -0.6666667 -0.2500000 [4,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [5,] 0.5833333 -1.9166667 0.1666667 -1.9166667 3.0833333 2.6666667 1.0000000 -2.3333333 -1.9166667 0.5833333 [6,] 0.1666667 -2.3333333 1.8333333 -2.3333333 2.6666667 4.3333333 -1.5000000 -0.6666667 -2.3333333 0.1666667 [7,] 0.5833333 0.1666667 -1.9166667 0.1666667 1.0000000 -1.5000000 3.0833333 -2.3333333 0.1666667 0.5833333 [8,] -0.6666667 1.0000000 1.0000000 1.0000000 -2.3333333 -0.6666667 -2.3333333 2.6666667 1.0000000 -0.6666667 [9,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [10,] 0.1666667 -0.2500000 -0.2500000 -0.2500000 0.5833333 0.1666667 0.5833333 -0.6666667 -0.2500000 0.1666667</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The same computation can also be done using the following function</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Once the function is defined, the matrix <span class="math inline">\(G\)</span> can be computed as</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<pre><code>         [,1]        [,2]        [,3]        [,4]        [,5]        [,6]        [,7]       [,8]        [,9]       [,10]</code></pre>
+<p>[1,] 0.08333333 -0.12500000 -0.12500000 -0.12500000 0.29166667 0.08333333 0.29166667 -0.3333333 -0.12500000 0.08333333 [2,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [3,] -0.12500000 -0.33333333 0.70833333 -0.33333333 0.08333333 0.91666667 -0.95833333 0.5000000 -0.33333333 -0.12500000 [4,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [5,] 0.29166667 -0.95833333 0.08333333 -0.95833333 1.54166667 1.33333333 0.50000000 -1.1666667 -0.95833333 0.29166667 [6,] 0.08333333 -1.16666667 0.91666667 -1.16666667 1.33333333 2.16666667 -0.75000000 -0.3333333 -1.16666667 0.08333333 [7,] 0.29166667 0.08333333 -0.95833333 0.08333333 0.50000000 -0.75000000 1.54166667 -1.1666667 0.08333333 0.29166667 [8,] -0.33333333 0.50000000 0.50000000 0.50000000 -1.16666667 -0.33333333 -1.16666667 1.3333333 0.50000000 -0.33333333 [9,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [10,] 0.08333333 -0.12500000 -0.12500000 -0.12500000 0.29166667 0.08333333 0.29166667 -0.3333333 -0.12500000 0.08333333</p>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2Vub21pYyBSZWxhdGlvbnNoaXAgTWF0cml4IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpJbiBzaW5nbGUtc3RlcCBnZW5vbWljIGV2YWx1YXRpb25zIHVzaW5nIGJyZWVkaW5nLXZhbHVlIGJhc2VkIG1vZGVscywgdGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyByZXF1aXJlZCBhcyBvbmUgcGFydCBvZiB0aGUgbWl4ZWQgbW9kZWwgZXF1YXRpb25zLgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2Vub21pYyBSZWxhdGlvbnNoaXAgTWF0cml4IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpJbiBzaW5nbGUtc3RlcCBnZW5vbWljIGV2YWx1YXRpb25zIHVzaW5nIGJyZWVkaW5nLXZhbHVlIGJhc2VkIG1vZGVscywgdGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyByZXF1aXJlZCBhcyBvbmUgcGFydCBvZiB0aGUgbWl4ZWQgbW9kZWwgZXF1YXRpb25zLiBJbiB0aGlzIG5vdGVib29rLCB3ZSB1c2UgdGhlIGRhdGEgc2V0IGZyb20gZXhlcmNpc2UgMTIgdG8gc2hvdyBob3cgdGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyBjb21wdXRlZC4KCmBgYHtyfQpzX2RhdGFfcGF0aCA8LSAiaHR0cHM6Ly9jaGFybG90dGUtbmdzLmdpdGh1Yi5pby9sYmdmczIwMjEvZGF0YS9nZW5vX2RhdGEuY3N2Igp0YmxfZ2Vub19kYXRhIDwtIHJlYWRyOjpyZWFkX2NzdihmaWxlID0gc19kYXRhX3BhdGgpCnRibF9nZW5vX2RhdGEKYGBgCgoKVGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBjYW4gYmUgY29tcHV0ZWQgYXMgc2hvd24gb24gdGhlIHNsaWRlcwoKIyBIb3cgVG8gQ29tcHV0ZSAkRyQKKiBSZWFkIG1hdHJpeCAkVyQgCiogRm9yIGVhY2ggY29sdW1uICRqJCBvZiAkVyQgY29tcHV0ZSBmcmVxdWVuY3kgJHBfaiQKKiBDb21wdXRlIG1hdHJpeCAkUyQgYW5kICRcc3VtX3tqPTF9XmsoMS0ycF9qKDEtcF9qKSkkIGZyb20gJHBfaiQKKiBDb21wdXRlICRVJCBmcm9tICRXJCBhbmQgJFMkCiogQ29tcHV0ZSAkRyQKCgojIyBTdGVwIDE6IE1hdHJpeCAkVyQKSGVyZSB3ZSBvYnRhaW4gbWF0cml4ICRXJCBmcm9tIHRoZSBkYXRhCgpgYGB7cn0KVyA8LSBhcy5tYXRyaXgodGJsX2dlbm9fZGF0YVssYygyLDMpXSkKVwpgYGAKCgojIyBTdGVwIDI6IEZyZXF1ZW5jeQpUbyBjb21wdXRlIHRlIGZyZXF1ZW5jeSBvZiB0aGUgcG9zaXRpdmUgYWxsZWxlIGl0IGlzIGJldHRlciB0byBjaGFuZ2UgdGhlIGdlbm90eXBlIGVuY29kaW5nIGZyb20gJC0xJCwgJDAkLCAkMSQgdG8gJDAkLCAkMSQgLCAkMiQuIFRoaXMgaXMgZG9uZSBieSBhZGRpbmcgJDEkIHRvIGFsbCBlbnRyaWVzIG9mICRXJC4gCgpgYGB7cn0KVyA8LSBXICsgMQpXCmBgYAoKVGhlIGZyZXF1ZW5jeSBvZiB0aGUgcG9zaXRpdmUgYWxsZWxlcyBjYW4gYmUgY29tcHV0ZWQgYXMgdGhlIGNvbHVtbiBtZWFuIGRpdmlkZWQgYnkgJDIkLiBIZW5jZQoKYGBge3J9CmZyZXEgPC0gYXBwbHkoVywgMiwgbWVhbikgLyAyCmZyZXEKYGBgCgpUaGUgbWF0cml4ICRTJCBpcyBjb21wdXRlZCBhcwoKYGBge3J9ClMgPC0gbWF0cml4KDIqZnJlcSAtIDEsIG5yb3cgPSBucm93KFcpLCBuY29sID0gbmNvbChXKSwgYnlyb3cgPSBUUlVFKQpTCmBgYAoKVGhlIHN1bSBvdmVyIHRoZSBjcm9zc3Byb2R1Y3RzIGlzIGNvbXB1dGVkIGFzCgpgYGB7cn0Kc3VtcHEgPC0gMiAqIHN1bShmcmVxICogKDEtZnJlcSkpCnN1bXBxCmBgYAoKClRoZSBnZW5vbWljIHJlbGF0aW9uc2lwIG1hdHJpeCBpcyB0aGUKCmBgYHtyfQpVID0gVyAtIFMgLSAxCkcgPC0gdGNyb3NzcHJvZChVKSAvIHN1bXBxCkcKYGBgCgpUaGUgc2FtZSBjb21wdXRhdGlvbiBjYW4gYWxzbyBiZSBkb25lIHVzaW5nIHRoZSBmb2xsb3dpbmcgZnVuY3Rpb24KCmBgYHtyfQpjb21wdXRlTWF0R3JtIDwtIGZ1bmN0aW9uKHBtYXREYXRhKSB7CiAgbWF0RGF0YSA8LSBwbWF0RGF0YQogICMgY2hlY2sgdGhlIGNvZGluZywgaWYgbWF0RGF0YSBpcyAtMSwgMCwgMSBjb2RlZCwgdGhlbiBhZGQgMSB0byBnZXQgdG8gMCwgMSwgMiBjb2RpbmcKICBpZiAobWluKG1hdERhdGEpIDwgMCkgbWF0RGF0YSA8LSBtYXREYXRhICsgMQogICMgQWxsZWxlIGZyZXF1ZW5jaWVzLCBjb2x1bW4gdmVjdG9yIG9mIFAgYW5kIHN1bSBvZiBmcmVxdWVuY3kgcHJvZHVjdHMKICBmcmVxIDwtIGFwcGx5KG1hdERhdGEsIDIsIG1lYW4pIC8gMgogIFAgPC0gMiAqIChmcmVxIC0gMC41KQogIHN1bXBxIDwtIHN1bShmcmVxKigxLWZyZXEpKQogICMgQ2hhbmdpbmcgdGhlIGNvZGluZyBmcm9tICgwLDEsMikgdG8gKC0xLDAsMSkgYW5kIHN1YnRyYWN0IG1hdHJpeCBQCiAgWiA8LSBtYXREYXRhIC0gMSAtIG1hdHJpeChQLCBucm93ID0gbnJvdyhtYXREYXRhKSwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmNvbCA9IG5jb2wobWF0RGF0YSksIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ5cm93ID0gVFJVRSkKICAjIFolKiVadCBpcyByZXBsYWNlZCBieSB0Y3Jvc3Nwcm9kKFopCiAgcmV0dXJuKHRjcm9zc3Byb2QoWikvKDIqc3VtcHEpKQp9CmBgYAoKT25jZSB0aGUgZnVuY3Rpb24gaXMgZGVmaW5lZCwgdGhlIG1hdHJpeCAkRyQgY2FuIGJlIGNvbXB1dGVkIGFzCgpgYGB7cn0KRyA8LSBjb21wdXRlTWF0R3JtKHBtYXREYXRhID0gYXMubWF0cml4KHRibF9nZW5vX2RhdGFbLGMoMiwzKV0pKQpHCmBgYAoKCg==</div>
 
 
 
