@@ -1,0 +1,6 @@
+---
+title: "Genomic Relationship Matrix"
+output: html_notebook
+---
+
+In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations.

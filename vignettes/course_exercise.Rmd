@@ -18,7 +18,7 @@ The following table contains links to the exercises for Livestock Breeding and G
 
 ```{r table-exercise, echo=FALSE, message=FALSE, warning=FALSE}
 ex_url <- "https://charlotte-ngs.github.io/lbgfs2021/ex/"
-tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
+tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12),
                          Date = c("2021-10-01",
                                   "2021-10.08",
                                   "2021-10-15",
@@ -29,7 +29,8 @@ tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                                   "2021-11-19",
                                   "2021-12-03",
                                   "2021-12-03",
-                                  "2021-12-03"),
+                                  "2021-12-03",
+                                  "2021-12-10"),
                          Topic = c(
                            paste0("[Vectors in R](", ex_url, "20211001_vectors_in_r.nb.nb.nb.html)", collapse = ""),
                            paste0("[Vectors and Matrices in R](", ex_url, "lbgfs2021_ex01_linalg.nb.html)", collapse = ""),
@@ -41,7 +42,8 @@ tbl_ex <- tibble::tibble(Nr = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
                            paste0("[Inverse Numerator Relationship Matrix](", ex_url, "lbgfs2021_ex08_inv_num.nb.nb.nb.html)", collapse = ""),
                            paste0("[Variance and Inbreeding](", ex_url, "lbgfs2021_ex09_vi.nb.html)", collapse = ""),
                            paste0("[Test Exam](", ex_url, "20201218074325_exam_pvr.pdf)", collapse = ""),
-                           paste0("[Decomposition of Breeding Values](", ex_url, "lbgfs2021_ex11_decomp_bv.nb.html)", collapse = "")
+                           paste0("[Decomposition of Breeding Values](", ex_url, "lbgfs2021_ex11_decomp_bv.nb.html)", collapse = ""),
+                           paste0("[Genomic Selection](", ex_url, "lbgfs2021_ex12_gs.nb.html)", collapse = "")
                          ))
 knitr::kable(tbl_ex)
 ```
