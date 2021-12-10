@@ -215,10 +215,28 @@ pre code {
 
 
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
 <p>In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations. In this notebook, we use the data set from exercise 12 to show how the genomic relationship matrix is computed.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxMCwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxMCDDlyA0Il19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTNWU1RVK0RRQkFkS0tqRnREYlJnd2NQeEhpRmcxNjhTWTN4cU1hUHBEZGRZS3RFdWpSQTFhUC96TC9TbitESlkzR0FHVk0zWVpQSm0zazc4M1ptNFBaaWN1Sk1IQURvZ1dVWTBMUFJCZnZoL3RJN0JiQk1EQXl3b0YvakJ5YnRvbU9oRGRHY3MyOW9UZ0NFVzRRandqM0NmY0lEUXBmd2tQQUkrRFM2SExDK0huOXBxTi9yZGJwdWwzN1hPMTE1ckJ0RW4wMFF5SllNWXBlUStDZmlId25Gc3NWcFFIbHRRaEF1U2ZiZjRtMGxackpBWjFUZkVMa3hWc2xNcEp4eWQzWGpqdGVEY3dxMnI4TkM1bStpVERLbDZmYno3TjFuN1FHYVdiZGJWZFdQM2tDVWlvSWJZTktKUlNuOGFZNzFHSzIwa3Mxc1hyK0lSV2I5eTloYXNaRnJ4TTVDMVozRVh2U3lVSy9lTWJTZnk2QjlETWgzMW55cmZkS3NTTXJtelVqMW5Dakp2YWNpbEx5bUlVN2NET3pQODBTVlBBbXloVjltNWQ4Nm5TaExtV2xtZzlVdkpLbk85eWtEQUFBPSJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc19kYXRhX3BhdGggPC0gXCJodHRwczovL2NoYXJsb3R0ZS1uZ3MuZ2l0aHViLmlvL2xiZ2ZzMjAyMS9kYXRhL2dlbm9fZGF0YS5jc3ZcIlxudGJsX2dlbm9fZGF0YSA8LSByZWFkcjo6cmVhZF9jc3YoZmlsZSA9IHNfZGF0YV9wYXRoKVxuYGBgIn0= -->
+<pre class="r"><code>s_data_path &lt;- &quot;https://charlotte-ngs.github.io/lbgfs2021/data/geno_data.csv&quot;
+tbl_geno_data &lt;- readr::read_csv(file = s_data_path)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAgQ29sdW1uczogNFxu4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuZGJsICg0KTogQW5pbWFsLCBTTlAgQSwgU05QIEIsIE9ic2VydmF0aW9uXG5cbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
+<pre><code>Rows: 10 Columns: 4
+── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+dbl (4): Animal, SNP A, SNP B, Observation
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGJsX2dlbm9fZGF0YVxuYGBgIn0= -->
+<pre class="r"><code>tbl_geno_data</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxMCwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxMCDDlyA0Il19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTNWU1RVL0NRQkNkbGhhbEJpVFJnd2NQeEhpbGlmSGl6V0tNUnpWK0pOeDBLUXMwbEMzWnR1RFJmK1pmNFNkNDhramRibWRNM1lSTkptL216Y3piMldtZmJvZVgzdEFEZ0FZNGxnVU5WN25ndnI3YzlhOEFIRnNGRmpqUUt2RkRGUjBweDFIV1VlWmRmNE0rQVNEdUkzWVJqeEZQRUU4UmU0aG5pT2RBUit0U1FQcG0vR1dnbVRmN1ROMWQrcnZ1MlZWSHVrSDRxWU9BVjJRdzdpRWkvNDc4R3lMYlZEZ0pzSzRxQ0VZYmxQMjNlRmV3QlUrVjB5MHpTRFlISWxxd21FcWU3eDk3ZzNwd2c4SEJ3eWpsY3NXeUtCR0dia3NtYTUrMDI4cnNjdHlpS0g3TUFjS1lwVFFBa2Q2WVpjeWZTTld2b3EzUnNwY3N5eHRWazEzK01ycEJweXVyQ3pVWFRNN3pwY0Zhc3RZQ2hsOHZQTXhGK1laeFA1emxZdDYvTUVyYjZIczEzNm1HdFF1VWFxR1V3OE5aUWcrUVBNM2pMS1VodVpoR2dsTnl6YVNJeEpSQ3RjS1VUU25yeG16RTZjdDAxSkwxanYybGpFUkd5MU5zNm1kSjl2Y0Z2VENKaWRIcmhPMHZERDNsRVp3REFBQT0ifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Animal"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["SNP A"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["SNP B"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Observation"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"0","3":"0","4":"156"},{"1":"2","2":"1","3":"0","4":"168"},{"1":"3","2":"0","3":"1","4":"161"},{"1":"4","2":"1","3":"0","4":"164"},{"1":"5","2":"-1","3":"0","4":"128"},{"1":"6","2":"-1","3":"1","4":"124"},{"1":"7","2":"0","3":"-1","4":"143"},{"1":"8","2":"1","3":"1","4":"178"},{"1":"9","2":"1","3":"0","4":"163"},{"1":"10","2":"0","3":"0","4":"151"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[10]},"pages":{}}}
@@ -242,8 +260,23 @@ pre code {
 <p>Here we obtain matrix <span class="math inline">\(W\)</span> from the data</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<pre><code>  SNP A SNP B</code></pre>
-<p>[1,] 0 0 [2,] 1 0 [3,] 0 1 [4,] 1 0 [5,] -1 0 [6,] -1 1 [7,] 0 -1 [8,] 1 1 [9,] 1 0 [10,] 0 0</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVyA8LSBhcy5tYXRyaXgodGJsX2dlbm9fZGF0YVssYygyLDMpXSlcbldcbmBgYCJ9 -->
+<pre class="r"><code>W &lt;- as.matrix(tbl_geno_data[,c(2,3)])
+W</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgU05QIEEgU05QIEJcbiBbMSxdICAgICAwICAgICAwXG4gWzIsXSAgICAgMSAgICAgMFxuIFszLF0gICAgIDAgICAgIDFcbiBbNCxdICAgICAxICAgICAwXG4gWzUsXSAgICAtMSAgICAgMFxuIFs2LF0gICAgLTEgICAgIDFcbiBbNyxdICAgICAwICAgIC0xXG4gWzgsXSAgICAgMSAgICAgMVxuIFs5LF0gICAgIDEgICAgIDBcblsxMCxdICAgICAwICAgICAwXG4ifQ== -->
+<pre><code>      SNP A SNP B
+ [1,]     0     0
+ [2,]     1     0
+ [3,]     0     1
+ [4,]     1     0
+ [5,]    -1     0
+ [6,]    -1     1
+ [7,]     0    -1
+ [8,]     1     1
+ [9,]     1     0
+[10,]     0     0</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -252,53 +285,214 @@ pre code {
 <p>To compute te frequency of the positive allele it is better to change the genotype encoding from <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> to <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> , <span class="math inline">\(2\)</span>. This is done by adding <span class="math inline">\(1\)</span> to all entries of <span class="math inline">\(W\)</span>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<pre><code>  SNP A SNP B</code></pre>
-<p>[1,] 1 1 [2,] 2 1 [3,] 1 2 [4,] 2 1 [5,] 0 1 [6,] 0 2 [7,] 1 0 [8,] 2 2 [9,] 2 1 [10,] 1 1</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVyA8LSBXICsgMVxuV1xuYGBgIn0= -->
+<pre class="r"><code>W &lt;- W + 1
+W</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgU05QIEEgU05QIEJcbiBbMSxdICAgICAxICAgICAxXG4gWzIsXSAgICAgMiAgICAgMVxuIFszLF0gICAgIDEgICAgIDJcbiBbNCxdICAgICAyICAgICAxXG4gWzUsXSAgICAgMCAgICAgMVxuIFs2LF0gICAgIDAgICAgIDJcbiBbNyxdICAgICAxICAgICAwXG4gWzgsXSAgICAgMiAgICAgMlxuIFs5LF0gICAgIDIgICAgIDFcblsxMCxdICAgICAxICAgICAxXG4ifQ== -->
+<pre><code>      SNP A SNP B
+ [1,]     1     1
+ [2,]     2     1
+ [3,]     1     2
+ [4,]     2     1
+ [5,]     0     1
+ [6,]     0     2
+ [7,]     1     0
+ [8,]     2     2
+ [9,]     2     1
+[10,]     1     1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The frequency of the positive alleles can be computed as the column mean divided by <span class="math inline">\(2\)</span>. Hence</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<p>SNP A SNP B 0.6 0.6</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnJlcSA8LSBhcHBseShXLCAyLCBtZWFuKSAvIDJcbmZyZXFcbmBgYCJ9 -->
+<pre class="r"><code>freq &lt;- apply(W, 2, mean) / 2
+freq</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiU05QIEEgU05QIEIgXG4gIDAuNiAgIDAuNiBcbiJ9 -->
+<pre><code>SNP A SNP B 
+  0.6   0.6 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The matrix <span class="math inline">\(S\)</span> is computed as</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<pre><code>  [,1] [,2]</code></pre>
-<p>[1,] 0.2 0.2 [2,] 0.2 0.2 [3,] 0.2 0.2 [4,] 0.2 0.2 [5,] 0.2 0.2 [6,] 0.2 0.2 [7,] 0.2 0.2 [8,] 0.2 0.2 [9,] 0.2 0.2 [10,] 0.2 0.2</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUyA8LSBtYXRyaXgoMipmcmVxIC0gMSwgbnJvdyA9IG5yb3coVyksIG5jb2wgPSBuY29sKFcpLCBieXJvdyA9IFRSVUUpXG5TXG5gYGAifQ== -->
+<pre class="r"><code>S &lt;- matrix(2*freq - 1, nrow = nrow(W), ncol = ncol(W), byrow = TRUE)
+S</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgWywxXSBbLDJdXG4gWzEsXSAgMC4yICAwLjJcbiBbMixdICAwLjIgIDAuMlxuIFszLF0gIDAuMiAgMC4yXG4gWzQsXSAgMC4yICAwLjJcbiBbNSxdICAwLjIgIDAuMlxuIFs2LF0gIDAuMiAgMC4yXG4gWzcsXSAgMC4yICAwLjJcbiBbOCxdICAwLjIgIDAuMlxuIFs5LF0gIDAuMiAgMC4yXG5bMTAsXSAgMC4yICAwLjJcbiJ9 -->
+<pre><code>      [,1] [,2]
+ [1,]  0.2  0.2
+ [2,]  0.2  0.2
+ [3,]  0.2  0.2
+ [4,]  0.2  0.2
+ [5,]  0.2  0.2
+ [6,]  0.2  0.2
+ [7,]  0.2  0.2
+ [8,]  0.2  0.2
+ [9,]  0.2  0.2
+[10,]  0.2  0.2</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The sum over the crossproducts is computed as</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<p>[1] 0.48</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtcHEgPC0gMiAqIHN1bShmcmVxICogKDEtZnJlcSkpXG5zdW1wcVxuYGBgIn0= -->
+<pre class="r"><code>sumpq &lt;- 2 * sum(freq * (1-freq))
+sumpq</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTZcbiJ9 -->
+<pre><code>[1] 0.96</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The genomic relationsip matrix is the</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<pre><code>        [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]       [,8]       [,9]      [,10]</code></pre>
-<p>[1,] 0.1666667 -0.2500000 -0.2500000 -0.2500000 0.5833333 0.1666667 0.5833333 -0.6666667 -0.2500000 0.1666667 [2,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [3,] -0.2500000 -0.6666667 1.4166667 -0.6666667 0.1666667 1.8333333 -1.9166667 1.0000000 -0.6666667 -0.2500000 [4,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [5,] 0.5833333 -1.9166667 0.1666667 -1.9166667 3.0833333 2.6666667 1.0000000 -2.3333333 -1.9166667 0.5833333 [6,] 0.1666667 -2.3333333 1.8333333 -2.3333333 2.6666667 4.3333333 -1.5000000 -0.6666667 -2.3333333 0.1666667 [7,] 0.5833333 0.1666667 -1.9166667 0.1666667 1.0000000 -1.5000000 3.0833333 -2.3333333 0.1666667 0.5833333 [8,] -0.6666667 1.0000000 1.0000000 1.0000000 -2.3333333 -0.6666667 -2.3333333 2.6666667 1.0000000 -0.6666667 [9,] -0.2500000 1.4166667 -0.6666667 1.4166667 -1.9166667 -2.3333333 0.1666667 1.0000000 1.4166667 -0.2500000 [10,] 0.1666667 -0.2500000 -0.2500000 -0.2500000 0.5833333 0.1666667 0.5833333 -0.6666667 -0.2500000 0.1666667</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVSA9IFcgLSBTIC0gMVxuVVxuYGBgIn0= -->
+<pre class="r"><code>U = W - S - 1
+U</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgU05QIEEgU05QIEJcbiBbMSxdICAtMC4yICAtMC4yXG4gWzIsXSAgIDAuOCAgLTAuMlxuIFszLF0gIC0wLjIgICAwLjhcbiBbNCxdICAgMC44ICAtMC4yXG4gWzUsXSAgLTEuMiAgLTAuMlxuIFs2LF0gIC0xLjIgICAwLjhcbiBbNyxdICAtMC4yICAtMS4yXG4gWzgsXSAgIDAuOCAgIDAuOFxuIFs5LF0gICAwLjggIC0wLjJcblsxMCxdICAtMC4yICAtMC4yXG4ifQ== -->
+<pre><code>      SNP A SNP B
+ [1,]  -0.2  -0.2
+ [2,]   0.8  -0.2
+ [3,]  -0.2   0.8
+ [4,]   0.8  -0.2
+ [5,]  -1.2  -0.2
+ [6,]  -1.2   0.8
+ [7,]  -0.2  -1.2
+ [8,]   0.8   0.8
+ [9,]   0.8  -0.2
+[10,]  -0.2  -0.2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRyA8LSB0Y3Jvc3Nwcm9kKFUpIC8gc3VtcHFcbkdcbmBgYCJ9 -->
+<pre class="r"><code>G &lt;- tcrossprod(U) / sumpq
+G</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIFssMV0gICAgICAgIFssMl0gICAgICAgIFssM10gICAgICAgIFssNF0gICAgICAgIFssNV0gICAgICAgIFssNl0gICAgICAgIFssN10gICAgICAgWyw4XSAgICAgICAgWyw5XSAgICAgICBbLDEwXVxuIFsxLF0gIDAuMDgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4wODMzMzMzM1xuIFsyLF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFszLF0gLTAuMTI1MDAwMDAgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuMDgzMzMzMzMgIDAuOTE2NjY2NjcgLTAuOTU4MzMzMzMgIDAuNTAwMDAwMCAtMC4zMzMzMzMzMyAtMC4xMjUwMDAwMFxuIFs0LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFs1LF0gIDAuMjkxNjY2NjcgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDEuNTQxNjY2NjcgIDEuMzMzMzMzMzMgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NyAtMC45NTgzMzMzMyAgMC4yOTE2NjY2N1xuIFs2LF0gIDAuMDgzMzMzMzMgLTEuMTY2NjY2NjcgIDAuOTE2NjY2NjcgLTEuMTY2NjY2NjcgIDEuMzMzMzMzMzMgIDIuMTY2NjY2NjcgLTAuNzUwMDAwMDAgLTAuMzMzMzMzMyAtMS4xNjY2NjY2NyAgMC4wODMzMzMzM1xuIFs3LF0gIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMDAgLTAuNzUwMDAwMDAgIDEuNTQxNjY2NjcgLTEuMTY2NjY2NyAgMC4wODMzMzMzMyAgMC4yOTE2NjY2N1xuIFs4LF0gLTAuMzMzMzMzMzMgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NjcgLTAuMzMzMzMzMzMgLTEuMTY2NjY2NjcgIDEuMzMzMzMzMyAgMC41MDAwMDAwMCAtMC4zMzMzMzMzM1xuIFs5LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuWzEwLF0gIDAuMDgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4wODMzMzMzM1xuIn0= -->
+<pre><code>             [,1]        [,2]        [,3]        [,4]        [,5]        [,6]        [,7]       [,8]        [,9]       [,10]
+ [1,]  0.08333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.08333333
+ [2,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [3,] -0.12500000 -0.33333333  0.70833333 -0.33333333  0.08333333  0.91666667 -0.95833333  0.5000000 -0.33333333 -0.12500000
+ [4,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [5,]  0.29166667 -0.95833333  0.08333333 -0.95833333  1.54166667  1.33333333  0.50000000 -1.1666667 -0.95833333  0.29166667
+ [6,]  0.08333333 -1.16666667  0.91666667 -1.16666667  1.33333333  2.16666667 -0.75000000 -0.3333333 -1.16666667  0.08333333
+ [7,]  0.29166667  0.08333333 -0.95833333  0.08333333  0.50000000 -0.75000000  1.54166667 -1.1666667  0.08333333  0.29166667
+ [8,] -0.33333333  0.50000000  0.50000000  0.50000000 -1.16666667 -0.33333333 -1.16666667  1.3333333  0.50000000 -0.33333333
+ [9,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+[10,]  0.08333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.08333333</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The same computation can also be done using the following function</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29tcHV0ZU1hdEdybSA8LSBmdW5jdGlvbihwbWF0RGF0YSkge1xuICBtYXREYXRhIDwtIHBtYXREYXRhXG4gICMgY2hlY2sgdGhlIGNvZGluZywgaWYgbWF0RGF0YSBpcyAtMSwgMCwgMSBjb2RlZCwgdGhlbiBhZGQgMSB0byBnZXQgdG8gMCwgMSwgMiBjb2RpbmdcbiAgaWYgKG1pbihtYXREYXRhKSA8IDApIG1hdERhdGEgPC0gbWF0RGF0YSArIDFcbiAgIyBBbGxlbGUgZnJlcXVlbmNpZXMsIGNvbHVtbiB2ZWN0b3Igb2YgUCBhbmQgc3VtIG9mIGZyZXF1ZW5jeSBwcm9kdWN0c1xuICBmcmVxIDwtIGFwcGx5KG1hdERhdGEsIDIsIG1lYW4pIC8gMlxuICBQIDwtIDIgKiAoZnJlcSAtIDAuNSlcbiAgc3VtcHEgPC0gc3VtKGZyZXEqKDEtZnJlcSkpXG4gICMgQ2hhbmdpbmcgdGhlIGNvZGluZyBmcm9tICgwLDEsMikgdG8gKC0xLDAsMSkgYW5kIHN1YnRyYWN0IG1hdHJpeCBQXG4gIFogPC0gbWF0RGF0YSAtIDEgLSBtYXRyaXgoUCwgbnJvdyA9IG5yb3cobWF0RGF0YSksIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuY29sID0gbmNvbChtYXREYXRhKSwgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ5cm93ID0gVFJVRSlcbiAgIyBaJSolWnQgaXMgcmVwbGFjZWQgYnkgdGNyb3NzcHJvZChaKVxuICByZXR1cm4odGNyb3NzcHJvZChaKS8oMipzdW1wcSkpXG59XG5gYGAifQ== -->
+<pre class="r"><code>computeMatGrm &lt;- function(pmatData) {
+  matData &lt;- pmatData
+  # check the coding, if matData is -1, 0, 1 coded, then add 1 to get to 0, 1, 2 coding
+  if (min(matData) &lt; 0) matData &lt;- matData + 1
+  # Allele frequencies, column vector of P and sum of frequency products
+  freq &lt;- apply(matData, 2, mean) / 2
+  P &lt;- 2 * (freq - 0.5)
+  sumpq &lt;- sum(freq*(1-freq))
+  # Changing the coding from (0,1,2) to (-1,0,1) and subtract matrix P
+  Z &lt;- matData - 1 - matrix(P, nrow = nrow(matData), 
+                             ncol = ncol(matData), 
+                             byrow = TRUE)
+  # Z%*%Zt is replaced by tcrossprod(Z)
+  return(tcrossprod(Z)/(2*sumpq))
+}</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Once the function is defined, the matrix <span class="math inline">\(G\)</span> can be computed as</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<pre><code>         [,1]        [,2]        [,3]        [,4]        [,5]        [,6]        [,7]       [,8]        [,9]       [,10]</code></pre>
-<p>[1,] 0.08333333 -0.12500000 -0.12500000 -0.12500000 0.29166667 0.08333333 0.29166667 -0.3333333 -0.12500000 0.08333333 [2,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [3,] -0.12500000 -0.33333333 0.70833333 -0.33333333 0.08333333 0.91666667 -0.95833333 0.5000000 -0.33333333 -0.12500000 [4,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [5,] 0.29166667 -0.95833333 0.08333333 -0.95833333 1.54166667 1.33333333 0.50000000 -1.1666667 -0.95833333 0.29166667 [6,] 0.08333333 -1.16666667 0.91666667 -1.16666667 1.33333333 2.16666667 -0.75000000 -0.3333333 -1.16666667 0.08333333 [7,] 0.29166667 0.08333333 -0.95833333 0.08333333 0.50000000 -0.75000000 1.54166667 -1.1666667 0.08333333 0.29166667 [8,] -0.33333333 0.50000000 0.50000000 0.50000000 -1.16666667 -0.33333333 -1.16666667 1.3333333 0.50000000 -0.33333333 [9,] -0.12500000 0.70833333 -0.33333333 0.70833333 -0.95833333 -1.16666667 0.08333333 0.5000000 0.70833333 -0.12500000 [10,] 0.08333333 -0.12500000 -0.12500000 -0.12500000 0.29166667 0.08333333 0.29166667 -0.3333333 -0.12500000 0.08333333</p>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRyA8LSBjb21wdXRlTWF0R3JtKHBtYXREYXRhID0gYXMubWF0cml4KHRibF9nZW5vX2RhdGFbLGMoMiwzKV0pKVxuR1xuYGBgIn0= -->
+<pre class="r"><code>G &lt;- computeMatGrm(pmatData = as.matrix(tbl_geno_data[,c(2,3)]))
+G</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIFssMV0gICAgICAgIFssMl0gICAgICAgIFssM10gICAgICAgIFssNF0gICAgICAgIFssNV0gICAgICAgIFssNl0gICAgICAgIFssN10gICAgICAgWyw4XSAgICAgICAgWyw5XSAgICAgICBbLDEwXVxuIFsxLF0gIDAuMDgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4wODMzMzMzM1xuIFsyLF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFszLF0gLTAuMTI1MDAwMDAgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuMDgzMzMzMzMgIDAuOTE2NjY2NjcgLTAuOTU4MzMzMzMgIDAuNTAwMDAwMCAtMC4zMzMzMzMzMyAtMC4xMjUwMDAwMFxuIFs0LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFs1LF0gIDAuMjkxNjY2NjcgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDEuNTQxNjY2NjcgIDEuMzMzMzMzMzMgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NyAtMC45NTgzMzMzMyAgMC4yOTE2NjY2N1xuIFs2LF0gIDAuMDgzMzMzMzMgLTEuMTY2NjY2NjcgIDAuOTE2NjY2NjcgLTEuMTY2NjY2NjcgIDEuMzMzMzMzMzMgIDIuMTY2NjY2NjcgLTAuNzUwMDAwMDAgLTAuMzMzMzMzMyAtMS4xNjY2NjY2NyAgMC4wODMzMzMzM1xuIFs3LF0gIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMDAgLTAuNzUwMDAwMDAgIDEuNTQxNjY2NjcgLTEuMTY2NjY2NyAgMC4wODMzMzMzMyAgMC4yOTE2NjY2N1xuIFs4LF0gLTAuMzMzMzMzMzMgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NjcgLTAuMzMzMzMzMzMgLTEuMTY2NjY2NjcgIDEuMzMzMzMzMyAgMC41MDAwMDAwMCAtMC4zMzMzMzMzM1xuIFs5LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuWzEwLF0gIDAuMDgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4wODMzMzMzM1xuIn0= -->
+<pre><code>             [,1]        [,2]        [,3]        [,4]        [,5]        [,6]        [,7]       [,8]        [,9]       [,10]
+ [1,]  0.08333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.08333333
+ [2,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [3,] -0.12500000 -0.33333333  0.70833333 -0.33333333  0.08333333  0.91666667 -0.95833333  0.5000000 -0.33333333 -0.12500000
+ [4,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [5,]  0.29166667 -0.95833333  0.08333333 -0.95833333  1.54166667  1.33333333  0.50000000 -1.1666667 -0.95833333  0.29166667
+ [6,]  0.08333333 -1.16666667  0.91666667 -1.16666667  1.33333333  2.16666667 -0.75000000 -0.3333333 -1.16666667  0.08333333
+ [7,]  0.29166667  0.08333333 -0.95833333  0.08333333  0.50000000 -0.75000000  1.54166667 -1.1666667  0.08333333  0.29166667
+ [8,] -0.33333333  0.50000000  0.50000000  0.50000000 -1.16666667 -0.33333333 -1.16666667  1.3333333  0.50000000 -0.33333333
+ [9,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+[10,]  0.08333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.08333333</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>In most cases the computed genomic relationship matrix is singular and can therefore not be inverted. The solution to that is to add <span class="math inline">\(0.1\)</span> times the numeratore relationship matrix <span class="math inline">\(A\)</span> to the matrix <span class="math inline">\(G\)</span>. If there is no information about the pedigree available as in this dataset, then we can set the numerator relationship matrix equal to the identity matrix.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIiMgdGhlIGZvbGxvd2luZyByZXN1bHRzIGluIGFuIGVycm9yIiwic29sdmUoRykiXX0= -->
+<pre class="r"><code># the following results in an error
+solve(G)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR3N0YXIgPC0gRyArIDAuMSAqIGRpYWcoMSwgbnJvdyA9IG5yb3coRykpXG5Hc3RhclxuYGBgIn0= -->
+<pre class="r"><code>Gstar &lt;- G + 0.1 * diag(1, nrow = nrow(G))
+Gstar</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgIFssMV0gICAgICAgIFssMl0gICAgICAgIFssM10gICAgICAgIFssNF0gICAgICAgIFssNV0gICAgICAgIFssNl0gICAgICAgIFssN10gICAgICAgWyw4XSAgICAgICAgWyw5XSAgICAgICBbLDEwXVxuIFsxLF0gIDAuMTgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4wODMzMzMzM1xuIFsyLF0gLTAuMTI1MDAwMDAgIDAuODA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFszLF0gLTAuMTI1MDAwMDAgLTAuMzMzMzMzMzMgIDAuODA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuMDgzMzMzMzMgIDAuOTE2NjY2NjcgLTAuOTU4MzMzMzMgIDAuNTAwMDAwMCAtMC4zMzMzMzMzMyAtMC4xMjUwMDAwMFxuIFs0LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuODA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC43MDgzMzMzMyAtMC4xMjUwMDAwMFxuIFs1LF0gIDAuMjkxNjY2NjcgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDEuNjQxNjY2NjcgIDEuMzMzMzMzMzMgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NyAtMC45NTgzMzMzMyAgMC4yOTE2NjY2N1xuIFs2LF0gIDAuMDgzMzMzMzMgLTEuMTY2NjY2NjcgIDAuOTE2NjY2NjcgLTEuMTY2NjY2NjcgIDEuMzMzMzMzMzMgIDIuMjY2NjY2NjcgLTAuNzUwMDAwMDAgLTAuMzMzMzMzMyAtMS4xNjY2NjY2NyAgMC4wODMzMzMzM1xuIFs3LF0gIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgLTAuOTU4MzMzMzMgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMDAgLTAuNzUwMDAwMDAgIDEuNjQxNjY2NjcgLTEuMTY2NjY2NyAgMC4wODMzMzMzMyAgMC4yOTE2NjY2N1xuIFs4LF0gLTAuMzMzMzMzMzMgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgIDAuNTAwMDAwMDAgLTEuMTY2NjY2NjcgLTAuMzMzMzMzMzMgLTEuMTY2NjY2NjcgIDEuNDMzMzMzMyAgMC41MDAwMDAwMCAtMC4zMzMzMzMzM1xuIFs5LF0gLTAuMTI1MDAwMDAgIDAuNzA4MzMzMzMgLTAuMzMzMzMzMzMgIDAuNzA4MzMzMzMgLTAuOTU4MzMzMzMgLTEuMTY2NjY2NjcgIDAuMDgzMzMzMzMgIDAuNTAwMDAwMCAgMC44MDgzMzMzMyAtMC4xMjUwMDAwMFxuWzEwLF0gIDAuMDgzMzMzMzMgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgLTAuMTI1MDAwMDAgIDAuMjkxNjY2NjcgIDAuMDgzMzMzMzMgIDAuMjkxNjY2NjcgLTAuMzMzMzMzMyAtMC4xMjUwMDAwMCAgMC4xODMzMzMzM1xuIn0= -->
+<pre><code>             [,1]        [,2]        [,3]        [,4]        [,5]        [,6]        [,7]       [,8]        [,9]       [,10]
+ [1,]  0.18333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.08333333
+ [2,] -0.12500000  0.80833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [3,] -0.12500000 -0.33333333  0.80833333 -0.33333333  0.08333333  0.91666667 -0.95833333  0.5000000 -0.33333333 -0.12500000
+ [4,] -0.12500000  0.70833333 -0.33333333  0.80833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.70833333 -0.12500000
+ [5,]  0.29166667 -0.95833333  0.08333333 -0.95833333  1.64166667  1.33333333  0.50000000 -1.1666667 -0.95833333  0.29166667
+ [6,]  0.08333333 -1.16666667  0.91666667 -1.16666667  1.33333333  2.26666667 -0.75000000 -0.3333333 -1.16666667  0.08333333
+ [7,]  0.29166667  0.08333333 -0.95833333  0.08333333  0.50000000 -0.75000000  1.64166667 -1.1666667  0.08333333  0.29166667
+ [8,] -0.33333333  0.50000000  0.50000000  0.50000000 -1.16666667 -0.33333333 -1.16666667  1.4333333  0.50000000 -0.33333333
+ [9,] -0.12500000  0.70833333 -0.33333333  0.70833333 -0.95833333 -1.16666667  0.08333333  0.5000000  0.80833333 -0.12500000
+[10,]  0.08333333 -0.12500000 -0.12500000 -0.12500000  0.29166667  0.08333333  0.29166667 -0.3333333 -0.12500000  0.18333333</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc29sdmUoR3N0YXIpXG5gYGAifQ== -->
+<pre class="r"><code>solve(Gstar)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICBbLDFdICAgICAgWywyXSAgICAgICBbLDNdICAgICAgWyw0XSAgICAgICBbLDVdICAgICAgICAgWyw2XSAgICAgIFssN10gICAgICAgWyw4XSAgICAgIFssOV0gICAgICAgIFssMTBdXG4gWzEsXSAgOS44MDQ4NjY5OTEgIDAuMTk2OTcxICAwLjM4ODQyODAgIDAuMTk2OTcxIC0wLjU4NzIzNzAgLTAuMDAzNjc1OTc1IC0wLjc3ODY5NCAgMC43ODA1MzIwICAwLjE5Njk3MSAtMC4xOTUxMzMwMDlcbiBbMixdICAwLjE5Njk3MDk5NyAgOC44MjAwMTIgIDAuNTg5MDc1MCAtMS4xNzk5ODggIDEuNTczOTMwMCAgMS45NjYwMzM5OTEgLTAuMTk1MTMzIC0wLjc4Nzg4NDAgLTEuMTc5OTg4ICAwLjE5Njk3MDk5N1xuIFszLF0gIDAuMzg4NDI4MDMxICAwLjU4OTA3NSAgOC4yNDU2NDA5ICAwLjU4OTA3NSAgMC4xODc3ODExIC0xLjk1NTAwNjA2NSAgMi41MzEyMTUgLTEuNTUzNzEyMSAgMC41ODkwNzUgIDAuMzg4NDI4MDMxXG4gWzQsXSAgMC4xOTY5NzA5OTcgLTEuMTc5OTg4ICAwLjU4OTA3NTAgIDguODIwMDEyICAxLjU3MzkzMDAgIDEuOTY2MDMzOTkxIC0wLjE5NTEzMyAtMC43ODc4ODQwIC0xLjE3OTk4OCAgMC4xOTY5NzA5OTdcbiBbNSxdIC0wLjU4NzIzNzAxNSAgMS41NzM5MzAgIDAuMTg3NzgxMSAgMS41NzM5MzAgIDcuMjUxNTk2MCAtMS45NzMzODU5NDEgLTEuMzYyMjU1ICAyLjM0ODk0ODEgIDEuNTczOTMwIC0wLjU4NzIzNzAxNVxuIFs2LF0gLTAuMDAzNjc1OTc1ICAxLjk2NjAzNCAtMS45NTUwMDYxICAxLjk2NjAzNCAtMS45NzMzODU5ICA2LjA3NTI4Mzk2OSAgMS45NDc2NTQgIDAuMDE0NzAzOSAgMS45NjYwMzQgLTAuMDAzNjc1OTc1XG4gWzcsXSAtMC43Nzg2OTQwNDkgLTAuMTk1MTMzICAyLjUzMTIxNTIgLTAuMTk1MTMzIC0xLjM2MjI1NTEgIDEuOTQ3NjU0MTE1ICA1LjkxMTM5NyAgMy4xMTQ3NzYyIC0wLjE5NTEzMyAtMC43Nzg2OTQwNDlcbiBbOCxdICAwLjc4MDUzMjAzNiAtMC43ODc4ODQgLTEuNTUzNzEyMSAtMC43ODc4ODQgIDIuMzQ4OTQ4MSAgMC4wMTQ3MDM5MDAgIDMuMTE0Nzc2ICA2Ljg3Nzg3MTkgLTAuNzg3ODg0ICAwLjc4MDUzMjAzNlxuIFs5LF0gIDAuMTk2OTcwOTk3IC0xLjE3OTk4OCAgMC41ODkwNzUwIC0xLjE3OTk4OCAgMS41NzM5MzAwICAxLjk2NjAzMzk5MSAtMC4xOTUxMzMgLTAuNzg3ODg0MCAgOC44MjAwMTIgIDAuMTk2OTcwOTk3XG5bMTAsXSAtMC4xOTUxMzMwMDkgIDAuMTk2OTcxICAwLjM4ODQyODAgIDAuMTk2OTcxIC0wLjU4NzIzNzAgLTAuMDAzNjc1OTc1IC0wLjc3ODY5NCAgMC43ODA1MzIwICAwLjE5Njk3MSAgOS44MDQ4NjY5OTFcbiJ9 -->
+<pre><code>              [,1]      [,2]       [,3]      [,4]       [,5]         [,6]      [,7]       [,8]      [,9]        [,10]
+ [1,]  9.804866991  0.196971  0.3884280  0.196971 -0.5872370 -0.003675975 -0.778694  0.7805320  0.196971 -0.195133009
+ [2,]  0.196970997  8.820012  0.5890750 -1.179988  1.5739300  1.966033991 -0.195133 -0.7878840 -1.179988  0.196970997
+ [3,]  0.388428031  0.589075  8.2456409  0.589075  0.1877811 -1.955006065  2.531215 -1.5537121  0.589075  0.388428031
+ [4,]  0.196970997 -1.179988  0.5890750  8.820012  1.5739300  1.966033991 -0.195133 -0.7878840 -1.179988  0.196970997
+ [5,] -0.587237015  1.573930  0.1877811  1.573930  7.2515960 -1.973385941 -1.362255  2.3489481  1.573930 -0.587237015
+ [6,] -0.003675975  1.966034 -1.9550061  1.966034 -1.9733859  6.075283969  1.947654  0.0147039  1.966034 -0.003675975
+ [7,] -0.778694049 -0.195133  2.5312152 -0.195133 -1.3622551  1.947654115  5.911397  3.1147762 -0.195133 -0.778694049
+ [8,]  0.780532036 -0.787884 -1.5537121 -0.787884  2.3489481  0.014703900  3.114776  6.8778719 -0.787884  0.780532036
+ [9,]  0.196970997 -1.179988  0.5890750 -1.179988  1.5739300  1.966033991 -0.195133 -0.7878840  8.820012  0.196970997
+[10,] -0.195133009  0.196971  0.3884280  0.196971 -0.5872370 -0.003675975 -0.778694  0.7805320  0.196971  9.804866991</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2Vub21pYyBSZWxhdGlvbnNoaXAgTWF0cml4IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpJbiBzaW5nbGUtc3RlcCBnZW5vbWljIGV2YWx1YXRpb25zIHVzaW5nIGJyZWVkaW5nLXZhbHVlIGJhc2VkIG1vZGVscywgdGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyByZXF1aXJlZCBhcyBvbmUgcGFydCBvZiB0aGUgbWl4ZWQgbW9kZWwgZXF1YXRpb25zLiBJbiB0aGlzIG5vdGVib29rLCB3ZSB1c2UgdGhlIGRhdGEgc2V0IGZyb20gZXhlcmNpc2UgMTIgdG8gc2hvdyBob3cgdGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyBjb21wdXRlZC4KCmBgYHtyfQpzX2RhdGFfcGF0aCA8LSAiaHR0cHM6Ly9jaGFybG90dGUtbmdzLmdpdGh1Yi5pby9sYmdmczIwMjEvZGF0YS9nZW5vX2RhdGEuY3N2Igp0YmxfZ2Vub19kYXRhIDwtIHJlYWRyOjpyZWFkX2NzdihmaWxlID0gc19kYXRhX3BhdGgpCnRibF9nZW5vX2RhdGEKYGBgCgoKVGhlIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBjYW4gYmUgY29tcHV0ZWQgYXMgc2hvd24gb24gdGhlIHNsaWRlcwoKIyBIb3cgVG8gQ29tcHV0ZSAkRyQKKiBSZWFkIG1hdHJpeCAkVyQgCiogRm9yIGVhY2ggY29sdW1uICRqJCBvZiAkVyQgY29tcHV0ZSBmcmVxdWVuY3kgJHBfaiQKKiBDb21wdXRlIG1hdHJpeCAkUyQgYW5kICRcc3VtX3tqPTF9XmsoMS0ycF9qKDEtcF9qKSkkIGZyb20gJHBfaiQKKiBDb21wdXRlICRVJCBmcm9tICRXJCBhbmQgJFMkCiogQ29tcHV0ZSAkRyQKCgojIyBTdGVwIDE6IE1hdHJpeCAkVyQKSGVyZSB3ZSBvYnRhaW4gbWF0cml4ICRXJCBmcm9tIHRoZSBkYXRhCgpgYGB7cn0KVyA8LSBhcy5tYXRyaXgodGJsX2dlbm9fZGF0YVssYygyLDMpXSkKVwpgYGAKCgojIyBTdGVwIDI6IEZyZXF1ZW5jeQpUbyBjb21wdXRlIHRlIGZyZXF1ZW5jeSBvZiB0aGUgcG9zaXRpdmUgYWxsZWxlIGl0IGlzIGJldHRlciB0byBjaGFuZ2UgdGhlIGdlbm90eXBlIGVuY29kaW5nIGZyb20gJC0xJCwgJDAkLCAkMSQgdG8gJDAkLCAkMSQgLCAkMiQuIFRoaXMgaXMgZG9uZSBieSBhZGRpbmcgJDEkIHRvIGFsbCBlbnRyaWVzIG9mICRXJC4gCgpgYGB7cn0KVyA8LSBXICsgMQpXCmBgYAoKVGhlIGZyZXF1ZW5jeSBvZiB0aGUgcG9zaXRpdmUgYWxsZWxlcyBjYW4gYmUgY29tcHV0ZWQgYXMgdGhlIGNvbHVtbiBtZWFuIGRpdmlkZWQgYnkgJDIkLiBIZW5jZQoKYGBge3J9CmZyZXEgPC0gYXBwbHkoVywgMiwgbWVhbikgLyAyCmZyZXEKYGBgCgpUaGUgbWF0cml4ICRTJCBpcyBjb21wdXRlZCBhcwoKYGBge3J9ClMgPC0gbWF0cml4KDIqZnJlcSAtIDEsIG5yb3cgPSBucm93KFcpLCBuY29sID0gbmNvbChXKSwgYnlyb3cgPSBUUlVFKQpTCmBgYAoKVGhlIHN1bSBvdmVyIHRoZSBjcm9zc3Byb2R1Y3RzIGlzIGNvbXB1dGVkIGFzCgpgYGB7cn0Kc3VtcHEgPC0gMiAqIHN1bShmcmVxICogKDEtZnJlcSkpCnN1bXBxCmBgYAoKClRoZSBnZW5vbWljIHJlbGF0aW9uc2lwIG1hdHJpeCBpcyB0aGUKCmBgYHtyfQpVID0gVyAtIFMgLSAxCkcgPC0gdGNyb3NzcHJvZChVKSAvIHN1bXBxCkcKYGBgCgpUaGUgc2FtZSBjb21wdXRhdGlvbiBjYW4gYWxzbyBiZSBkb25lIHVzaW5nIHRoZSBmb2xsb3dpbmcgZnVuY3Rpb24KCmBgYHtyfQpjb21wdXRlTWF0R3JtIDwtIGZ1bmN0aW9uKHBtYXREYXRhKSB7CiAgbWF0RGF0YSA8LSBwbWF0RGF0YQogICMgY2hlY2sgdGhlIGNvZGluZywgaWYgbWF0RGF0YSBpcyAtMSwgMCwgMSBjb2RlZCwgdGhlbiBhZGQgMSB0byBnZXQgdG8gMCwgMSwgMiBjb2RpbmcKICBpZiAobWluKG1hdERhdGEpIDwgMCkgbWF0RGF0YSA8LSBtYXREYXRhICsgMQogICMgQWxsZWxlIGZyZXF1ZW5jaWVzLCBjb2x1bW4gdmVjdG9yIG9mIFAgYW5kIHN1bSBvZiBmcmVxdWVuY3kgcHJvZHVjdHMKICBmcmVxIDwtIGFwcGx5KG1hdERhdGEsIDIsIG1lYW4pIC8gMgogIFAgPC0gMiAqIChmcmVxIC0gMC41KQogIHN1bXBxIDwtIHN1bShmcmVxKigxLWZyZXEpKQogICMgQ2hhbmdpbmcgdGhlIGNvZGluZyBmcm9tICgwLDEsMikgdG8gKC0xLDAsMSkgYW5kIHN1YnRyYWN0IG1hdHJpeCBQCiAgWiA8LSBtYXREYXRhIC0gMSAtIG1hdHJpeChQLCBucm93ID0gbnJvdyhtYXREYXRhKSwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmNvbCA9IG5jb2wobWF0RGF0YSksIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ5cm93ID0gVFJVRSkKICAjIFolKiVadCBpcyByZXBsYWNlZCBieSB0Y3Jvc3Nwcm9kKFopCiAgcmV0dXJuKHRjcm9zc3Byb2QoWikvKDIqc3VtcHEpKQp9CmBgYAoKT25jZSB0aGUgZnVuY3Rpb24gaXMgZGVmaW5lZCwgdGhlIG1hdHJpeCAkRyQgY2FuIGJlIGNvbXB1dGVkIGFzCgpgYGB7cn0KRyA8LSBjb21wdXRlTWF0R3JtKHBtYXREYXRhID0gYXMubWF0cml4KHRibF9nZW5vX2RhdGFbLGMoMiwzKV0pKQpHCmBgYAoKCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2Vub21pYyBSZWxhdGlvbnNoaXAgTWF0cml4IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCByZXN1bHRzID0gJ21hcmt1cCcpCmBgYAoKSW4gc2luZ2xlLXN0ZXAgZ2Vub21pYyBldmFsdWF0aW9ucyB1c2luZyBicmVlZGluZy12YWx1ZSBiYXNlZCBtb2RlbHMsIHRoZSBnZW5vbWljIHJlbGF0aW9uc2hpcCBtYXRyaXggaXMgcmVxdWlyZWQgYXMgb25lIHBhcnQgb2YgdGhlIG1peGVkIG1vZGVsIGVxdWF0aW9ucy4gSW4gdGhpcyBub3RlYm9vaywgd2UgdXNlIHRoZSBkYXRhIHNldCBmcm9tIGV4ZXJjaXNlIDEyIHRvIHNob3cgaG93IHRoZSBnZW5vbWljIHJlbGF0aW9uc2hpcCBtYXRyaXggaXMgY29tcHV0ZWQuCgpgYGB7ciwgd2FybmluZz1GQUxTRSwgbWVzc2FnZT1GQUxTRX0Kc19kYXRhX3BhdGggPC0gImh0dHBzOi8vY2hhcmxvdHRlLW5ncy5naXRodWIuaW8vbGJnZnMyMDIxL2RhdGEvZ2Vub19kYXRhLmNzdiIKdGJsX2dlbm9fZGF0YSA8LSByZWFkcjo6cmVhZF9jc3YoZmlsZSA9IHNfZGF0YV9wYXRoKQp0YmxfZ2Vub19kYXRhCmBgYAoKClRoZSBnZW5vbWljIHJlbGF0aW9uc2hpcCBtYXRyaXggY2FuIGJlIGNvbXB1dGVkIGFzIHNob3duIG9uIHRoZSBzbGlkZXMKCiMgSG93IFRvIENvbXB1dGUgJEckCiogUmVhZCBtYXRyaXggJFckIAoqIEZvciBlYWNoIGNvbHVtbiAkaiQgb2YgJFckIGNvbXB1dGUgZnJlcXVlbmN5ICRwX2okCiogQ29tcHV0ZSBtYXRyaXggJFMkIGFuZCAkXHN1bV97aj0xfV5rKDEtMnBfaigxLXBfaikpJCBmcm9tICRwX2okCiogQ29tcHV0ZSAkVSQgZnJvbSAkVyQgYW5kICRTJAoqIENvbXB1dGUgJEckCgoKIyMgU3RlcCAxOiBNYXRyaXggJFckCkhlcmUgd2Ugb2J0YWluIG1hdHJpeCAkVyQgZnJvbSB0aGUgZGF0YQoKYGBge3J9ClcgPC0gYXMubWF0cml4KHRibF9nZW5vX2RhdGFbLGMoMiwzKV0pClcKYGBgCgoKIyMgU3RlcCAyOiBGcmVxdWVuY3kKVG8gY29tcHV0ZSB0ZSBmcmVxdWVuY3kgb2YgdGhlIHBvc2l0aXZlIGFsbGVsZSBpdCBpcyBiZXR0ZXIgdG8gY2hhbmdlIHRoZSBnZW5vdHlwZSBlbmNvZGluZyBmcm9tICQtMSQsICQwJCwgJDEkIHRvICQwJCwgJDEkICwgJDIkLiBUaGlzIGlzIGRvbmUgYnkgYWRkaW5nICQxJCB0byBhbGwgZW50cmllcyBvZiAkVyQuIAoKYGBge3J9ClcgPC0gVyArIDEKVwpgYGAKClRoZSBmcmVxdWVuY3kgb2YgdGhlIHBvc2l0aXZlIGFsbGVsZXMgY2FuIGJlIGNvbXB1dGVkIGFzIHRoZSBjb2x1bW4gbWVhbiBkaXZpZGVkIGJ5ICQyJC4gSGVuY2UKCmBgYHtyfQpmcmVxIDwtIGFwcGx5KFcsIDIsIG1lYW4pIC8gMgpmcmVxCmBgYAoKVGhlIG1hdHJpeCAkUyQgaXMgY29tcHV0ZWQgYXMKCmBgYHtyfQpTIDwtIG1hdHJpeCgyKmZyZXEgLSAxLCBucm93ID0gbnJvdyhXKSwgbmNvbCA9IG5jb2woVyksIGJ5cm93ID0gVFJVRSkKUwpgYGAKClRoZSBzdW0gb3ZlciB0aGUgY3Jvc3Nwcm9kdWN0cyBpcyBjb21wdXRlZCBhcwoKYGBge3J9CnN1bXBxIDwtIDIgKiBzdW0oZnJlcSAqICgxLWZyZXEpKQpzdW1wcQpgYGAKCgpUaGUgZ2Vub21pYyByZWxhdGlvbnNpcCBtYXRyaXggaXMgdGhlCgpgYGB7cn0KVSA9IFcgLSBTIC0gMQpVCmBgYAoKYGBge3J9CkcgPC0gdGNyb3NzcHJvZChVKSAvIHN1bXBxCkcKYGBgCgpUaGUgc2FtZSBjb21wdXRhdGlvbiBjYW4gYWxzbyBiZSBkb25lIHVzaW5nIHRoZSBmb2xsb3dpbmcgZnVuY3Rpb24KCmBgYHtyfQpjb21wdXRlTWF0R3JtIDwtIGZ1bmN0aW9uKHBtYXREYXRhKSB7CiAgbWF0RGF0YSA8LSBwbWF0RGF0YQogICMgY2hlY2sgdGhlIGNvZGluZywgaWYgbWF0RGF0YSBpcyAtMSwgMCwgMSBjb2RlZCwgdGhlbiBhZGQgMSB0byBnZXQgdG8gMCwgMSwgMiBjb2RpbmcKICBpZiAobWluKG1hdERhdGEpIDwgMCkgbWF0RGF0YSA8LSBtYXREYXRhICsgMQogICMgQWxsZWxlIGZyZXF1ZW5jaWVzLCBjb2x1bW4gdmVjdG9yIG9mIFAgYW5kIHN1bSBvZiBmcmVxdWVuY3kgcHJvZHVjdHMKICBmcmVxIDwtIGFwcGx5KG1hdERhdGEsIDIsIG1lYW4pIC8gMgogIFAgPC0gMiAqIChmcmVxIC0gMC41KQogIHN1bXBxIDwtIHN1bShmcmVxKigxLWZyZXEpKQogICMgQ2hhbmdpbmcgdGhlIGNvZGluZyBmcm9tICgwLDEsMikgdG8gKC0xLDAsMSkgYW5kIHN1YnRyYWN0IG1hdHJpeCBQCiAgWiA8LSBtYXREYXRhIC0gMSAtIG1hdHJpeChQLCBucm93ID0gbnJvdyhtYXREYXRhKSwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbmNvbCA9IG5jb2wobWF0RGF0YSksIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ5cm93ID0gVFJVRSkKICAjIFolKiVadCBpcyByZXBsYWNlZCBieSB0Y3Jvc3Nwcm9kKFopCiAgcmV0dXJuKHRjcm9zc3Byb2QoWikvKDIqc3VtcHEpKQp9CmBgYAoKT25jZSB0aGUgZnVuY3Rpb24gaXMgZGVmaW5lZCwgdGhlIG1hdHJpeCAkRyQgY2FuIGJlIGNvbXB1dGVkIGFzCgpgYGB7cn0KRyA8LSBjb21wdXRlTWF0R3JtKHBtYXREYXRhID0gYXMubWF0cml4KHRibF9nZW5vX2RhdGFbLGMoMiwzKV0pKQpHCmBgYAoKCkluIG1vc3QgY2FzZXMgdGhlIGNvbXB1dGVkIGdlbm9taWMgcmVsYXRpb25zaGlwIG1hdHJpeCBpcyBzaW5ndWxhciBhbmQgY2FuIHRoZXJlZm9yZSBub3QgYmUgaW52ZXJ0ZWQuIFRoZSBzb2x1dGlvbiB0byB0aGF0IGlzIHRvIGFkZCAkMC4xJCB0aW1lcyB0aGUgbnVtZXJhdG9yZSByZWxhdGlvbnNoaXAgbWF0cml4ICRBJCB0byB0aGUgbWF0cml4ICRHJC4gSWYgdGhlcmUgaXMgbm8gaW5mb3JtYXRpb24gYWJvdXQgdGhlIHBlZGlncmVlIGF2YWlsYWJsZSBhcyBpbiB0aGlzIGRhdGFzZXQsIHRoZW4gd2UgY2FuIHNldCB0aGUgbnVtZXJhdG9yIHJlbGF0aW9uc2hpcCBtYXRyaXggZXF1YWwgdG8gdGhlIGlkZW50aXR5IG1hdHJpeC4gCgpgYGB7ciwgZXZhbD1GQUxTRX0KIyB0aGUgZm9sbG93aW5nIHJlc3VsdHMgaW4gYW4gZXJyb3IKc29sdmUoRykKYGBgCgpgYGB7cn0KR3N0YXIgPC0gRyArIDAuMSAqIGRpYWcoMSwgbnJvdyA9IG5yb3coRykpCkdzdGFyCmBgYAoKYGBge3J9CnNvbHZlKEdzdGFyKQpgYGAKCg==</div>
 
 
 

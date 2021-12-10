@@ -3,9 +3,13 @@ title: "Genomic Relationship Matrix"
 output: html_notebook
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, results = 'markup')
+```
+
 In single-step genomic evaluations using breeding-value based models, the genomic relationship matrix is required as one part of the mixed model equations. In this notebook, we use the data set from exercise 12 to show how the genomic relationship matrix is computed.
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 s_data_path <- "https://charlotte-ngs.github.io/lbgfs2021/data/geno_data.csv"
 tbl_geno_data <- readr::read_csv(file = s_data_path)
 tbl_geno_data
@@ -65,6 +69,10 @@ The genomic relationsip matrix is the
 
 ```{r}
 U = W - S - 1
+U
+```
+
+```{r}
 G <- tcrossprod(U) / sumpq
 G
 ```
@@ -96,4 +104,20 @@ G <- computeMatGrm(pmatData = as.matrix(tbl_geno_data[,c(2,3)]))
 G
 ```
 
+
+In most cases the computed genomic relationship matrix is singular and can therefore not be inverted. The solution to that is to add $0.1$ times the numeratore relationship matrix $A$ to the matrix $G$. If there is no information about the pedigree available as in this dataset, then we can set the numerator relationship matrix equal to the identity matrix. 
+
+```{r, eval=FALSE}
+# the following results in an error
+solve(G)
+```
+
+```{r}
+Gstar <- G + 0.1 * diag(1, nrow = nrow(G))
+Gstar
+```
+
+```{r}
+solve(Gstar)
+```
 
