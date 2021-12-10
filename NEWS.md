@@ -1,3 +1,7 @@
+# lbgfs2021 0.12.1
+
+* Added exercise 12 and updated slides for lecture 9
+
 # lbgfs2021 0.12.0
 
 * Solutions to all exercises
