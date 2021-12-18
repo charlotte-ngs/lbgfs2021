@@ -1,0 +1,54 @@
+---
+title: "Exam FS2021 - Data and Solution for Problem 5"
+output: html_notebook
+---
+
+```{r}
+rm(list = ls())
+set.seed(4326)
+library(dplyr)
+### # fix the number of animals
+n_nr_animal <- 17
+### # intercept
+n_inter_cept <- 27.1
+### # residual standard deviation
+n_res_sd <- 6
+### # vector of genotype value coefficients
+vec_geno_add_value_coeff <- c(-1, 0, 1)
+### # fix allele frequency of positive allele
+n_prob_snps <- c(.45, 0.35, 0.4)
+### # genotypic values
+n_nr_snp <- 3
+vec_geno_add_val <- rnorm(n_nr_snp, mean = 12.6, sd = 3)
+### # put together the genotypes into a matrix
+mat_geno_add_snp <- NULL
+for (i in 1:n_nr_snp){
+  mat_geno_add_snp <- rbind(mat_geno_add_snp, 
+                            matrix(c(sample(vec_geno_add_value_coeff, n_nr_animal, prob = c((1-n_prob_snps[i])^2,
+                                                                              2*(1-n_prob_snps[i])*n_prob_snps[i],
+                                                                              n_prob_snps[i]^2),
+                                replace = TRUE)),
+                         nrow = 1))
+}
+
+### # observations
+mat_obs_y <- n_inter_cept + crossprod(mat_geno_add_snp, vec_geno_add_val) + rnorm(n = n_nr_animal, mean = 0, sd = n_res_sd)
+
+### # combine SNP genotypes into a tibble
+geno_code <- tibble::tibble(`Locus G` = as.character(mat_geno_add_snp[1,]),
+                            `Locus H` = as.character(mat_geno_add_snp[2,]),
+                            `Locus I` = as.character(mat_geno_add_snp[3,]))
+
+
+
+### # add the data
+tbl_obs <- tibble::tibble(Observation = round(mat_obs_y[,1], digits = 1))
+tbl_all_data <- geno_code %>% bind_cols(tbl_obs)
+tbl_data_gnm <- bind_cols(Animal = c(1:n_nr_animal),tbl_all_data)
+
+### # writing data to file
+s_data_out_path <- file.path(here::here(), "docs", "data", "exam_lbgfs2021_problem5.csv")
+if (!file.exists(s_data_out_path)) readr::write_csv(tbl_data_gnm, file = s_data_out_path)
+
+```
+

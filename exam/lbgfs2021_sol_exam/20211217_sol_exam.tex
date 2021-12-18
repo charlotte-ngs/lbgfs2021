@@ -1,0 +1,1440 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% preamble used for exam
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\newcommand{\points}[1]
+{\begin{flushright}\textbf{#1}\end{flushright}}
+\newcommand{\solstart}
+{\vspace{3ex}\textbf{Solution}:}
+\newcommand{\solend}
+{\vspace{2ex}$\blacksquare$}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{tabular}{l}
+ETH Zurich \\
+D-USYS\\
+Institute of Agricultural Sciences\\
+\end{tabular}
+
+\vspace{15ex}
+\begin{center}
+\huge
+Solutions To Exam\\ \vspace{1ex}
+Livestock Breeding and Genomics \\  \vspace{1ex}
+FS 2021 \\
+
+\normalsize
+\vspace{7ex}
+Peter von Rohr 
+\end{center}
+
+\vspace{7ex}
+\begin{tabular}{p{5cm}lr}
+  & \textsc{Date}  & \textsc{\emph{17. December 2021}} \\
+  & \textsc{Begin} & \textsc{\emph{09:15 }}\\
+  & \textsc{End}   & \textsc{\emph{11:15 }}\\ 
+\end{tabular}
+
+\vspace{5ex}
+
+\large
+\begin{tabular}{p{2.5cm}p{3cm}p{6cm}}
+  &  Name:     &  \\
+  &            &  \\
+  &  Legi-Nr:  & \\
+\end{tabular}
+\normalsize
+
+\vspace{9ex}
+\begin{center}
+\begin{tabular}{|p{3cm}|c|c|}
+\hline
+Problem  &  Maximum Number of Points  &  Number of Points Reached \\
+\hline
+1        &  67         & \\
+\hline
+2        &  14         & \\
+\hline
+3        &  17         & \\
+\hline
+4        &  22          & \\
+\hline
+5        &  24          & \\
+\hline
+Total    &  144    & \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-1-numerator-relationship-matrix-and-inbreeding}{%
+\subsection{Problem 1 Numerator Relationship Matrix and
+Inbreeding}\label{problem-1-numerator-relationship-matrix-and-inbreeding}}
+
+\vspace{3ex}
+
+Given is the following list of animals.
+
+\vspace{3ex}
+
+\textit{Gegeben ist die folgende Tierliste.}
+
+\begin{tabular}{llll}
+\toprule
+Animal & Birthdate & Sire & Dam\\
+\midrule
+GINA & 18.01.2020 & HARRY & CH120.1208.5899.1\\
+CH 120.1208.5899.1 & 22.11.2015 & NA & Gitta\\
+Gitta & 31.05.2001 & HARRY & Gibsy\\
+Gibsy & 09.12.1990 & Ginger Hill Angus 133 & Bianca\\
+HARRY & 22.02.1997 & HIBISCUS & WALBURGA\\
+\bottomrule
+\end{tabular}
+
+\begin{enumerate}
+\item[a)] Set up the numerator relationship matrix for the animals shown above.
+
+\textit{Stellen Sie die genetisch-additive Verwandtschaftsmatrix auf für die oben gezeigten Tiere.}
+\points{45}
+\end{enumerate}
+
+\solstart
+
+Start by ordering the list by birthdates
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_ped\_p1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##   Animal             Birthdate  Sire                  Dam              
+##   <chr>              <date>     <chr>                 <chr>            
+## 1 Gibsy              1990-12-09 Ginger Hill Angus 133 Bianca           
+## 2 HARRY              1997-02-22 HIBISCUS              WALBURGA         
+## 3 Gitta              2001-05-31 HARRY                 Gibsy            
+## 4 CH 120.1208.5899.1 2015-11-22 <NA>                  Gitta            
+## 5 GINA               2020-01-18 HARRY                 CH120.1208.5899.1
+\end{verbatim}
+
+Extend the pedigree with parents not as animals
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_ped\_p1\_ext}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 9 x 4
+##   Animal                Birthdate  Sire                  Dam              
+##   <chr>                 <date>     <chr>                 <chr>            
+## 1 Bianca                NA         <NA>                  <NA>             
+## 2 Ginger Hill Angus 133 NA         <NA>                  <NA>             
+## 3 HIBISCUS              NA         <NA>                  <NA>             
+## 4 WALBURGA              NA         <NA>                  <NA>             
+## 5 Gibsy                 1990-12-09 Ginger Hill Angus 133 Bianca           
+## 6 HARRY                 1997-02-22 HIBISCUS              WALBURGA         
+## 7 Gitta                 2001-05-31 HARRY                 Gibsy            
+## 8 CH 120.1208.5899.1    2015-11-22 <NA>                  Gitta            
+## 9 GINA                  2020-01-18 HARRY                 CH120.1208.5899.1
+\end{verbatim}
+
+Convert to numeric IDs
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_ped\_p1\_ext}\SpecialCharTok{$}\NormalTok{ID }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(tbl\_ped\_p1\_ext))}
+\NormalTok{tbl\_ped\_p1\_ext }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_ped\_p1\_ext[,}\FunctionTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"Animal"}\NormalTok{, }\StringTok{"Sire"}\NormalTok{, }\StringTok{"Dam"}\NormalTok{, }\StringTok{"Birthdate"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+Adding IDs for sire and dam
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\NormalTok{tbl\_ped\_sire\_id }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_ped\_p1\_ext }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{left\_join}\NormalTok{(tbl\_ped\_p1\_ext, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Sire"} \OtherTok{=} \StringTok{"Animal"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(ID.y)}
+\FunctionTok{colnames}\NormalTok{(tbl\_ped\_sire\_id) }\OtherTok{\textless{}{-}} \StringTok{"SireID"}
+\NormalTok{tbl\_ped\_dam\_id }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_ped\_p1\_ext }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{left\_join}\NormalTok{(tbl\_ped\_p1\_ext, }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"Dam"} \OtherTok{=} \StringTok{"Animal"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(ID.y)}
+\FunctionTok{colnames}\NormalTok{(tbl\_ped\_dam\_id) }\OtherTok{\textless{}{-}} \StringTok{"DamID"}
+\NormalTok{tbl\_ped\_p1\_ext }\OtherTok{\textless{}{-}} \FunctionTok{bind\_cols}\NormalTok{(tbl\_ped\_p1\_ext, tbl\_ped\_sire\_id, tbl\_ped\_dam\_id)}
+\NormalTok{tbl\_ped\_p1\_ext[}\DecValTok{9}\NormalTok{,}\StringTok{"DamID"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{8}
+\NormalTok{tbl\_ped\_p1\_ext}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 9 x 7
+##      ID Animal                Sire           Dam         Birthdate  SireID DamID
+##   <int> <chr>                 <chr>          <chr>       <date>      <int> <int>
+## 1     1 Bianca                <NA>           <NA>        NA             NA    NA
+## 2     2 Ginger Hill Angus 133 <NA>           <NA>        NA             NA    NA
+## 3     3 HIBISCUS              <NA>           <NA>        NA             NA    NA
+## 4     4 WALBURGA              <NA>           <NA>        NA             NA    NA
+## 5     5 Gibsy                 Ginger Hill A~ Bianca      1990-12-09      2     1
+## 6     6 HARRY                 HIBISCUS       WALBURGA    1997-02-22      3     4
+## 7     7 Gitta                 HARRY          Gibsy       2001-05-31      6     5
+## 8     8 CH 120.1208.5899.1    <NA>           Gitta       2015-11-22     NA     7
+## 9     9 GINA                  HARRY          CH120.1208~ 2020-01-18      6     8
+\end{verbatim}
+
+Setting up the pedigree with IDs and computing the nrm
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ped }\OtherTok{\textless{}{-}}\NormalTok{ pedigreemm}\SpecialCharTok{::}\FunctionTok{pedigree}\NormalTok{(}\AttributeTok{sire =}\NormalTok{ tbl\_ped\_p1\_ext}\SpecialCharTok{$}\NormalTok{SireID, }
+                            \AttributeTok{dam  =}\NormalTok{ tbl\_ped\_p1\_ext}\SpecialCharTok{$}\NormalTok{DamID,}
+                            \AttributeTok{label =} \FunctionTok{as.character}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(tbl\_ped\_p1\_ext)))}
+\NormalTok{mat\_A }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(pedigreemm}\SpecialCharTok{::}\FunctionTok{getA}\NormalTok{(}\AttributeTok{ped =}\NormalTok{ ped))}
+\FunctionTok{colnames}\NormalTok{(mat\_A) }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_ped\_p1\_ext}\SpecialCharTok{$}\NormalTok{Animal}
+\NormalTok{mat\_A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Bianca Ginger Hill Angus 133 HIBISCUS WALBURGA Gibsy HARRY Gitta
+## 1 1.0000                0.0000   0.0000   0.0000 0.500 0.000  0.25
+## 2 0.0000                1.0000   0.0000   0.0000 0.500 0.000  0.25
+## 3 0.0000                0.0000   1.0000   0.0000 0.000 0.500  0.25
+## 4 0.0000                0.0000   0.0000   1.0000 0.000 0.500  0.25
+## 5 0.5000                0.5000   0.0000   0.0000 1.000 0.000  0.50
+## 6 0.0000                0.0000   0.5000   0.5000 0.000 1.000  0.50
+## 7 0.2500                0.2500   0.2500   0.2500 0.500 0.500  1.00
+## 8 0.1250                0.1250   0.1250   0.1250 0.250 0.250  0.50
+## 9 0.0625                0.0625   0.3125   0.3125 0.125 0.625  0.50
+##   CH 120.1208.5899.1   GINA
+## 1              0.125 0.0625
+## 2              0.125 0.0625
+## 3              0.125 0.3125
+## 4              0.125 0.3125
+## 5              0.250 0.1250
+## 6              0.250 0.6250
+## 7              0.500 0.5000
+## 8              1.000 0.6250
+## 9              0.625 1.1250
+\end{verbatim}
+
+\[A = \begin{bmatrix} 1 & 0 & 0 & 0 & 0.5 & 0 & 0.25 & 0.125 & 0.0625 \\0 & 1 & 0 & 0 & 0.5 & 0 & 0.25 & 0.125 & 0.0625 \\0 & 0 & 1 & 0 & 0 & 0.5 & 0.25 & 0.125 & 0.3125 \\0 & 0 & 0 & 1 & 0 & 0.5 & 0.25 & 0.125 & 0.3125 \\0.5 & 0.5 & 0 & 0 & 1 & 0 & 0.5 & 0.25 & 0.125 \\0 & 0 & 0.5 & 0.5 & 0 & 1 & 0.5 & 0.25 & 0.625 \\0.25 & 0.25 & 0.25 & 0.25 & 0.5 & 0.5 & 1 & 0.5 & 0.5 \\0.125 & 0.125 & 0.125 & 0.125 & 0.25 & 0.25 & 0.5 & 1 & 0.625 \\0.0625 & 0.0625 & 0.3125 & 0.3125 & 0.125 & 0.625 & 0.5 & 0.625 & 1.125\end{bmatrix}\]
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the inbreeding coefficients $F_i$ of the following animals and indicate whether the animals are inbred
+
+\textit{Berechnen Sie den Inzuchtkoeffizienten $F_i$ der folgenden Tiere und geben Sie an, ob die jeweiligen Tiere ingezüchtet sind.}
+\points{18}
+\end{enumerate}
+
+\begin{tabular}{lll}
+\toprule
+Animal & Inbreeding Coefficient & Animal Inbred (yes/no)\\
+\midrule
+Bianca &  & \\
+Ginger Hill Angus 133 &  & \\
+HIBISCUS &  & \\
+WALBURGA &  & \\
+Gibsy &  & \\
+\addlinespace
+HARRY &  & \\
+Gitta &  & \\
+CH 120.1208.5899.1 &  & \\
+GINA &  & \\
+\bottomrule
+\end{tabular}
+
+\solstart
+
+\begin{tabular}{lrl}
+\toprule
+Animal & Inbreeding Coefficient & Animal Inbred (yes/no)\\
+\midrule
+Bianca & 0.000 & no\\
+Ginger Hill Angus 133 & 0.000 & no\\
+HIBISCUS & 0.000 & no\\
+WALBURGA & 0.000 & no\\
+Gibsy & 0.000 & no\\
+\addlinespace
+HARRY & 0.000 & no\\
+Gitta & 0.000 & no\\
+CH 120.1208.5899.1 & 0.000 & no\\
+GINA & 0.125 & yes\\
+\bottomrule
+\end{tabular}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] The owner of GINA wants to find a mate to have an offspring. Compute the inbreeding coefficients of all possible offspring of GINA with all available sires. Select the mate for GINA, among the available sires, such that the offpsring has the lowest inbreeding coefficient. 
+
+\textit{Der/die Besitzer/In von GINA möchte einen Paarungspartner für GINA finden. Berechnen Sie die Inzuchtkoeffizienten aller möglichen Nachkommen von GINA mit allen möglichen Vätern. Wählen Sie den Paarungspartner von GINA unter allen verfügbaren Stieren, so dass das Nachkommentier einen minimalen Inzuchtkoeffizienten hat.}
+\points{4}
+\end{enumerate}
+
+\begin{tabular}{ll}
+\toprule
+Sire & Offspring Inbreeding Coefficient\\
+\midrule
+Ginger Hill Angus 133 & \\
+HIBISCUS & \\
+HARRY & \\
+\bottomrule
+\end{tabular}
+
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec\_inb\_offspring }\OtherTok{\textless{}{-}} \FloatTok{0.5} \SpecialCharTok{*}\NormalTok{ mat\_A[}\FunctionTok{c}\NormalTok{(vec\_sire\_id), s\_cow\_id];vec\_inb\_offspring}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       2       3       6 
+## 0.03125 0.15625 0.31250
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_mate\_gina }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{tibble}\NormalTok{(}\AttributeTok{Sire =} \FunctionTok{c}\NormalTok{(vec\_sire),}
+                                \StringTok{\textasciigrave{}}\AttributeTok{Offspring Inbreeding Coefficient}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ vec\_inb\_offspring)}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(tbl\_mate\_gina,}
+             \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+             \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{,}
+             \AttributeTok{format =} \StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)                                }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{lr}
+\toprule
+Sire & Offspring Inbreeding Coefficient\\
+\midrule
+Ginger Hill Angus 133 & 0.03125\\
+HIBISCUS & 0.15625\\
+HARRY & 0.31250\\
+\bottomrule
+\end{tabular}
+
+The mate which results in the offspring with minimal offspring is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec\_sire[}\FunctionTok{which}\NormalTok{(vec\_inb\_offspring }\SpecialCharTok{==} \FunctionTok{min}\NormalTok{(vec\_inb\_offspring))]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Ginger Hill Angus 133"
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-2-variance-and-inbreeding}{%
+\subsection{Problem 2 Variance and
+Inbreeding}\label{problem-2-variance-and-inbreeding}}
+
+\vspace{3ex}
+
+The cattle breed ``Rätisches Grauvieh'' is a robust alpine cattle breed.
+In a recent survey about 550 calvings per year were counted. For reasons
+of simplicity, we can set in the following computations, the variable
+\(N\) to the number of calvings per year.
+
+\vspace{3ex}
+
+\textit{Die Rindviehrasse "Rätisches Grauvieh" ist eine robuste Rasse im Alpenraum. In einer kürzlich gemachten Umfrage wurden 550 Abkalbungen pro Jahr von Rätischen Grauviehkühen gezählt. Zur Vereinfachung können wir in den folgenden Berechnungen die Variable $N$ der Anzahl Abkalbungen pro Jahr gleichsetzen.}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] What is the expected inbreeding coefficients $F_t$ after 50 years assuming traditional selection with a generation interval of 5 years. 
+
+\textit{Wie gross ist der erwartete Inzuchtkoeffizient $F_t$ nach 50 Jahren? Dabei nehmen wir ein traditionelles Zuchtprogramm an mit einem Generationenintervall von 5 Jahren.}
+\points{4}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{delta\_f }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{nr\_tgv\_cow)}
+\NormalTok{nr\_gen\_trad }\OtherTok{\textless{}{-}}\NormalTok{ nr\_year }\SpecialCharTok{/}\NormalTok{ gen\_int\_trad}
+\NormalTok{inb\_coef }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ delta\_f)}\SpecialCharTok{\^{}}\NormalTok{nr\_gen\_trad}
+\end{Highlighting}
+\end{Shaded}
+
+The inbreeding coefficient is computed as
+
+\[F_t = 1 - (1 - \Delta F)^t\]
+
+where
+\(\Delta F = {1 \over 2N} = {1 \over 2*550} = \ensuremath{9\times 10^{-4}}\)
+and \(t\) corresponds to the number of generations which is computed as
+the ratio of the number of years (50) and the generation interval (5),
+\(t= 50 / 5 = 10\)
+
+Hence
+
+\[F_t =  1 - (1 - \ensuremath{9\times 10^{-4}})^{10} = 0.009\] \solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] What is the expected inbreeding coefficient $F_t$ after 50 years, if the generation interval is reduced to 2 years due to introduction of genomic selection?
+
+\textit{Wie gross ist der erwartete Inzuchtkoeffizient $F_t$ nach 50 Jahren, falls das Generationenintervall durch die Einführung der genomischen Selektion auf 2 Jahre reduziert wird?}
+\points{4}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{delta\_f }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{nr\_tgv\_cow)}
+\NormalTok{nr\_gen\_gsel }\OtherTok{\textless{}{-}}\NormalTok{ nr\_year }\SpecialCharTok{/}\NormalTok{ gen\_int\_gsel}
+\NormalTok{inb\_coef\_gsel }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ delta\_f)}\SpecialCharTok{\^{}}\NormalTok{nr\_gen\_gsel}
+\end{Highlighting}
+\end{Shaded}
+
+The same solution as under a) but with different numbers.
+
+The inbreeding coefficient is computed as
+
+\[F_t = 1 - (1 - \Delta F)^t\]
+
+where
+\(\Delta F = {1 \over 2N} = {1 \over 2*550} = \ensuremath{9\times 10^{-4}}\)
+and \(t\) corresponds to the number of generations which is computed as
+the ratio of the number of years (50) and the generation interval (2),
+\(t= 50 / 2 = 25\)
+
+Hence
+
+\[F_t =  1 - (1 - \ensuremath{9\times 10^{-4}})^{25} = 0.022\]
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] After how many years is the expected inbreeding depression at a single bi-allelic locus (minor allele frequency $p=0.25$) bigger than 0.5 in the population of "Rätisches Grauvieh" with $N = 550$, assuming traditional selection and genomic selection? The domiance deviation $d$ is assumed to be 50. 
+
+\textit{Nach wie vielen Jahren ist die erwartete Inzuchtdepression an einem Genlocus mit zwei Allelen (Minorallelfrequenz $p=0.25$) grösser als 0.5 in der Population des "Rätischen Grauviehs" mit $N = 550$, einmal unter der Annahme eines traditionellen Zuchtprogramms und einmal unter Genomischer Selektion? Die Dominanzabweichung $d$ beträgt } 50.
+\points{6}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{limit\_inb\_coef }\OtherTok{\textless{}{-}}\NormalTok{ inbr\_dep }\SpecialCharTok{/}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ dom\_dev }\SpecialCharTok{*}\NormalTok{ maf }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf))}
+\NormalTok{delta\_f }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{nr\_tgv\_cow)}
+\NormalTok{limit\_nr\_gen }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ limit\_inb\_coef) }\SpecialCharTok{/} \FunctionTok{log}\NormalTok{(}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ delta\_f)}
+\NormalTok{limit\_year\_trad }\OtherTok{\textless{}{-}} \FunctionTok{ceiling}\NormalTok{(limit\_nr\_gen }\SpecialCharTok{*}\NormalTok{ gen\_int\_trad)}
+\NormalTok{limit\_year\_gsel }\OtherTok{\textless{}{-}} \FunctionTok{ceiling}\NormalTok{(limit\_nr\_gen }\SpecialCharTok{*}\NormalTok{ gen\_int\_gsel)}
+\end{Highlighting}
+\end{Shaded}
+
+Inbreeding depression \(\Delta M\) is computed as
+
+\[\Delta M = M_0 - M_F = 2dp(1-p)F\]
+
+Solving für \(F\) and inserting the numbers given in the problem leads
+to
+
+\[F = \frac{\Delta M}{2dp(1-p)} = \frac{0.5}{2 * 50 * 0.25 * (1 - 0.25)} = 0.0266667\]
+
+The number of generations \(t\) is computed from
+\(F_t = 1-(1-\Delta F)^t\) with
+\(\Delta F = {1 \over 2N} = {1 \over 2*550} = \ensuremath{9\times 10^{-4}}\)
+which leads to
+
+\[t = \frac{log(1-F)}{log(1- \Delta F)} = \frac{log(1 - 0.0266667)}{log(1 - \ensuremath{9.0909091\times 10^{-4}})} = 29.7180232\]
+
+\begin{itemize}
+\item
+  Traditional Selection with generation interval 5 years: The limit for
+  the inbreeding depression is reached after 149 years
+\item
+  Genomic selection with generation interval 2 years: The limit for the
+  inbreeding depression is reached after 60 years
+\end{itemize}
+
+\solend
+
+\hypertarget{problem-3-quantitative-genetics}{%
+\subsection{Problem 3 Quantitative
+Genetics}\label{problem-3-quantitative-genetics}}
+
+Given is the following dataset with genotypes of a single bi-allelic
+locus and with observations of a quantitative trait. The minor allele
+frequency of the positive allele is assumed to be \(p = 0.15\).
+
+The dataset is available from:
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem3.csv}.
+
+\textit{Gegeben ist der folgende Datensatz mit Genotypen eines Genortes mit zwei Allelen und mit Beobachtungen eines quantitativen Merkmals. Die Frequenz des Allels mit positiver Wirkung sei}
+\(p = 0.15\).
+
+\textit{Der Datensatz ist auch verfügbar unter: }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem3.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rlr}
+\toprule
+Animal & Genotype & Observation\\
+\midrule
+1 & $G_1G_2$ & 31.3\\
+2 & $G_1G_2$ & 27.4\\
+3 & $G_1G_2$ & 17.3\\
+4 & $G_1G_1$ & 32.8\\
+5 & $G_2G_2$ & 20.4\\
+\addlinespace
+6 & $G_1G_2$ & 31.9\\
+7 & $G_2G_2$ & 4.5\\
+8 & $G_1G_2$ & 26.6\\
+9 & $G_2G_2$ & 18.8\\
+10 & $G_1G_2$ & 38.2\\
+\addlinespace
+11 & $G_2G_2$ & 7.2\\
+12 & $G_1G_2$ & 26.3\\
+13 & $G_2G_2$ & 22.3\\
+14 & $G_2G_2$ & 10.9\\
+15 & $G_1G_2$ & 27.5\\
+\addlinespace
+16 & $G_1G_2$ & 32.7\\
+17 & $G_2G_2$ & 17.3\\
+18 & $G_2G_2$ & 15.8\\
+19 & $G_1G_2$ & 31.1\\
+20 & $G_1G_2$ & 24.3\\
+\addlinespace
+21 & $G_2G_2$ & 16.9\\
+22 & $G_1G_1$ & 37.0\\
+23 & $G_2G_2$ & 18.7\\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Estimate the genotypic values for the three genotypes $G_1G_1$, $G_1G_2$ and $G_2G_2$ using a linear fixed effects model. 
+
+\textit{Schätzen Sie die genotypischen Werte für die drei Genotypen $G_1G_1$, $G_1G_2$ and $G_2G_2$ unter Verwendung eines linearen fixen Modells}
+\points{9}
+\end{enumerate}
+
+\solstart
+
+For a linear fixed effects model, the column with the genotypes must be
+converted into factors
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tbl\_data\_p3}\SpecialCharTok{$}\NormalTok{Genotype }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(tbl\_data\_p3}\SpecialCharTok{$}\NormalTok{Genotype)}
+\end{Highlighting}
+\end{Shaded}
+
+The linear fixed effects model is fitted
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lm\_single\_locus }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ Observation }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Genotype, }\AttributeTok{data =}\NormalTok{ tbl\_data\_p3)}
+\FunctionTok{summary}\NormalTok{(lm\_single\_locus)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Observation ~ Genotype, data = tbl_data_p3)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -11.30  -2.20   1.62   3.36   9.60 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)        34.900      3.897   8.955 1.96e-08 ***
+## Genotype$G_1G_2$   -6.300      4.237  -1.487 0.152625    
+## Genotype$G_2G_2$  -19.620      4.269  -4.596 0.000175 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 5.512 on 20 degrees of freedom
+## Multiple R-squared:  0.6678, Adjusted R-squared:  0.6346 
+## F-statistic:  20.1 on 2 and 20 DF,  p-value: 1.638e-05
+\end{verbatim}
+
+Transforming the solutions means
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(coef\_single\_locus }\OtherTok{\textless{}{-}} \FunctionTok{coefficients}\NormalTok{(lm\_single\_locus))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      (Intercept) Genotype$G_1G_2$ Genotype$G_2G_2$ 
+##            34.90            -6.30           -19.62
+\end{verbatim}
+
+The solutions show that the effect of \(G_1G_1\) is set to \(0\). The
+parameter \(a\) corresponding to the genotypic value of \(G_1G_1\) is
+estimated via the difference between the homozygous genotypes. This
+means that
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(parameter\_a }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{0} \SpecialCharTok{{-}}\NormalTok{ coef\_single\_locus[[}\StringTok{"Genotype$G\_2G\_2$"}\NormalTok{]])}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9.81
+\end{verbatim}
+
+\[a = \frac{0 - (-19.62)}{2} = 9.81\]
+
+The genotypic value of \(G_1G_2\) is obtained by adding \(a\) to the
+effect obtained for genotype \(G_1G_2\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(parameter\_d }\OtherTok{\textless{}{-}}\NormalTok{ parameter\_a }\SpecialCharTok{+}\NormalTok{ coef\_single\_locus[[}\StringTok{"Genotype$G\_1G\_2$"}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.51
+\end{verbatim}
+
+The genotypic values are
+
+\begin{tabular}{lr}
+\toprule
+Genotype & Value\\
+\midrule
+$G_2G_2$ & -9.81\\
+$G_1G_2$ & 3.51\\
+$G_1G_1$ & 9.81\\
+\bottomrule
+\end{tabular}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the breeding values and the dominance deviations as defined in the section of "Quantitative Genetics" for the data shown above and using the results under 3a. If you were not able to solve 3a, you can use the values $a = 10$ and $d = 2$. 
+
+\textit{ Berechnen Sie die Zuchtwerte und die Dominanzabweichungen, wie sie im Kapitel "Quantitative Genetik" definiert wurden für die oben gezeigten Daten. Falls Sie Aufgabe 3a nicht lösen konnten, können Sie die Werte $a=10$ und $d = 2$ verwenden.}
+\points{6}
+\end{enumerate}
+
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha }\OtherTok{=}\NormalTok{ parameter\_a }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1{-}2}\SpecialCharTok{*}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ parameter\_d}
+\NormalTok{bv11 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha}
+\NormalTok{bv12 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1{-}2}\SpecialCharTok{*}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha}
+\NormalTok{bv22 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ alpha}
+\NormalTok{d11 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ parameter\_d}
+\NormalTok{d12 }\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3)}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ parameter\_d}
+\NormalTok{d22 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ parameter\_d}
+\end{Highlighting}
+\end{Shaded}
+
+Using \(\alpha = a + (q-p)d = 9.81 + (0.85 - 0.15) * 3.51 = 12.267\)
+
+\begin{center} 
+\begin{tabular}{|c|c|c|}
+  \hline
+  Genotype  &  Breeding Value & Dominance Deviation \\
+  \hline
+  $G_1G_1$  &  $2q\alpha = 2 * 0.85 * 12.267 = 20.8539$  & $-2q^2d = -5.07195$ \\
+  \hline
+  $G_1G_2$  &  $(q-p)\alpha = (0.85 - 0.15) * 12.267 = 8.5869$  & $2pqd = 0.89505$\\
+  \hline
+  $G_2G_2$  &  $-2p\alpha =  -2 * 0.15 * 12.267 = -3.6801$  & $-2p^2d = -1.053$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\vspace{3ex}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{parameter\_a\_not\_solved }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{parameter\_d\_not\_solved }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{alpha\_not\_solved }\OtherTok{=}\NormalTok{ parameter\_a\_not\_solved }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1{-}2}\SpecialCharTok{*}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ parameter\_d\_not\_solved}
+\NormalTok{bv11 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha\_not\_solved}
+\NormalTok{bv12 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1{-}2}\SpecialCharTok{*}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha\_not\_solved}
+\NormalTok{bv22 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ alpha\_not\_solved}
+\NormalTok{d11 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3)}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ parameter\_d\_not\_solved}
+\NormalTok{d12 }\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3)}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ parameter\_d\_not\_solved}
+\NormalTok{d22 }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{maf\_p3 }\SpecialCharTok{*}\NormalTok{ parameter\_d\_not\_solved}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center} 
+\begin{tabular}{|c|c|c|}
+  \hline
+  Genotype  &  Breeding Value & Dominance Deviation\\
+  \hline
+  $G_1G_1$  &  $2q\alpha = 19.38$   & $-2q^2d = -2.89$   \\
+  \hline
+  $G_1G_2$  &  $(q-p)\alpha =7.98$ & $2pqd = 0.51$\\
+  \hline
+  $G_2G_2$  &  $-2p\alpha = -3.42$  & $-2p^2d = -0.6$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\vspace{3ex}
+\begin{enumerate}
+\item[c)] Compute the additive genetic variance and the dominance variance for the data shown above. If you were not able to solve 3a, you can use the values $a = 10$ and $d = 2$. 
+
+\textit{Berechnen Sie die additive genetische Varianz und die Dominanzvarianz für die oben gezeigten Daten. Falls Sie Aufgabe 3a nicht lösen konnten, können Sie die Werte $a=10$ und $d = 2$ verwenden.}
+\points{2}
+\end{enumerate}
+
+\solstart
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sigma\_a2 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ maf\_p3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{sigma\_d2 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ maf\_p3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ parameter\_d)}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The genetic additive variance
+  \(\sigma_A^2 = 2pq\alpha^2 = 2 * 0.15 * 0.85 * 12.267^2 = 38.3722187\)
+\item
+  The dominance variance
+  \(\sigma_D^2 = \left(2pqd \right)^2 = (2* 0.15 * 0.85 * 3.51) ^2 = 0.8011145\)
+\end{itemize}
+
+Not solved
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sigma\_a2 }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ maf\_p3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ alpha\_not\_solved}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{sigma\_d2 }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ maf\_p3 }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{maf\_p3) }\SpecialCharTok{*}\NormalTok{ parameter\_d\_not\_solved)}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The genetic additive variance
+  \(\sigma_A^2 = 2pq\alpha^2 = 2 * 0.15 * 0.85 * 12.267^2 = 33.1398\)
+\item
+  The dominance variance
+  \(\sigma_D^2 = \left(2pqd \right)^2 = (2* 0.15 * 0.85 * 3.51) ^2 = 0.2601\)
+\end{itemize}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-4-prediction-of-breeding-values}{%
+\subsection{Problem 4 Prediction of Breeding
+Values}\label{problem-4-prediction-of-breeding-values}}
+
+Use the following dataset to predict breeding values. The phenotypic
+variance of the data is assumed to be \(\sigma_p^2 = 1\). The
+heritability of the trait shown in the column `Phen' of the following
+table is \(h^2 = 0.2\).
+
+The dataset is available from
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem4.csv}.
+
+\textit{Verwenden Sie den folgenden Datensatz für die Schätzung von Zuchtwerten. Die phänotypische Varianz der Daten betrage}
+\(\sigma_p^2 = 1\).
+\textit{Die Heritabilität des Merkmals in der Kolonnen 'Phen' in der nachfolgenden Tabelle betrage}
+\(h^2 = 0.2\)
+
+\textit{Der Datensatz ist verfügbar unter: }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem4.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rrrlr}
+\toprule
+Progeny & Sire & Dam & Sex & Phen\\
+\midrule
+7519 & 6662 & 6108 & F & -1.669972\\
+7399 & 6561 & 6687 & F & 1.030195\\
+7151 & 6258 & 6127 & M & 0.085925\\
+8418 & 7151 & 7399 & F & -0.476189\\
+8419 & 7151 & 7519 & F & -0.071148\\
+\addlinespace
+8420 & 7151 & 7519 & M & 0.578070\\
+\bottomrule
+\end{tabular}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Use the own performance records of the animals shown above to predict breeding values. The mean of all observations above can be used as population mean. 
+
+\textit{Verwenden Sie die Eigenleistungen der Tiere in der oben gezeigten Tabelle um deren Zuchtwerte zu schäten. Verwenden Sie den Mittelwert der Beobachtungen als Populationsmittel.}
+\points{6}
+\end{enumerate}
+
+\solstart
+
+The population mean is computed as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pop\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Phen)}
+\end{Highlighting}
+\end{Shaded}
+
+The predicted breeding values are computed as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred\_bv }\OtherTok{\textless{}{-}}\NormalTok{ h2\_p4 }\SpecialCharTok{*}\NormalTok{ (tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Phen }\SpecialCharTok{{-}}\NormalTok{ pop\_mean)}
+\end{Highlighting}
+\end{Shaded}
+
+Listing the results
+
+\begin{tabular}{rr}
+\toprule
+Progeny & Breeding Value\\
+\midrule
+7519 & -0.3165571\\
+7399 & 0.2234763\\
+7151 & 0.0346223\\
+8418 & -0.0778005\\
+8419 & 0.0032077\\
+\addlinespace
+8420 & 0.1330513\\
+\bottomrule
+\end{tabular}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Use a BLUP animal model to predict breeding values for all animals given in the above shown dataset. 
+
+\textit{Verwenden Sie das BLUP Tiermodell zur Schätzung der Zuchtwerte aller Tiere, welche im obigen Datensatz gegeben sind.}
+\points{16}
+\end{enumerate}
+
+\solstart
+
+The BLUP animal model corresponds to the following linear mixed effects
+model
+
+\[y = Xb + Zu +e\] with \(y\) the vector of observations; \(b\) the
+vector of fixed effects corresponding to the `Sex' of each animal; \(u\)
+the vector of random breeding values for all animals in the pedigree;
+\(e\) the vector of random residuals. The matrices \(X\) and \(Z\) are
+known design matrices.
+
+Expected values and variance-covariance matrices are given by
+
+\[E\left[\begin{array}{c}y \\ u \\ e \end{array} \right] = \left[\begin{array}{c}Xb \\ 0 \\ 0 \end{array} \right]\]
+
+\[var\left[\begin{array}{c}y \\ u \\ e \end{array} \right] = 
+\left[\begin{array}{ccc} ZGZ^T + R & ZG & R\\ GZ^T & G & 0 \\ R &  0 & R \end{array} \right]
+\]
+
+The first step is the extension of the pedigree.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec\_sire\_extend }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Sire[}\FunctionTok{sapply}\NormalTok{(tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Sire, }
+                                           \ControlFlowTok{function}\NormalTok{(x) }
+                                             \SpecialCharTok{!}\NormalTok{(}\FunctionTok{is.element}\NormalTok{(x, tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Progeny)), }
+                                           \AttributeTok{USE.NAMES =} \ConstantTok{FALSE}\NormalTok{)]}
+\NormalTok{nr\_sire\_extend }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(vec\_sire\_extend)}
+\NormalTok{tbl\_sire\_extend }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{tibble}\NormalTok{(}\AttributeTok{Progeny =}\NormalTok{ vec\_sire\_extend,}
+                                  \AttributeTok{Sire =} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, nr\_sire\_extend),}
+                                  \AttributeTok{Dam  =} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, nr\_sire\_extend))}
+
+\NormalTok{vec\_dam\_extend }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Dam[}\FunctionTok{sapply}\NormalTok{(tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Dam, }
+                                           \ControlFlowTok{function}\NormalTok{(x) }
+                                             \SpecialCharTok{!}\NormalTok{(}\FunctionTok{is.element}\NormalTok{(x, tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Progeny)), }
+                                           \AttributeTok{USE.NAMES =} \ConstantTok{FALSE}\NormalTok{)]}
+\NormalTok{nr\_dam\_extend }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(vec\_dam\_extend)}
+\NormalTok{tbl\_dam\_extend }\OtherTok{\textless{}{-}}\NormalTok{ tibble}\SpecialCharTok{::}\FunctionTok{tibble}\NormalTok{(}\AttributeTok{Progeny =}\NormalTok{ vec\_dam\_extend,}
+                                  \AttributeTok{Sire =} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, nr\_dam\_extend),}
+                                  \AttributeTok{Dam  =} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, nr\_dam\_extend))                                 }
+                                  
+\NormalTok{tbl\_ped\_ext\_p4 }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{bind\_rows}\NormalTok{(tbl\_sire\_extend, }
+\NormalTok{                                   tbl\_dam\_extend, }
+\NormalTok{                                   tbl\_data\_p4[,}\FunctionTok{c}\NormalTok{(}\StringTok{"Progeny"}\NormalTok{, }\StringTok{"Sire"}\NormalTok{, }\StringTok{"Dam"}\NormalTok{)])}
+\NormalTok{tbl\_ped\_ext\_p4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 3
+##    Progeny  Sire   Dam
+##      <dbl> <dbl> <dbl>
+##  1    6662    NA    NA
+##  2    6561    NA    NA
+##  3    6258    NA    NA
+##  4    6108    NA    NA
+##  5    6687    NA    NA
+##  6    6127    NA    NA
+##  7    7519  6662  6108
+##  8    7399  6561  6687
+##  9    7151  6258  6127
+## 10    8418  7151  7399
+## 11    8419  7151  7519
+## 12    8420  7151  7519
+\end{verbatim}
+
+The numerator relationship matrix
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ped\_p4 }\OtherTok{\textless{}{-}}\NormalTok{ pedigreemm}\SpecialCharTok{::}\FunctionTok{pedigree}\NormalTok{(}\AttributeTok{sire =}\NormalTok{ tbl\_ped\_ext\_p4}\SpecialCharTok{$}\NormalTok{Sire,}
+                               \AttributeTok{dam =}\NormalTok{ tbl\_ped\_ext\_p4}\SpecialCharTok{$}\NormalTok{Dam,}
+                               \AttributeTok{label =} \FunctionTok{as.character}\NormalTok{(tbl\_ped\_ext\_p4}\SpecialCharTok{$}\NormalTok{Progeny))}
+\NormalTok{ped\_p4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      sire  dam
+## 6662 <NA> <NA>
+## 6561 <NA> <NA>
+## 6258 <NA> <NA>
+## 6108 <NA> <NA>
+## 6687 <NA> <NA>
+## 6127 <NA> <NA>
+## 7519 6662 6108
+## 7399 6561 6687
+## 7151 6258 6127
+## 8418 7151 7399
+## 8419 7151 7519
+## 8420 7151 7519
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mat\_Ainv\_p4 }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(pedigreemm}\SpecialCharTok{::}\FunctionTok{getAInv}\NormalTok{(}\AttributeTok{ped =}\NormalTok{ ped\_p4))}
+\NormalTok{mat\_Ainv\_p4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      6662 6561 6258 6108 6687 6127 7519 7399 7151 8418 8419 8420
+## 6662  1.5  0.0  0.0  0.5  0.0  0.0   -1  0.0  0.0    0    0    0
+## 6561  0.0  1.5  0.0  0.0  0.5  0.0    0 -1.0  0.0    0    0    0
+## 6258  0.0  0.0  1.5  0.0  0.0  0.5    0  0.0 -1.0    0    0    0
+## 6108  0.5  0.0  0.0  1.5  0.0  0.0   -1  0.0  0.0    0    0    0
+## 6687  0.0  0.5  0.0  0.0  1.5  0.0    0 -1.0  0.0    0    0    0
+## 6127  0.0  0.0  0.5  0.0  0.0  1.5    0  0.0 -1.0    0    0    0
+## 7519 -1.0  0.0  0.0 -1.0  0.0  0.0    3  0.0  1.0    0   -1   -1
+## 7399  0.0 -1.0  0.0  0.0 -1.0  0.0    0  2.5  0.5   -1    0    0
+## 7151  0.0  0.0 -1.0  0.0  0.0 -1.0    1  0.5  3.5   -1   -1   -1
+## 8418  0.0  0.0  0.0  0.0  0.0  0.0    0 -1.0 -1.0    2    0    0
+## 8419  0.0  0.0  0.0  0.0  0.0  0.0   -1  0.0 -1.0    0    2    0
+## 8420  0.0  0.0  0.0  0.0  0.0  0.0   -1  0.0 -1.0    0    0    2
+\end{verbatim}
+
+The design matrices are given by the following chunks. First the matrix
+\(X\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nr\_records }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(tbl\_data\_p4)}
+\NormalTok{(mat\_X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+                  \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+                  \DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{,}
+                  \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+                  \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+                  \DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    0    1
+## [2,]    0    1
+## [3,]    1    0
+## [4,]    0    1
+## [5,]    0    1
+## [6,]    1    0
+\end{verbatim}
+
+The matrix \(Z\) is defined as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec\_base }\OtherTok{\textless{}{-}}\NormalTok{ tbl\_ped\_ext\_p4}\SpecialCharTok{$}\NormalTok{Progeny[}\FunctionTok{sapply}\NormalTok{(tbl\_ped\_ext\_p4}\SpecialCharTok{$}\NormalTok{Progeny, }
+                                          \ControlFlowTok{function}\NormalTok{(x) }
+                                            \SpecialCharTok{!}\FunctionTok{is.element}\NormalTok{(x, tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Progeny), }
+                                          \AttributeTok{USE.NAMES =} \ConstantTok{FALSE}\NormalTok{)]}
+\NormalTok{(mat\_Z }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records, }\AttributeTok{ncol =} \FunctionTok{length}\NormalTok{(vec\_base)),}
+               \FunctionTok{diag}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+## [1,]    0    0    0    0    0    0    1    0    0     0     0     0
+## [2,]    0    0    0    0    0    0    0    1    0     0     0     0
+## [3,]    0    0    0    0    0    0    0    0    1     0     0     0
+## [4,]    0    0    0    0    0    0    0    0    0     1     0     0
+## [5,]    0    0    0    0    0    0    0    0    0     0     1     0
+## [6,]    0    0    0    0    0    0    0    0    0     0     0     1
+\end{verbatim}
+
+The mixed model equations
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lambda }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{h2\_p4)}\SpecialCharTok{/}\NormalTok{ h2\_p4}
+\NormalTok{mat\_xtx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X)}
+\NormalTok{mat\_xtz }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X, mat\_Z)}
+\NormalTok{mat\_ztx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_Z, mat\_X)}
+\NormalTok{mat\_ztzlAinv }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_Z) }\SpecialCharTok{+}\NormalTok{ lambda }\SpecialCharTok{*}\NormalTok{ mat\_Ainv\_p4}
+\NormalTok{mat\_coef }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(mat\_xtx, mat\_xtz), }\FunctionTok{cbind}\NormalTok{(mat\_ztx, mat\_ztzlAinv))}
+\NormalTok{mat\_rhs }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{crossprod}\NormalTok{(mat\_X, tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Phen),}
+                 \FunctionTok{crossprod}\NormalTok{(mat\_Z, tbl\_data\_p4}\SpecialCharTok{$}\NormalTok{Phen))}
+\NormalTok{(mat\_sol }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(mat\_coef, mat\_rhs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             [,1]
+##       0.38845865
+##      -0.30206265
+## 6662 -0.10737069
+## 6561  0.12071478
+## 6258 -0.01334410
+## 6108 -0.10737069
+## 6687  0.12071478
+## 6127 -0.01334410
+## 7519 -0.21474138
+## 7399  0.24142957
+## 7151 -0.02668819
+## 8418  0.07609324
+## 8419 -0.08164485
+## 8420 -0.08623410
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-5-genomics}{%
+\subsection{Problem 5 Genomics}\label{problem-5-genomics}}
+
+Use the following dataset to predict genomic breeding values. The minor
+allele frequencies of the three loci are given as
+
+\textit{Verwenden Sie den folgenden Datensatz zur Schätzung von genomischen Zuchtwerten. Die minor Allelfrequenzen der drei Loci sind gegeben als}
+
+\begin{itemize}
+\tightlist
+\item
+  \(p_G = 0.45\)
+\item
+  \(p_H = 0.35\)
+\item
+  \(p_I = 0.4\)
+\end{itemize}
+
+The dataset can be obtained from
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem5.csv}.
+
+\textit{Der Datensatz ist verfügbar unter: }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem5.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rrrrr}
+\toprule
+Animal & Locus G & Locus H & Locus I & Observation\\
+\midrule
+1 & 1 & 0 & -1 & 25.3\\
+2 & 0 & -1 & 0 & 20.7\\
+3 & -1 & 1 & 0 & 33.2\\
+4 & 0 & -1 & 0 & 8.4\\
+5 & 0 & -1 & 0 & 18.8\\
+\addlinespace
+6 & 1 & 0 & 0 & 35.9\\
+7 & 0 & 0 & -1 & 1.4\\
+8 & -1 & 0 & -1 & -6.4\\
+9 & 0 & -1 & -1 & 6.3\\
+10 & 0 & 0 & -1 & 13.6\\
+\addlinespace
+11 & 1 & 0 & 0 & 34.0\\
+12 & 0 & 1 & 1 & 54.1\\
+13 & 1 & -1 & 0 & 25.8\\
+14 & -1 & 1 & 0 & 29.0\\
+15 & 0 & -1 & 0 & 14.8\\
+\addlinespace
+16 & 0 & -1 & -1 & 1.6\\
+17 & 0 & -1 & 1 & 23.8\\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[a)] Use a marker effect model to predict genomic breeding values from the above data. Use a value of $\lambda = 10$ for solving the mixed model equations.
+
+\textit{Verwenden Sie ein Markereffektmodell zur Schätzung von genomischen Zuchtwerten. Verwenden Sie $\lambda = 10$ für die Mischmodellgleichungen}
+\points{12}
+\end{enumerate}
+
+\solstart
+
+The marker effect model corresponds to the following linear mixed effect
+model
+
+\[y = 1\mu + Wq + e\] with \(y\) the vector of observations; \(\mu\) the
+fixed general intercept; \(q\) the vector of random marker effects;
+\(e\) the vector of random residuals.
+
+First the marker effects are predicted using the following MME
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nr\_records }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(tbl\_data\_p5)}
+\NormalTok{mat\_X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{)}
+\NormalTok{mat\_W }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(tbl\_data\_p5[,}\FunctionTok{c}\NormalTok{(}\StringTok{"Locus G"}\NormalTok{, }\StringTok{"Locus H"}\NormalTok{, }\StringTok{"Locus I"}\NormalTok{)])}
+\NormalTok{n\_nr\_snp }\OtherTok{\textless{}{-}} \FunctionTok{ncol}\NormalTok{(mat\_W)}
+\NormalTok{mat\_xtx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X)}
+\NormalTok{mat\_xtw }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X, mat\_W)}
+\NormalTok{mat\_wtx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_W, mat\_X)}
+\NormalTok{mat\_wtwlI }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_W) }\SpecialCharTok{+}\NormalTok{ lambda\_p5a }\SpecialCharTok{+} \FunctionTok{diag}\NormalTok{(}\DecValTok{1}\NormalTok{,}\AttributeTok{nrow =}\NormalTok{ n\_nr\_snp)}
+\NormalTok{mat\_coef }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(mat\_xtx, mat\_xtw), }\FunctionTok{cbind}\NormalTok{(mat\_wtx, mat\_wtwlI))}
+\NormalTok{mat\_rhs }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{crossprod}\NormalTok{(mat\_X, tbl\_data\_p5}\SpecialCharTok{$}\NormalTok{Observation),}
+                 \FunctionTok{crossprod}\NormalTok{(mat\_W, tbl\_data\_p5}\SpecialCharTok{$}\NormalTok{Observation))}
+\NormalTok{(mat\_sol }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(mat\_coef, mat\_rhs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              [,1]
+##         22.209503
+## Locus G -1.897469
+## Locus H  2.048225
+## Locus I  6.280737
+\end{verbatim}
+
+The genomic breeding values are obtained by a multiplication of the
+matrix \(W\) with the marker effects.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nr\_fix\_eff }\OtherTok{\textless{}{-}} \FunctionTok{ncol}\NormalTok{(mat\_X)}
+\NormalTok{mat\_mrk\_eff }\OtherTok{\textless{}{-}}\NormalTok{ mat\_sol[(nr\_fix\_eff}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(mat\_sol),]}
+\NormalTok{mat\_gen\_bv }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(}\FunctionTok{t}\NormalTok{(mat\_W), mat\_mrk\_eff)}
+\NormalTok{mat\_gen\_bv}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]
+##  [1,] -8.178206
+##  [2,] -2.048225
+##  [3,]  3.945695
+##  [4,] -2.048225
+##  [5,] -2.048225
+##  [6,] -1.897469
+##  [7,] -6.280737
+##  [8,] -4.383268
+##  [9,] -8.328962
+## [10,] -6.280737
+## [11,] -1.897469
+## [12,]  8.328962
+## [13,] -3.945695
+## [14,]  3.945695
+## [15,] -2.048225
+## [16,] -8.328962
+## [17,]  4.232512
+\end{verbatim}
+
+The numeric values of the genomic breeding values are not that
+important, but the ranking of the animals according to the predicted
+breeding values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{order}\NormalTok{(mat\_gen\_bv[,}\DecValTok{1}\NormalTok{], }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 12 17  3 14  6 11  2  4  5 15 13  8  7 10  1  9 16
+\end{verbatim}
+
+\solend
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Use a breeding-value-based model to predict genomic breeding values from the above data. Use a value of $\lambda = 5$ for solving the mixed model equations.
+
+\textit{Verwenden Sie ein Zuchtwert-basiertes Modell zur Schätzung von genomischen Zuchtwerten. Verwenden Sie $\lambda = 5$ für die Mischmodellgleichungen}
+\points{12}
+\end{enumerate}
+
+\solstart
+
+The breeding-value based model corresponds to the following linear mixed
+effect model
+
+\[y = 1\mu + Zg + e\]
+
+We first have to compute the genomic relationship matrix \(G\) and its
+inverse. The following function is used to setup the matrix \(G\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{computeMatGrm }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(pmatData) \{}
+\NormalTok{  matData }\OtherTok{\textless{}{-}}\NormalTok{ pmatData}
+  \CommentTok{\# check the coding, if matData is {-}1, 0, 1 coded, then add 1 to get to 0, 1, 2 coding}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{min}\NormalTok{(matData) }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) matData }\OtherTok{\textless{}{-}}\NormalTok{ matData }\SpecialCharTok{+} \DecValTok{1}
+  \CommentTok{\# Allele frequencies, column vector of P and sum of frequency products}
+\NormalTok{  freq }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(matData, }\DecValTok{2}\NormalTok{, mean) }\SpecialCharTok{/} \DecValTok{2}
+\NormalTok{  P }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*}\NormalTok{ (freq }\SpecialCharTok{{-}} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{  sumpq }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(freq}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{freq))}
+  \CommentTok{\# Changing the coding from (0,1,2) to ({-}1,0,1) and subtract matrix P}
+\NormalTok{  Z }\OtherTok{\textless{}{-}}\NormalTok{ matData }\SpecialCharTok{{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{matrix}\NormalTok{(P, }\AttributeTok{nrow =} \FunctionTok{nrow}\NormalTok{(matData), }
+                             \AttributeTok{ncol =} \FunctionTok{ncol}\NormalTok{(matData), }
+                             \AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+  \CommentTok{\# Z\%*\%Zt is replaced by tcrossprod(Z)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{tcrossprod}\NormalTok{(Z)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{sumpq))}
+\NormalTok{\}}
+\NormalTok{nr\_records }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(tbl\_data\_p5)}
+\NormalTok{mat\_W }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(tbl\_data\_p5[,}\FunctionTok{c}\NormalTok{(}\StringTok{"Locus G"}\NormalTok{, }\StringTok{"Locus H"}\NormalTok{, }\StringTok{"Locus I"}\NormalTok{)])}
+\NormalTok{mat\_G }\OtherTok{\textless{}{-}} \FunctionTok{computeMatGrm}\NormalTok{(}\AttributeTok{pmatData =}\NormalTok{ mat\_W)}
+\NormalTok{mat\_Ginv }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(mat\_G }\SpecialCharTok{+} \FloatTok{0.1} \SpecialCharTok{*} \FunctionTok{diag}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records))}
+\end{Highlighting}
+\end{Shaded}
+
+The solution is via the following mixed model equation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mat\_X }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{)}
+\NormalTok{mat\_Z }\OtherTok{\textless{}{-}} \FunctionTok{diag}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{nrow =}\NormalTok{ nr\_records)}
+\NormalTok{mat\_xtx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X)}
+\NormalTok{mat\_xtz }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_X, mat\_Z)}
+\NormalTok{mat\_ztx }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_Z, mat\_X)}
+\NormalTok{mat\_ztzlGinv }\OtherTok{\textless{}{-}} \FunctionTok{crossprod}\NormalTok{(mat\_Z) }\SpecialCharTok{+}\NormalTok{ lambda\_p5b }\SpecialCharTok{*}\NormalTok{ mat\_Ginv}
+\NormalTok{mat\_coef }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(mat\_xtx, mat\_xtz), }\FunctionTok{cbind}\NormalTok{(mat\_ztx, mat\_ztzlGinv))}
+\NormalTok{mat\_rhs }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{crossprod}\NormalTok{(mat\_X, tbl\_data\_p5}\SpecialCharTok{$}\NormalTok{Observation),}
+                 \FunctionTok{crossprod}\NormalTok{(mat\_Z, tbl\_data\_p5}\SpecialCharTok{$}\NormalTok{Observation))}
+\NormalTok{(mat\_sol }\OtherTok{\textless{}{-}} \FunctionTok{solve}\NormalTok{(mat\_coef, mat\_rhs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               [,1]
+##  [1,]  20.01764706
+##  [2,]  -0.05202814
+##  [3,]  -2.62222084
+##  [4,]   5.31580514
+##  [5,]  -2.86339731
+##  [6,]  -2.65947574
+##  [7,]   7.69254279
+##  [8,]  -4.63416255
+##  [9,]  -8.90061068
+## [10,] -10.44130157
+## [11,]  -4.39494686
+## [12,]   7.65528788
+## [13,]  17.37584381
+## [14,]   1.59128612
+## [15,]   5.23345220
+## [16,]  -2.73790711
+## [17,] -10.53345843
+## [18,]   4.97529127
+\end{verbatim}
+
+The first element is the estimate of \(\mu\) and all other elements in
+the solution vector are the genomic breeding values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nr\_fix\_eff }\OtherTok{\textless{}{-}} \FunctionTok{ncol}\NormalTok{(mat\_X)}
+\NormalTok{(mat\_bv }\OtherTok{\textless{}{-}}\NormalTok{ mat\_sol[(nr\_fix\_eff}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(mat\_sol),])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  -0.05202814  -2.62222084   5.31580514  -2.86339731  -2.65947574
+##  [6]   7.69254279  -4.63416255  -8.90061068 -10.44130157  -4.39494686
+## [11]   7.65528788  17.37584381   1.59128612   5.23345220  -2.73790711
+## [16] -10.53345843   4.97529127
+\end{verbatim}
+
+The numeric values of the genomic breeding values are not that
+important, but the ranking of the animals according to the predicted
+breeding values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{order}\NormalTok{(mat\_bv, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 12  6 11  3 14 17 13  1  2  5 15  4 10  7  8  9 16
+\end{verbatim}
+
+\solend
+
+\end{document}

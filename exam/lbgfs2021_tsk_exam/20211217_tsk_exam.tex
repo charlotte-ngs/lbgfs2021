@@ -1,0 +1,517 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\author{}
+\date{\vspace{-2.5em}}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% preamble used for exam
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\newcommand{\points}[1]
+{\begin{flushright}\textbf{#1}\end{flushright}}
+\newcommand{\solstart}
+{\vspace{3ex}\textbf{Solution}:}
+\newcommand{\solend}
+{\vspace{2ex}$\blacksquare$}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{tabular}{l}
+ETH Zurich \\
+D-USYS\\
+Institute of Agricultural Sciences\\
+\end{tabular}
+
+\vspace{15ex}
+\begin{center}
+\huge
+Exam\\ \vspace{1ex}
+Livestock Breeding and Genomics \\  \vspace{1ex}
+FS 2021 \\
+
+\normalsize
+\vspace{7ex}
+Peter von Rohr 
+\end{center}
+
+\vspace{7ex}
+\begin{tabular}{p{5cm}lr}
+  & \textsc{Date}  & \textsc{\emph{17. December 2021}} \\
+  & \textsc{Begin} & \textsc{\emph{09:15 }}\\
+  & \textsc{End}   & \textsc{\emph{11:15 }}\\ 
+\end{tabular}
+
+\vspace{5ex}
+
+\large
+\begin{tabular}{p{2.5cm}p{3cm}p{6cm}}
+  &  Name:     &  \\
+  &            &  \\
+  &  Legi-Nr:  & \\
+\end{tabular}
+\normalsize
+
+\vspace{9ex}
+\begin{center}
+\begin{tabular}{|p{3cm}|c|c|}
+\hline
+Problem  &  Maximum Number of Points  &  Number of Points Reached \\
+\hline
+1        &  67         & \\
+\hline
+2        &  14         & \\
+\hline
+3        &  17         & \\
+\hline
+4        &  22          & \\
+\hline
+5        &  24          & \\
+\hline
+Total    &  144    & \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-1-numerator-relationship-matrix-and-inbreeding}{%
+\subsection{Problem 1 Numerator Relationship Matrix and
+Inbreeding}\label{problem-1-numerator-relationship-matrix-and-inbreeding}}
+
+\vspace{3ex}
+
+Given is the following list of animals.
+
+\vspace{3ex}
+
+\textit{Gegeben ist die folgende Tierliste.}
+
+\begin{tabular}{llll}
+\toprule
+Animal & Birthdate & Sire & Dam\\
+\midrule
+GINA & 18.01.2020 & HARRY & CH120.1208.5899.1\\
+CH 120.1208.5899.1 & 22.11.2015 & NA & Gitta\\
+Gitta & 31.05.2001 & HARRY & Gibsy\\
+Gibsy & 09.12.1990 & Ginger Hill Angus 133 & Bianca\\
+HARRY & 22.02.1997 & HIBISCUS & WALBURGA\\
+\bottomrule
+\end{tabular}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Set up the numerator relationship matrix for the animals shown above.
+
+\textit{Stellen Sie die genetisch-additive Verwandtschaftsmatrix auf für die oben gezeigten Tiere.}
+\points{45}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the inbreeding coefficients $F_i$ of the following animals and indicate whether the animals are inbred
+
+\textit{Berechnen Sie den Inzuchtkoeffizienten $F_i$ der folgenden Tiere und geben Sie an, ob die jeweiligen Tiere ingezüchtet sind.}
+\points{18}
+\end{enumerate}
+
+\solstart
+
+\vspace{3ex}
+
+\begin{tabular}{lll}
+\toprule
+Animal & Inbreeding Coefficient & Animal Inbred (yes/no)\\
+\midrule
+Bianca &  & \\
+Ginger Hill Angus 133 &  & \\
+HIBISCUS &  & \\
+WALBURGA &  & \\
+Gibsy &  & \\
+\addlinespace
+HARRY &  & \\
+Gitta &  & \\
+CH 120.1208.5899.1 &  & \\
+GINA &  & \\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] The owner of GINA wants to find a mate to have an offspring. Compute the inbreeding coefficients of all possible offspring of GINA with all available sires. Select the mate for GINA, among the available sires, such that the offspring has the lowest inbreeding coefficient. 
+
+\textit{Der/die Besitzer/In von GINA möchte einen Paarungspartner für GINA finden. Berechnen Sie die Inzuchtkoeffizienten aller möglichen Nachkommen von GINA mit allen möglichen Vätern. Wählen Sie den Paarungspartner von GINA unter allen verfügbaren Stieren, so dass das Nachkommentier einen minimalen Inzuchtkoeffizienten hat.}
+\points{4}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\begin{tabular}{ll}
+\toprule
+Sire & Offspring Inbreeding Coefficient\\
+\midrule
+Ginger Hill Angus 133 & \\
+HIBISCUS & \\
+HARRY & \\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-2-variance-and-inbreeding}{%
+\subsection{Problem 2 Variance and
+Inbreeding}\label{problem-2-variance-and-inbreeding}}
+
+\vspace{3ex}
+
+The cattle breed ``Rätisches Grauvieh'' is a robust alpine cattle breed.
+In a recent survey about 550 calvings per year were counted. For reasons
+of simplicity, we can set in the following computations, the variable
+\(N\) to the number of calvings per year.
+
+\vspace{3ex}
+
+\textit{Die Rindviehrasse "Rätisches Grauvieh" ist eine robuste Rasse im Alpenraum. In einer kürzlich gemachten Umfrage wurden 550 Abkalbungen pro Jahr von Rätischen Grauviehkühen gezählt. Zur Vereinfachung können wir in den folgenden Berechnungen die Variable $N$ der Anzahl Abkalbungen pro Jahr gleichsetzen.}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] What is the expected inbreeding coefficients $F_t$ after 50 years assuming traditional selection with a generation interval of 5 years. 
+
+\textit{Wie gross ist der erwartete Inzuchtkoeffizient $F_t$ nach 50 Jahren? Dabei nehmen wir ein traditionelles Zuchtprogramm an mit einem Generationenintervall von 5 Jahren.}
+\points{4}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] What is the expected inbreeding coefficient $F_t$ after 50 years, if the generation interval is reduced to 2 years due to introduction of genomic selection?
+
+\textit{Wie gross ist der erwartete Inzuchtkoeffizient $F_t$ nach 50 Jahren, falls das Generationenintervall durch die Einführung der genomischen Selektion auf 2 Jahre reduziert wird?}
+\points{4}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[c)] After how many years is the expected inbreeding depression at a single bi-allelic locus (minor allele frequency $p=0.25$) bigger than 0.5 in the population of "Rätisches Grauvieh" with $N = 550$, assuming traditional selection and genomic selection?
+
+\textit{Nach wie vielen Jahren ist die erwartete Inzuchtdepression an einem Genlocus mit zwei Allelen (Minorallelfrequenz $p=0.25$) grösser als 0.5 in der Population des "Rätischen Grauviehs" mit $N = 550$, einmal unter der Annahme eines traditionellen Zuchtprogramms und einmal unter Genomischer Selektion?}
+\points{6}
+\end{enumerate}
+
+\vspace{3ex}
+\solstart
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-3-quantitative-genetics}{%
+\subsection{Problem 3 Quantitative
+Genetics}\label{problem-3-quantitative-genetics}}
+
+Given is the following dataset with genotypes of a single bi-allelic
+locus and with observations of a quantitative trait. The minor allele
+frequency of the positive allele is assumed to be \(p = 0.15\).
+
+The dataset is available from
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem3.csv}.
+
+\textit{Gegeben ist der folgende Datensatz mit Genotypen eines Genortes mit zwei Allelen und mit Beobachtungen eines quantitativen Merkmals. Die Frequenz des Allels mit positiver Wirkung sei}
+\$p = 0.15.
+
+\textit{Der Datensatz ist auch verfügbar unter }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem3.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rlr}
+\toprule
+Animal & Genotype & Observation\\
+\midrule
+1 & $G_1G_2$ & 31.3\\
+2 & $G_1G_2$ & 27.4\\
+3 & $G_1G_2$ & 17.3\\
+4 & $G_1G_1$ & 32.8\\
+5 & $G_2G_2$ & 20.4\\
+\addlinespace
+6 & $G_1G_2$ & 31.9\\
+7 & $G_2G_2$ & 4.5\\
+8 & $G_1G_2$ & 26.6\\
+9 & $G_2G_2$ & 18.8\\
+10 & $G_1G_2$ & 38.2\\
+\addlinespace
+11 & $G_2G_2$ & 7.2\\
+12 & $G_1G_2$ & 26.3\\
+13 & $G_2G_2$ & 22.3\\
+14 & $G_2G_2$ & 10.9\\
+15 & $G_1G_2$ & 27.5\\
+\addlinespace
+16 & $G_1G_2$ & 32.7\\
+17 & $G_2G_2$ & 17.3\\
+18 & $G_2G_2$ & 15.8\\
+19 & $G_1G_2$ & 31.1\\
+20 & $G_1G_2$ & 24.3\\
+\addlinespace
+21 & $G_2G_2$ & 16.9\\
+22 & $G_1G_1$ & 37.0\\
+23 & $G_2G_2$ & 18.7\\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Estimate the genotypic values for the three genotypes $G_1G_1$, $G_1G_2$ and $G_2G_2$ using a linear fixed effects model. 
+
+\textit{Schätzen Sie die genotypischen Werte für die drei Genotypen $G_1G_1$, $G_1G_2$ and $G_2G_2$ unter Verwendung eines linearen fixen Modells}
+\points{9}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Compute the breeding values and the dominance deviations as defined in the section of "Quantitative Genetics" for the data shown above and using the results under 3a. If you were not able to solve 3a, you can use the values $a = 10$ and $d = 2$. 
+
+\textit{ Berechnen Sie die Zuchtwerte und die Dominanzabweichungen, wie sie im Kapitel "Quantitative Genetik" definiert wurden für die oben gezeigten Daten. Falls Sie Aufgabe 3a nicht lösen konnten, können Sie die Werte $a=10$ und $d = 2$ verwenden.}
+\points{6}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\vspace{3ex}
+\begin{enumerate}
+\item[c)] Compute the additive genetic variance and the dominance variance for the data shown above. If you were not able to solve 3a, you can use the values $a = 10$ and $d = 2$. 
+
+\textit{Berechnen Sie die additive genetische Varianz und die Dominanzvarianz für die oben gezeigten Daten. Falls Sie Aufgabe 3a nicht lösen konnten, können Sie die Werte $a=10$ und $d = 2$ verwenden.}
+\points{2}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-4-prediction-of-breeding-values}{%
+\subsection{Problem 4 Prediction of Breeding
+Values}\label{problem-4-prediction-of-breeding-values}}
+
+Use the following dataset to predict breeding values. The phenotypic
+variance of the data is assumed to be \(\sigma_p^2 = 1\). The
+heritability of the trait shown in the column `Phen' of the following
+table is \(h^2 = 0.2\).
+
+The dataset is available from
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem4.csv}.
+
+\textit{Verwenden Sie den folgenden Datensatz für die Schätzung von Zuchtwerten. Die phänotypische Varianz der Daten betrage}
+\(\sigma_p^2 = 1\).
+\textit{Die Heritabilität des Merkmals in der Kolonnen 'Phen' in der nachfolgenden Tabelle betrage}
+\(h^2 = 0.2\)
+
+\textit{Der Datensatz ist verfügbar unter: }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem4.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rrrlr}
+\toprule
+Progeny & Sire & Dam & Sex & Phen\\
+\midrule
+7519 & 6662 & 6108 & F & -1.669972\\
+7399 & 6561 & 6687 & F & 1.030195\\
+7151 & 6258 & 6127 & M & 0.085925\\
+8418 & 7151 & 7399 & F & -0.476189\\
+8419 & 7151 & 7519 & F & -0.071148\\
+\addlinespace
+8420 & 7151 & 7519 & M & 0.578070\\
+\bottomrule
+\end{tabular}
+
+\vspace{3ex}
+\begin{enumerate}
+\item[a)] Use the own performance records of the animals shown above to predict breeding values. The mean of all observations above can be used as population mean. 
+
+\textit{Verwenden Sie die Eigenleistungen der Tiere in der oben gezeigten Tabelle um deren Zuchtwerte zu schäten. Verwenden Sie den Mittelwert der Beobachtungen als Populationsmittel.}
+\points{6}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Use a BLUP animal model to predict breeding values for all animals given in the above shown dataset. 
+
+\textit{Verwenden Sie das BLUP Tiermodell zur Schätzung der Zuchtwerte aller Tiere, welche im obigen Datensatz gegeben sind.}
+\points{16}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\hypertarget{problem-5-genomics}{%
+\subsection{Problem 5 Genomics}\label{problem-5-genomics}}
+
+Use the following dataset to predict genomic breeding values. The minor
+allele frequencies of the three loci are given as
+
+\textit{Verwenden Sie den folgenden Datensatz zur Schätzung von genomischen Zuchtwerten. Die minor Allelfrequenzen der drei Loci sind gegeben als}
+
+\begin{itemize}
+\tightlist
+\item
+  \(p_G = 0.45\)
+\item
+  \(p_H = 0.35\)
+\item
+  \(p_I = 0.4\)
+\end{itemize}
+
+The dataset can be obtained from
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem5.csv}.
+
+\textit{Der Datensatz ist verfügbar unter: }
+\url{https://charlotte-ngs.github.io/lbgfs2021/data/exam_lbgfs2021_problem5.csv}.
+
+\vspace{3ex}
+
+\begin{tabular}{rrrrr}
+\toprule
+Animal & Locus G & Locus H & Locus I & Observation\\
+\midrule
+1 & 1 & 0 & -1 & 25.3\\
+2 & 0 & -1 & 0 & 20.7\\
+3 & -1 & 1 & 0 & 33.2\\
+4 & 0 & -1 & 0 & 8.4\\
+5 & 0 & -1 & 0 & 18.8\\
+\addlinespace
+6 & 1 & 0 & 0 & 35.9\\
+7 & 0 & 0 & -1 & 1.4\\
+8 & -1 & 0 & -1 & -6.4\\
+9 & 0 & -1 & -1 & 6.3\\
+10 & 0 & 0 & -1 & 13.6\\
+\addlinespace
+11 & 1 & 0 & 0 & 34.0\\
+12 & 0 & 1 & 1 & 54.1\\
+13 & 1 & -1 & 0 & 25.8\\
+14 & -1 & 1 & 0 & 29.0\\
+15 & 0 & -1 & 0 & 14.8\\
+\addlinespace
+16 & 0 & -1 & -1 & 1.6\\
+17 & 0 & -1 & 1 & 23.8\\
+\bottomrule
+\end{tabular}
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[a)] Use a marker effect model to predict genomic breeding values from the above data. Use a value of $\lambda = 10$ for solving the mixed model equations.
+
+\textit{Verwenden Sie ein Markereffektmodell zur Schätzung von genomischen Zuchtwerten. Verwenden Sie $\lambda = 10$ für die Mischmodellgleichungen}
+\points{12}
+\end{enumerate}
+
+\solstart
+
+\clearpage
+\pagebreak
+
+\begin{enumerate}
+\item[b)] Use a breeding-value-based model to predict genomic breeding values from the above data. Use a value of $\lambda = 5$ for solving the mixed model equations.
+
+\textit{Verwenden Sie ein Zuchtwert-basiertes Modell zur Schätzung von genomischen Zuchtwerten. Verwenden Sie $\lambda = 5$ für die Mischmodellgleichungen}
+\points{12}
+\end{enumerate}
+
+\solstart
+
+\end{document}

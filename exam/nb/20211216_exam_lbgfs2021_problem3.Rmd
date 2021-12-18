@@ -1,0 +1,96 @@
+---
+title: "Exam FS2021 - Data and Solution for Problem 3"
+output: html_notebook
+---
+
+# Disclaimer
+This notebooks shows the design and the solution for problem 3.
+
+
+# Data
+The data is produced by the following chunks
+
+
+```{r}
+#rm(list = ls())
+set.seed(9128)
+library(dplyr)
+### # fix the number of animals
+n_nr_animal <- 23
+### # intercept
+n_inter_cept <- 27.1
+### # residual standard deviation
+n_res_sd <- 6
+### # vector of genotype value coefficients
+vec_geno_add_value_coeff <- c(-1, 0, 1)
+vec_geno_dom_value_coeff <- c(0,  1, 0)
+### # fix allele frequency of positive allele
+n_prob_snps <- .45
+### # genotypic values
+n_nr_snp <- 1
+vec_geno_add_val <- 10.6
+vec_geno_dom_val <- 3.7
+### # put together the genotypes into a matrix
+mat_geno_add_snp <- matrix(c(sample(vec_geno_add_value_coeff, n_nr_animal, prob = c((1-n_prob_snps)^2,
+                                                                              2*(1-n_prob_snps)*n_prob_snps,
+                                                                              n_prob_snps^2),
+                                replace = TRUE)),
+                         nrow = n_nr_snp)
+### # dominance
+mat_geno_dom_snp <- mat_geno_add_snp + 1
+mat_geno_dom_snp[mat_geno_dom_snp > 1] <- 0
+
+### # observations
+mat_obs_y <- n_inter_cept + crossprod(mat_geno_add_snp, vec_geno_add_val) + crossprod(mat_geno_dom_snp, vec_geno_dom_val) + rnorm(n = n_nr_animal, mean = 0, sd = n_res_sd)
+
+### # combine SNP genotypes into a tibble
+geno_code <- tibble::tibble(`Locus G Code` = as.character(mat_geno_add_snp[1,]))
+
+### # map to genotypes
+tbl_geno_map <- tibble::tibble(`Locus G Code` = as.character(vec_geno_add_value_coeff),
+                               `Genotype` = c("$G_2G_2$", "$G_1G_2$", "$G_1G_1$"))
+
+### # genotypes and codes
+tbl_geno_gtype <- geno_code %>% inner_join(tbl_geno_map, by = c("Locus G Code" = "Locus G Code"))
+
+### # add the data
+tbl_obs <- tibble::tibble(Observation = round(mat_obs_y[,1], digits = 1))
+tbl_all_data <- tbl_geno_gtype %>% bind_cols(tbl_obs)
+tbl_data_gnm <- bind_cols(Animal = c(1:n_nr_animal),tbl_all_data) %>% select(-`Locus G Code`)
+table(tbl_data_gnm$Genotype)
+
+### # writing data to file
+s_data_out_path <- file.path(here::here(), "docs", "data", "exam_lbgfs2021_problem3.csv")
+if (!file.exists(s_data_out_path)) readr::write_csv(tbl_data_gnm, file = s_data_out_path)
+```
+
+
+The solution with a fixed linear model
+
+```{r}
+tbl_data_gnm$Genotype <- as.factor(tbl_data_gnm$Genotype)
+lm_single_locus <- lm(Observation ~ Genotype, data = tbl_data_gnm)
+summary(lm_single_locus)
+```
+
+Transforming the solutions means
+
+```{r}
+(coef_single_locus <- coefficients(lm_single_locus))
+```
+
+The solutions show that the effect of $G_1G_1$ is set to $0$. The parameter $a$ corresponding to the genotypic value of $G_1G_1$ is estimated via the difference between the homozygous genotypes. This means that 
+
+```{r}
+(parameter_a <- (0 - coef_single_locus[["Genotype$G_2G_2$"]])/2)
+```
+
+
+$$a = \frac{0 - (-`r coef_single_locus[["Genotype$G_2G_2$"]]`)}{2} = `r parameter_a`$$
+
+The genotypic value of $G_1G_2$ is obtained by adding $a$ to the effect obtained for genotype $G_1G_2$. 
+
+```{r}
+(parameter_d <- parameter_a + coef_single_locus[["Genotype$G_1G_2$"]])
+```
+
